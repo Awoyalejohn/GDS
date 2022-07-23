@@ -69,8 +69,27 @@
           </li>
         </ul>
       </div>
-    </div>
-    <!-- end/ Main large screen navbar -->
+    </div><!-- end/ Main large screen navbar -->
+
+    <!-- white backgrond div -->
+    <div class="row bg-white">
+      <!-- bootstrap responsive navbar-->
+      <nav class="navbar navbar-expand-lg navbar-light w-100">
+        <!-- off canvas nav button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- end/ off canvas nav button -->
+
+        <!-- mobile top nav header -->
+        {% include 'includes/mobile-top-header.html' %}
+        
+        <!-- main-nav & off canvas navbar -->
+        {% include 'includes/main-nav.html' %}
+
+      </nav><!-- end/ bootstrap responsive navbar-->
+
+    </div><!-- end/ white backgrond div -->
 
   </header>
 
