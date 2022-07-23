@@ -2,5 +2,27 @@
 {% load static %}
 
 {% block content %}
-<h1 class="text-success">Hello world</h1>
+<main>
+  <!--Bootstrap dark mode hero-->
+  <section class="hero-section">
+    <div class="bg-dark text-secondary px-4 py-5 text-center">
+      <div class="py-5">
+        <h1 class="display-5 fw-bold text-white">Welcome to Graphics Design Space</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="fs-5 mb-4">
+            With more than five years of experience in the graphics design, I am a talented graphic
+            designer that excels at Icons, logos, and poster graphics for modern businesses. You can choose to purchase any of my
+            previous works immediately, or you can ask for a quote to acquire a more specialised product that will better meet
+            your needs.
+          </p>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Shop Now</button>
+          <button type="button" class="btn btn-light btn-lg px-4">Request a quote</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</main>
 {% endblock %}
