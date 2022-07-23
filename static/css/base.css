@@ -3,6 +3,16 @@ body {
   background-size: cover;
 }
 
+
+/*==========================*\
+ *BODY*
+\*==========================*/
+body {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-row-gap: 2rem;
+}
+
 /*==========================*\
  *HEADER*
 \*==========================*/
@@ -23,4 +33,46 @@ header {
 .mobile-logo {
   height: 5vh;
   width: min(5rem);
+}
+
+/*==========================*\
+ *MEDIA QUERIES*
+ // X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+// from Bootstrap https://getbootstrap.com/docs/5.0/layout/breakpoints/
+\*==========================*/
+
+/**
+ * Small devices (landscape phones, 576px and up)
+ */
+@media only screen and (min-width: 576px) {
+
+}
+
+/**
+ * Medium devices (tablets, 768px and up)
+ */
+@media only screen and (min-width: 768px) {
+
+}
+
+/**
+ * Large devices (desktops, 992px and up)
+ */
+@media only screen and (min-width: 992px) {
+
+}
+
+/**
+ * X-Large devices (large desktops, 1200px and up)
+ */
+@media only screen and (min-width: 1200px) {
+
+}
+
+/**
+ * XX-Large devices (larger desktops, 1400px and up)
+ */
+@media only screen and (min-width: 1400px) {
+
 }
