@@ -2,3 +2,15 @@ body {
   background: url('/media/home-bg.jpg') no-repeat center center fixed;
   background-size: cover;
 }
+
+/*==========================*\
+ *HEADER*
+\*==========================*/
+header {
+  background-color: #212529;
+}
+
+.main-logo {
+  height: 8rem;
+  width: 60%;
+}
