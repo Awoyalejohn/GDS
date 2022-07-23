@@ -6,11 +6,21 @@ body {
 /*==========================*\
  *HEADER*
 \*==========================*/
+
 header {
   background-color: #212529;
 }
 
+/**
+ * LOGO
+ */
+
 .main-logo {
   height: 8rem;
   width: 60%;
+}
+
+.mobile-logo {
+  height: 5vh;
+  width: min(5rem);
 }
