@@ -52,7 +52,7 @@ header {
 }
 
 .feature-btn {
-  background-color: orange;
+  background-color: #fcba03;
   color: black;
 }
 
@@ -67,6 +67,11 @@ header {
 
 footer {
   background-color: #0b1b75;
+}
+
+.copyright {
+  background-color: black;
+  color: white;
 }
 
 
