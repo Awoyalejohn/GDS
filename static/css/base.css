@@ -3,22 +3,12 @@ body {
   background-size: cover;
 }
 
-
-/*==========================*\
- *BODY*
-\*==========================*/
-body {
-  display: grid;
-  grid-template-rows: repeat(3, auto);
-  grid-row-gap: 2rem;
-}
-
 /*==========================*\
  *HEADER*
 \*==========================*/
 
 header {
-  background-color: #212529;
+  background-color: #0b1b75;
 }
 
 /**
@@ -34,6 +24,26 @@ header {
   height: 5vh;
   width: min(5rem);
 }
+
+/*==========================*\
+ *HERO SECTION*
+\*==========================*/
+
+.hero-section {
+  margin-top: 9rem;
+  background: none;
+}
+
+
+
+/*==========================*\
+ *FOOTER*
+\*==========================*/
+
+footer {
+  background-color: #0b1b75;
+}
+
 
 /*==========================*\
  *MEDIA QUERIES*
