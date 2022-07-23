@@ -34,7 +34,22 @@ header {
   background: none;
 }
 
+/*==========================*\
+ *FEATURES*
+\*==========================*/
 
+.features-heading {
+  text-align: center;
+  margin-inline: auto;
+  font-size: 2rem;
+  margin-bottom: 5rem;
+  border-bottom: solid;
+  width: 45vw;
+}
+
+.features-headings {
+  margin-bottom: 5rem;
+}
 
 /*==========================*\
  *FOOTER*
