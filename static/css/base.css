@@ -20,6 +20,10 @@ header {
   width: 60%;
 }
 
+.main-nav-bg-color {
+  background-color: #010535 !important;
+}
+
 .mobile-logo {
   height: 5vh;
   width: min(7rem);
