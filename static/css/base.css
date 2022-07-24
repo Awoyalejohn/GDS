@@ -51,16 +51,6 @@ header {
   margin-bottom: 5rem;
 }
 
-.feature-btn {
-  background-color: #fcba03;
-  color: black;
-}
-
-.feature-btn:hover {
-  background-color: orangered;
-  color: white;
-}
-
 /*==========================*\
  *FOOTER*
 \*==========================*/
