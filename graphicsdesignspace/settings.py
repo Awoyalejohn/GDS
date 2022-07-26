@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'cloudinary',
     'home',
     'products',
 ]
@@ -155,10 +157,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
