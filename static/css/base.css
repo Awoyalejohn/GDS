@@ -118,11 +118,6 @@ footer {
  *Products Section*
 \*==========================*/
 
-.product-list-card-img {
-  max-width: 100%;
-  min-width: 100%;
-}
-
 .product-card-grid-bg {
   background-color: #0ED4FC;
 }
