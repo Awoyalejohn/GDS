@@ -19,7 +19,7 @@
            
             <div class="card-body">
               {% if product.image %}
-              <a href="">
+              <a href="{% url 'product_detail' product.slug %}">
                 <img class="product-list-card-img" src="{{ product.image.url }}" alt="{{ product.name }}">
               </a>
               {% else %}
