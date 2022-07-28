@@ -9,7 +9,7 @@
       <h2 class="section-heading">Products</h2>
     </div>
 
-    <div class="container"><!---->
+    <div class="container"><!-- Bootstap cards grid -->
 
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
 
@@ -19,9 +19,13 @@
            
             <div class="card-body">
               {% if product.image %}
-              <img class="product-list-card-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+              <a href="">
+                <img class="product-list-card-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+              </a>
               {% else %}
-              <img class="product-list-card-img" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+              <a href="">
+                <img class="product-list-card-img" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+              </a>
               {% endif %}
             </div>
 
@@ -48,7 +52,7 @@
         {% endfor %}
 
       </div>
-    </div><!-- end/ Bootstap cards grid-->
+    </div><!-- end/ Bootstap cards grid -->
   </section>
   
  

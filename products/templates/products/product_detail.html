@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+  <section class="products-detail-section py-5 bg-light">
+    <!-- Bootstap cards grid-->
+    <div class="mb-5">
+      <h2 class="section-heading">Products detail</h2>
+    </div>
+
+    <!-- Bootstrap card-->
+    <div class="container">
+      {{ product_detail }} 
+    </div><!-- end/ Bootstap card -->
+  </section>
+  
+ 
+  
+</main>
+{% endblock %}
