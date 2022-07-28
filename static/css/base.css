@@ -1,6 +1,12 @@
-body {
-  /* background: url('/media/home-bg.jpg') no-repeat center center fixed;
-  background-size: cover; */
+
+/*==========================*\
+ *TYPOGRAPHY*
+\*==========================*/
+
+.section-heading {
+  text-decoration: underline;
+  font-size: 3rem;
+  text-align: center;
 }
 
 /*==========================*\
@@ -10,10 +16,6 @@ body {
 header {
   background-color: #010535;
 }
-
-/**
- * LOGO
- */
 
 .main-logo {
   height: 8rem;
@@ -34,7 +36,6 @@ header {
 \*==========================*/
 
 .hero-section {
-  margin-top: 9rem;
   background: none;
 }
 
@@ -55,18 +56,13 @@ header {
   margin-bottom: 5rem;
 }
 
-
-/* .feature-btn:hover {
-  background-color: rgba(255, 255, 255, 0);
-  color: #0ed3cf;
-} */
-
 /*==========================*\
  *MAIN*
 \*==========================*/
 
 main {
   min-height: 100vh;
+  padding-top: 10em;
 }
 
 .home-bg {
@@ -87,14 +83,9 @@ footer {
   color: white;
 }
 
-
 /*==========================*\
- *Products Secton*
+ *Products Section*
 \*==========================*/
-
-.products-section {
-  margin-top: 9em;
-}
 
 .product-list-card-img {
   max-width: 100%;

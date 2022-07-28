@@ -5,25 +5,32 @@
 <main>
   <section class="products-section py-5 bg-light">
     <!-- Bootstap cards grid-->
+    <div class="mb-5">
+      <h2 class="section-heading">Products</h2>
+    </div>
+
     <div class="container"><!---->
+
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
 
         {% for product in product_list %}
         <div class="col">
           <div class="card shadow-sm">
            
-
             <div class="card-body">
               <img class="product-list-card-img" src="{{ product.image.url }}" alt="">
             </div>
+
             <div class="card-body">
               <h5 class="card-title">{{ product.name }}</h5>
             </div>
+
             <ul class="list-group list-group-flush">
               <li class="list-group-item py-0"><small>Rating</small></li>
               <li class="list-group-item py-0"><small>{{ product.category }}</small></li>
               <li class="list-group-item py-0"><small>£{{ product.price }}</small></li>
             </ul>
+            
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
