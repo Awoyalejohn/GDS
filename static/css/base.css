@@ -1,3 +1,20 @@
+/*==========================*\
+ *ROOT*
+\*==========================*/
+
+:root {
+  /* @link https://utopia.fyi/type/calculator?c=320,21,1.2,1200,24,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+  /* Variabel font sizes from Utopi.*/
+
+  --step--2: clamp(0.91rem, calc(0.89rem + 0.09vw), 0.96rem);
+  --step--1: clamp(1.09rem, calc(1.06rem + 0.19vw), 1.20rem);
+  --step-0: clamp(1.31rem, calc(1.24rem + 0.34vw), 1.50rem);
+  --step-1: clamp(1.58rem, calc(1.47rem + 0.55vw), 1.88rem);
+  --step-2: clamp(1.89rem, calc(1.73rem + 0.83vw), 2.34rem);
+  --step-3: clamp(2.27rem, calc(2.03rem + 1.20vw), 2.93rem);
+  --step-4: clamp(2.72rem, calc(2.38rem + 1.71vw), 3.66rem);
+  --step-5: clamp(3.27rem, calc(2.79rem + 2.39vw), 4.58rem);
+}
 
 /*==========================*\
  *TYPOGRAPHY*
@@ -5,7 +22,7 @@
 
 .section-heading {
   text-decoration: underline;
-  font-size: 3rem;
+  font-size: var(--step-2);
   text-align: center;
 }
 
