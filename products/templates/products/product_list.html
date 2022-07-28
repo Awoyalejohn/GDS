@@ -18,7 +18,11 @@
           <div class="card shadow-sm">
            
             <div class="card-body">
-              <img class="product-list-card-img" src="{{ product.image.url }}" alt="">
+              {% if product.image %}
+              <img class="product-list-card-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+              {% else %}
+              <img class="product-list-card-img" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+              {% endif %}
             </div>
 
             <div class="card-body">
