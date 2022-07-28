@@ -96,6 +96,10 @@ footer {
   margin-top: 9em;
 }
 
+.product-list-card-img {
+  max-width: 100%;
+}
+
 
 /*==========================*\
  *MEDIA QUERIES*
