@@ -74,10 +74,6 @@ main {
   background-size: cover;
 }
 
-.test {
-  margin-top: 200px;
-}
-
 /*==========================*\
  *FOOTER*
 \*==========================*/
@@ -89,6 +85,15 @@ footer {
 .copyright {
   background-color: black;
   color: white;
+}
+
+
+/*==========================*\
+ *Products Secton*
+\*==========================*/
+
+.products-section {
+  margin-top: 9em;
 }
 
 
