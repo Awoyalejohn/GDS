@@ -3,7 +3,7 @@
 
 {% block content %}
 <main>
-  <section class="products-detail-section py-5 bg-light">
+  <section class="products-detail-section py-5 special-bg">
     <!-- Bootstap cards grid-->
     <div class="mb-5">
       <h2 class="section-heading">{{product.name}}</h2>
@@ -11,11 +11,59 @@
 
     <!-- Bootstrap card-->
     <div class="container">
-      {{ product_detail }} 
+
+      <div class="card product-card-bg">
+
+        <div class="row row-cols-1 row-cols-md-2">
+          <div class="col">
+            <!-- card image -->
+            <div class="card-body rounded-5">
+              {% if product.image %}
+              <img class="product-list-card-img bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
+              {% else %}
+              <img class="product-list-card-img bg-white rounded-1 p-2" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="col">
+
+            <!-- Card heading -->
+            <div class="card-body">
+              <h5 class="card-title text-white">{{ product.name }}</h5>
+            </div>
+
+            <!-- Card tags -->
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item product-card-bg text-white py-0"><small>{{ product.category }}</small></li>
+              <li class="list-group-item product-card-bg text-white py-0"><small>Rating</small></li>
+              <li class="list-group-item product-card-bg text-white ">{{ product.description }}</li>
+              <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
+            </ul>
+
+            <!-- Card buttons -->
+            <div class="card-body">
+              <div class="d-flex flex-column gx-3">
+                <a type="button" class="btn btn-outline-info my-1">Add to Cart</a>
+                <a type="button" class="btn btn-outline-light my-1">Request Quote</a>
+                <a type="button" class="btn btn-outline-warning my-1">Add to Wishlist</a>
+              </div>
+            </div>
+
+            <!-- Card buttons -->
+            <div class="card-body">
+              <div class="d-flex justify-content-end align-items-center">
+                <a type="button" class="btn btn-sm btn-outline-info mx-1">Edit</a>
+                <a type="button" class="btn btn-sm btn-outline-light mx-1">Delete</a>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
     </div><!-- end/ Bootstap card -->
+
   </section>
-  
- 
-  
 </main>
 {% endblock %}

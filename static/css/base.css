@@ -16,6 +16,18 @@
   --step-5: clamp(3.27rem, calc(2.79rem + 2.39vw), 4.58rem);
 
   --primary-bg-color: #010535;
+  --secondary-bg-color: #0ED4FC;
+}
+
+/*==========================*\
+ *COLORS*
+\*==========================*/
+.main-bg {
+  background-color: var(--primary-bg-color);
+}
+
+.special-bg {
+  background-color: var(--secondary-bg-color);
 }
 
 /*==========================*\

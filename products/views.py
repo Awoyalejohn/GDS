@@ -8,5 +8,5 @@ class ProductListView(ListView):
     model = Product
 
 class ProductDetailView(DetailView):
-    """ A view to list all products """
+    """ A view to display and individual item's product page """
     model = Product

@@ -4,12 +4,12 @@
 {% block content %}
 <main>
   <section class="products-section product-card-grid-bg py-5">
-    <!-- Bootstap cards grid-->
     <div class="mb-5">
       <h2 class="section-heading">Products</h2>
     </div>
 
-    <div class="container"><!-- Bootstap cards grid -->
+    <!-- Bootstap cards grid -->
+    <div class="container">
 
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
 
@@ -17,36 +17,39 @@
         <div class="col">
           <div class="card product-card-bg">
            
+            <!-- card image -->
             <div class="card-body rounded-5">
               {% if product.image %}
               <a href="{% url 'product_detail' product.slug %}">
                 <img class="product-list-card-img bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
               </a>
               {% else %}
-              <a href="">
+              <a href="{% url 'product_detail' product.slug %}">
                 <img class="product-list-card-img bg-white rounded-1 p-2" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
               </a>
               {% endif %}
             </div>
 
+            <!-- Card heading -->
             <div class="card-body">
               <h5 class="card-title text-white">{{ product.name }}</h5>
             </div>
 
+            <!-- Card tags -->
             <ul class="list-group list-group-flush">
-              <li class="list-group-item py-0 product-card-bg text-white"><small>Rating</small></li>
-              <li class="list-group-item py-0 product-card-bg text-white"><small>{{ product.category }}</small></li>
-              <li class="list-group-item py-0 product-card-bg text-white"><small>£{{ product.price }}</small></li>
+              <li class="list-group-item product-card-bg text-white py-0"><small>{{ product.category }}</small></li>
+              <li class="list-group-item product-card-bg text-white py-0"><small>Rating</small></li>
+              <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
             </ul>
             
+            <!-- Card buttons -->
             <div class="card-body">
-              <div class="d-flex justify-content-start align-items-center">
-     
+              <div class="d-flex justify-content-end align-items-center">
                   <a type="button" class="btn btn-sm btn-outline-info mx-1">Edit</a>
                   <a type="button" class="btn btn-sm btn-outline-light mx-1">Delete</a>
-            
               </div>
             </div>
+            
           </div>
         </div>
         {% endfor %}
