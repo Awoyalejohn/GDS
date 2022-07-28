@@ -111,6 +111,14 @@ footer {
   min-width: 100%;
 }
 
+.product-card-grid-bg {
+  background-color: #0ED4FC;
+}
+
+.product-card-bg {
+  background-color: var(--primary-bg-color);
+}
+
 
 /*==========================*\
  *MEDIA QUERIES*

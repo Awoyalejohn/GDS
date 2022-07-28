@@ -3,7 +3,7 @@
 
 {% block content %}
 <main>
-  <section class="products-section py-5 bg-light">
+  <section class="products-section product-card-grid-bg py-5">
     <!-- Bootstap cards grid-->
     <div class="mb-5">
       <h2 class="section-heading">Products</h2>
@@ -15,36 +15,36 @@
 
         {% for product in product_list %}
         <div class="col">
-          <div class="card shadow-sm">
+          <div class="card product-card-bg">
            
-            <div class="card-body">
+            <div class="card-body rounded-5">
               {% if product.image %}
               <a href="{% url 'product_detail' product.slug %}">
-                <img class="product-list-card-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+                <img class="product-list-card-img bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
               </a>
               {% else %}
               <a href="">
-                <img class="product-list-card-img" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+                <img class="product-list-card-img bg-white rounded-1 p-2" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
               </a>
               {% endif %}
             </div>
 
             <div class="card-body">
-              <h5 class="card-title">{{ product.name }}</h5>
+              <h5 class="card-title text-white">{{ product.name }}</h5>
             </div>
 
             <ul class="list-group list-group-flush">
-              <li class="list-group-item py-0"><small>Rating</small></li>
-              <li class="list-group-item py-0"><small>{{ product.category }}</small></li>
-              <li class="list-group-item py-0"><small>£{{ product.price }}</small></li>
+              <li class="list-group-item py-0 product-card-bg text-white"><small>Rating</small></li>
+              <li class="list-group-item py-0 product-card-bg text-white"><small>{{ product.category }}</small></li>
+              <li class="list-group-item py-0 product-card-bg text-white"><small>£{{ product.price }}</small></li>
             </ul>
             
             <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
-                  <a type="button" class="btn btn-sm btn-outline-secondary">Delete</a>
-                </div>
+              <div class="d-flex justify-content-start align-items-center">
+     
+                  <a type="button" class="btn btn-sm btn-outline-info mx-1">Edit</a>
+                  <a type="button" class="btn btn-sm btn-outline-light mx-1">Delete</a>
+            
               </div>
             </div>
           </div>
