@@ -9,6 +9,42 @@
   </div>
   <div>{{ product_list }}</div>
   
+  <section class="products-section py-5 bg-light">
+    <!-- Bootstap cards grid-->
+    <div class="container"><!---->
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
+
+        {% for product in product_list %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="{{ product.image.url }}" alt="">
+
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Rating</li>
+              <li class="list-group-item">{{ product.category }}</li>
+              <li class="list-group-item">£{{ product.price }}</li>
+            </ul>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+                  <a type="button" class="btn btn-sm btn-outline-secondary">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+
+      </div>
+    </div><!-- end/ Bootstap cards grid-->
+
+  </section>
+  
  
   
 </main>
