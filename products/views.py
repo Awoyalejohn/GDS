@@ -34,9 +34,9 @@ class ProductListView(View):
 
 
         if 'category' in request.GET:
-            categories = request.GET['category']
-            products = products.filter(category__name__icontains=categories)
-            categories = Category.objects.filter(name__icontains=categories)
+            categories = request.GET['category'].split(',')
+            products = products.filter(category__slug__in=categories)
+            categories = Category.objects.filter(slug=categories)
 
         if 'q' in request.GET:
             query = request.GET['q']
