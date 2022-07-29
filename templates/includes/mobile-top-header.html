@@ -34,10 +34,10 @@
 
 <!-- Mobile search bar -->
 <div class="border-0 w-100 py-2 px-1 rounded-0 my-0 d-lg-none" aria-labelledby="mobile-search">
-  <form method="" action="">
+  <form method="GET" action="{% url 'products' %}">
     <!--bootstrap button form addon-->
     <div class="input-group w-100">
-      <input class="form-control border border-black" type="text" name="" placeholder="Search our site">
+      <input class="form-control border border-black" type="text" name="q" placeholder="Search our site">
       <button class="btn btn-outline-info" type="submit" id="button-addon2">
         <span class="icon">
         <i class="fas fa-search"></i>

@@ -31,10 +31,10 @@
         </a>
       </div>
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-        <form method="" action="">
+        <form method="GET" action="{% url 'products' %}">
           <!--bootstrap button form addon-->
           <div class="input-group w-100">
-            <input class="form-control border border-black" type="text" name="" placeholder="Search our site">
+            <input class="form-control border border-black" type="text" name="q" placeholder="Search our site">
             <button class="btn btn-outline-info" type="submit" id="button-addon2">
               <span class="icon">
               <i class="fas fa-search"></i>
