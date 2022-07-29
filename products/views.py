@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.views.generic import View
 from django.views.generic.detail import DetailView
-from products.models import Product
+from products.models import Product, Category
 
 # Create your views here.
 class ProductListView(View):
@@ -11,6 +11,12 @@ class ProductListView(View):
     def get(self, request):
         products = Product.objects.all()
         query = None
+        categories = None
+
+        if 'category' in request.GET:
+            categories = request.GET['category']
+            products = products.filter(category__name__icontains=categories)
+            categories = Category.objects.filter(name__icontains=categories)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -25,7 +31,11 @@ class ProductListView(View):
             )
             products = products.filter(queries)
 
-        context = {'product_list': products, 'search_term': query}
+        context = {
+            'product_list': products,
+            'search_term': query,
+            'current_categories': categories
+            }
         return render(request, 'products/product_list.html', context)
 
 

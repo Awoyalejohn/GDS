@@ -34,12 +34,12 @@
           Graphics Designs
         </a>
         <div class="dropdown-menu border-0" aria-labelledby="graphics-link">
-          <a href="#" class="dropdown-item">Icons</a>
-          <a href="#" class="dropdown-item">Logos</a>
-          <a href="#" class="dropdown-item">Posters</a>
-          <a href="#" class="dropdown-item">Stickers</a>
-          <a href="#" class="dropdown-item">Wallpapers</a>
-          <a href="#" class="dropdown-item">Banners</a>
+          <a href="{% url 'products' %}?category=icons" class="dropdown-item">Icons</a>
+          <a href="{% url 'products' %}?category=logos" class="dropdown-item">Logos</a>
+          <a href="{% url 'products' %}?category=posters" class="dropdown-item">Posters</a>
+          <a href="{% url 'products' %}?category=stickers" class="dropdown-item">Stickers</a>
+          <a href="{% url 'products' %}?category=wallpapers" class="dropdown-item">Wallpapers</a>
+          <a href="{% url 'products' %}?category=banners" class="dropdown-item">Banners</a>
         </div>
       </li>
 
