@@ -97,7 +97,7 @@ main {
 }
 
 .home-bg {
-  background: url('/media/home-bg.jpg') no-repeat center center fixed;
+  background: url('/media/animated-shape.svg') no-repeat center center fixed;
   background-size: cover;
 }
 
