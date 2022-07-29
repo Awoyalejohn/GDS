@@ -8,14 +8,14 @@ from products.models import Product
 # Create your views here.
 class ProductListView(View):
     """ A view to list all products """
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         products = Product.objects.all()
         query = None
 
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criterua")
+                messages.error(request, "You didn't enter any search criteria")
                 return redirect(reverse('products'))
             
             queries = (
