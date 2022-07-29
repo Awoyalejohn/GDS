@@ -126,13 +126,27 @@ footer {
   background-color: var(--primary-bg-color);
 }
 
+/*=============================================================*\
+ *Back to top button*
+ // Scroll Back To Top button from Material Design for Bootstrap
+  https://mdbootstrap.com/docs/standard/extended/back-to-top/
+//
+\*=============================================================*/
 
-/*==========================*\
+#btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+
+
+/*==================================================================*\
  *MEDIA QUERIES*
  // X-Small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 // from Bootstrap https://getbootstrap.com/docs/5.0/layout/breakpoints/
-\*==========================*/
+\*==================================================================*/
 
 /**
  * Small devices (landscape phones, 576px and up)
