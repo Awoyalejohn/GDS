@@ -4,8 +4,12 @@
 {% block content %}
 <main>
   <section class="products-section product-card-grid-bg py-5">
-    <div class="mb-5">
+    <div class="col text-center my-3">
       <h2 class="section-heading">Products</h2>
+
+      {% for c in current_categories %}
+      <a class="btn btn-sm btn-dark" href="{% url 'products' %}?category={{ c.slug }}">{{ c.name }}</a>
+      {% endfor %}
     </div>
 
     <!-- Bootstap cards grid -->
