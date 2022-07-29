@@ -13,22 +13,21 @@
           Home
         </a>
       </li>
+
+      <!-- All Prduct dopdown menu -->
       <li class="nav-item dropdown">
         <a class="logo-font font-weight-bold nav-link dropdown-toggle text-white mr-5" href="#" id="all-products-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           All Products
         </a>
-        <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-          <a href="#" class="dropdown-item">By Price</a>
-          <a href="#" class="dropdown-item">
-            By Rating
-          </a>
-          <a href="#" class="dropdown-item">
-            By Category
-          </a>
+        <div class="dropdown-menu" aria-labelledby="all-products-link">
+          <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
+          <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item">By Rating</a>
+          <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item">By Category</a>
           <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
         </div>
-      </li>
+      </li><!-- end/ All Prduct dopdown menu -->
 
+      <!-- Graphics Designs dopdown menu -->
       <li class="nav-item dropdown">
         <a class="logo-font font-weight-bold nav-link dropdown-toggle text-white mr-5" href="#" id="graphics-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Graphics Designs
@@ -41,7 +40,8 @@
           <a href="{% url 'products' %}?category=wallpapers" class="dropdown-item">Wallpapers</a>
           <a href="{% url 'products' %}?category=banners" class="dropdown-item">Banners</a>
         </div>
-      </li>
+      </li><!-- end/ Graphics Designs dopdown menu -->
+
 
       <li class="nav-item">
         <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#">Request a Quote</a>
@@ -50,7 +50,7 @@
       <li class="nav-item">
         <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#">Testimonials</a>
       </li>
+
     </ul>
   </div>
-</div>
-<!-- end/ main-nav & off canvas navbar -->
+</div><!-- end/ main-nav & off canvas navbar -->
