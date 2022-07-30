@@ -209,10 +209,14 @@ footer {
     grid-column: 2;
   }
   
-  .cart-price{
+  .cart-price {
     grid-row: 1;
     grid-column: 3;
     justify-content: end !important;
+  }
+
+  .cart-buttons {
+    flex-direction: row !important;
   }
 
 
