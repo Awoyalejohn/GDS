@@ -146,6 +146,11 @@ footer {
   align-items: center;
 }
 
+.total-box {
+  max-width: 30rem;
+  flex: 2;
+}
+
 /*=============================================================*\
  *Back to top button*
  // Scroll Back To Top button from Material Design for Bootstrap
@@ -209,6 +214,7 @@ footer {
     grid-column: 3;
     justify-content: end !important;
   }
+
 
 
 
