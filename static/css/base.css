@@ -140,6 +140,10 @@ footer {
   display: none;
 }
 
+#btn-back-to-top:hover {
+  background-color: #0c2459;
+}
+
 
 /*==================================================================*\
  *MEDIA QUERIES*
