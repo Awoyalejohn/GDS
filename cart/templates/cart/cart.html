@@ -12,10 +12,67 @@
 
     <div class="container">
 
-      
-      
-   
-    </div>
+       <!-- Bootstrap card-->
+       <div class="card main-bg px-3">
+
+
+            <!-- Card heading -->
+            <div class="card-header">
+              <h5 class="card-title text-white">4 items in Cart</h5>
+            </div>
+
+            <!-- Card table header -->
+            <div class="card cart-table-header bg-danger d-none d-md-block h3">
+              <div class="card-body d-flex justify-content-between">
+                <p>Product Info</p>
+                <p>Price</p>
+              </div>
+            </div>
+
+            <!-- Card cart item -->
+            <div class="card cart-item bg-warning mb-4">
+              <div class="card-body cart-item-img">
+              <img class="img-fluid" src="{{ MEDIA_URL }}no_image_available.svg" alt="">
+              </div>
+              <div class="card-body cart-info">
+                <p class="h3">Random Item</p>
+                <p class="d-none d-md-block">Random tag</p>
+              </div>
+              <div class="card-body d-flex justify-content-between cart-price">
+                <p class="h3">£10.00</p>
+                <a class="btn btn-danger"><i class="fa-solid fa-x"></i></a>
+              </div>
+            </div>
+
+            <!-- Card order total box -->
+            <div class="card bg-success">
+              <div class="card-body">
+                <p>Subtotal:</p>
+                <p>£40.00</p>
+              </div>
+              <div class="card-body">
+                <p>Discount:</p>
+                <p>-£4.00</p>
+              </div>
+              <div class="card-body">
+                <p>Total</p>
+                <p>£36.00</p>
+              </div>
+            </div>
+
+            <!-- Card buttons -->
+            <div class="card-body">
+              <div class="">
+                <a type="button" class="btn btn-primary">Keep shopping</a>
+                <a type="button" class="btn btn-secondary">Secure Checkout</a>
+              </div>
+            </div>
+
+
+          </div><!-- end/ Bootstap card -->
+
+
+      </div>   
   </section>
 
 </main>

@@ -113,6 +113,45 @@ footer {
   background-color: var(--primary-bg-color);
 }
 
+/*==========================*\
+ *Cart Section*
+\*==========================*/
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(5, 20%);
+
+}
+
+.cart-item-img {
+  border: 1px solid red;
+  grid-row: 2 / 6;
+  grid-column: 1 / 2;
+  
+}
+
+.cart-item-img img {
+  height: 100%;
+  display: block;
+  margin-inline: auto;
+  max-width: 100%;
+  
+}
+
+.cart-info {
+  border: 1px solid;
+  grid-row: 1/ 2;
+  grid-column: 1/ span 2;
+}
+
+.cart-price{
+  border: 1px solid;
+  grid-row: 3 / 5;
+  grid-column: 2 / 3;
+  align-items: center;
+}
+
 /*=============================================================*\
  *Back to top button*
  // Scroll Back To Top button from Material Design for Bootstrap
