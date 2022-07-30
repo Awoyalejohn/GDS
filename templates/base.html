@@ -61,7 +61,13 @@
             <a class="text-white nav-link" href="{% url 'display_cart' %}">
               <div class="text-center">
                 <div><i class="fa-solid fa-cart-shopping"></i></i></div>
-                <p class="my-0">£0.00</p>
+                <p class="my-0">
+                  {% if total %}
+                  £{{ total|floatformat:2 }}
+                  {% else %}
+                  £0.00
+                  {% endif %}
+                </p>
               </div>
             </a>
           </li>

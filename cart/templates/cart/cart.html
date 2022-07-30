@@ -15,10 +15,13 @@
       <!-- Bootstrap card-->
       <div class="card main-bg px-3">
       
-        {%% if cart_items}      
+        {% if cart_items%}      
         <!-- Amount of items in cart info -->
         <div class="card-header">
           <h5 class="card-title text-white">4 items in Cart</h5>
+        </div>
+        <div class="text-white">
+          {{ cart_items}}
         </div>
       
         <!-- Card table header -->
