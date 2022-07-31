@@ -44,7 +44,7 @@
           </div>
           <div class="card-body d-flex justify-content-between flex-md-row-reverse cart-price">
             <p class="h3">£{{ item.product.price }}</p>
-            <a class="btn btn-danger mx-1"><i class="fa-solid fa-x"></i></a>
+            <a id="remove_{{ item.slug }}" class="remove-item btn btn-danger mx-1"><i class="fa-solid fa-x"></i></a>
           </div>
         </div>
         {% endfor %}
@@ -95,4 +95,34 @@
   </section>
 
 </main>
+{% endblock %}
+
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+  const removeItem = document.querySelector('.remove-item');
+
+  removeItem.addEventListener('click', (event) => {
+    const csrfToken = "{{ csrf_token }}";
+    const slug = event.target.getAttribute('id').split('remove_')[1];
+    const url = `/cart/remove/${slug}/`;
+    const formData = { 'csrfmiddlewaretoken': csrfToken }
+
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        location.reload();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+  });
+</script>
+
 {% endblock %}
