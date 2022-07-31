@@ -101,28 +101,28 @@
 {% block postloadjs %}
 {{ block.super }}
 <script type="text/javascript">
-  const removeItem = document.querySelector('.remove-item');
+const removeItems = document.querySelectorAll(".remove-item")
+for (let removeItem of removeItems) {
+  removeItem.addEventListener('click', function() {
+    
+  const csrftoken = "{{ csrf_token }}";
+  let id = this.getAttribute('id');
+  let slug = id.split('remove_')[1];
+  let url = `/cart/remove/${slug}/`;
 
-  removeItem.addEventListener('click', (event) => {
-    const csrfToken = "{{ csrf_token }}";
-    const slug = event.target.getAttribute('id').split('remove_')[1];
-    const url = `/cart/remove/${slug}/`;
-    const formData = { 'csrfmiddlewaretoken': csrfToken }
-
-    fetch(url, {
-      method: 'POST',
-      body: formData
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
-        location.reload();
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-
+  const request = new Request(
+    url,
+    {
+        method: 'POST',
+        headers: {'X-CSRFToken': csrftoken},
+        mode: 'same-origin' // Do not send CSRF token to another domain.
+    }
+  );
+  fetch(request).then(function(response) {
+    location.reload();
   });
+  })
+}
 </script>
 
 {% endblock %}
