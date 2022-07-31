@@ -110,6 +110,7 @@ for (let removeItem of removeItems) {
   let slug = id.split('remove_')[1];
   let url = `/cart/remove/${slug}/`;
 
+  // AJAX request with csrftoken from Django docs
   const request = new Request(
     url,
     {

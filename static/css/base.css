@@ -170,6 +170,20 @@ footer {
 }
 
 
+/*==========================*\
+ *Messages*
+\*==========================*/
+
+.message-container {
+  position: fixed;
+  top: 72px;
+  right: 15px;
+  z-index: 99999;
+}
+
+
+
+
 /*==================================================================*\
  *MEDIA QUERIES*
  // X-Small devices (portrait phones, less than 576px)

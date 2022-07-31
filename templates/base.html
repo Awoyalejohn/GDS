@@ -104,6 +104,14 @@
 
   </header>
 
+  {% if messages %}
+  <div class="message-container">
+    {% for message in messages %}
+    {% include 'includes/toasts/toast_success.html' %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
 
   {% block content %}
   {% endblock %}
@@ -155,6 +163,15 @@
 
 
 {% block postloadjs %}
+<script type="text/javascript">
+  //Initialize toasts via JavaScript from bootstrap:
+  let toastElList = [].slice.call(document.querySelectorAll('.toast'))
+  let toastList = toastElList.map(function (toastEl) {
+    // Creates an array of toasts (to initializes them)
+    return new bootstrap.Toast(toastEl)
+  });
+  toastList.forEach(toast => toast.show()); // Shows toast
+</script>
  {% endblock %}
 </body>
 </html>

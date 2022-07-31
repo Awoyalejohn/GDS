@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, HttpResponse
 from django.contrib import messages
+from products.models import Product
 from django.views.generic import View
 from django.views.generic import TemplateView
 
@@ -14,6 +15,7 @@ class DisplayCartView(TemplateView):
 class AddToCart(View):
     """ A view to add items to the cart page """
     def post(self, request, slug):
+        product = Product.objects.get(slug=slug)
         quantity = 1
         #gets the redirect url
         redirect_url = request.POST.get('redirect_url')
@@ -27,6 +29,7 @@ class AddToCart(View):
             
         else:
             cart[slug] = quantity
+            messages.success(request, f'Added {product.name} to your cart')
 
         #Adds the amount of that item to its value in the dictionary
         request.session['cart'] = cart
