@@ -77,7 +77,7 @@
         <div
           class="card-body cart-buttons d-flex flex-column align-items-center justify-content-md-end border border-danger ">
           <a type="button" href="{% url 'products' %}" class="btn btn-primary btn-lg my-1 mx-1">Keep shopping</a>
-          <a type="button" class="btn btn-secondary btn-lg my-1 mx-1">Secure Checkout</a>
+          <a type="button" href="{% url 'checkout' %}" class="btn btn-secondary btn-lg my-1 mx-1">Secure Checkout</a>
         </div>
       
         {% else %}
