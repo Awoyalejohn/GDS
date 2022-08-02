@@ -10,7 +10,7 @@ import stripe
 # Create your views here.
 class Checkout(View):
     """ A view to allow purchasing of the items from the checkout page """
-    def get(self, request):
+    def post(self, request):
         stripe_public_key = settings.STRIPE_PUBLIC_KEY
         stripe_secret_key = settings.STRIPE_SECRET_KEY
 
