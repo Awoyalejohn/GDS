@@ -34,7 +34,6 @@ class AddToCart(View):
         #Adds the amount of that item to its value in the dictionary
         request.session['cart'] = cart
         
-        print(request.session['cart'])
         return redirect(redirect_url)
 
 

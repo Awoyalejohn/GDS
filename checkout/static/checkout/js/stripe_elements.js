@@ -47,30 +47,103 @@ card.addEventListener('change', (event) => {
 const form = document.querySelector('#payment-form');
 
 form.addEventListener('submit', (event) => {
+  // Prevents form from submitting
   event.preventDefault();
+  //disables card element
   card.disabled = true;
   document.querySelector('#submit-button').disabled = true;
 
-  stripe.confirmCardPayment(clientSecret, {
-    payment_method: {
-      card: card,
+  // Checks the checkbox if its checked
+  let saveInfo = document.querySelector('#id-save-info')
+  if (typeof (saveInfo) != 'undefined' && saveInfo != null) {
+    saveInfo = saveInfo.checked;
+  } else {
+    saveInfo = false;
+  }
+  console.log(saveInfo);
+
+  // Gets CSRF Token from using {% csrf_token %} in the form
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+  // Url that the data will be posted to
+  const url = '/checkout/cache_checkout_data/';
+
+  //headers
+  headerInfo = {
+    'Content-Type': 'application/json',
+    'X-CSRFToken': csrftoken,
+  };
+
+  // Data to post
+  const postData = {
+    "client_secret": clientSecret,
+    "save_info": saveInfo
+  };
+
+  // Django docs implementation of posting data with CSRF token
+  const request = new Request(
+    url,
+    {
+      method: 'POST',
+      headers: headerInfo,
+      body: JSON.stringify(postData),
+      mode: 'same-origin' // Do not send CSRF token to another domain.
     }
-  }).then(function (result) {
-    if (result.error) {
-      let errorDiv = document.querySelector('#card-errors');
-      let html = `
+  );
+
+  fetch(request)
+    .then(function (data) {
+      console.log('Success:', data);
+      stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: card,
+          billing_details: {
+            name: form.full_name.value.trim(),
+            phone: form.phone_number.value.trim(),
+            email: form.email.value.trim(),
+            address: {
+              line1: form.street_address1.value.trim(),
+              line2: form.street_address2.value.trim(),
+              city: form.town_or_city.value.trim(),
+              country: form.country.value.trim(),
+              state: form.county.value.trim(),
+            }
+          }
+        },
+        shipping: {
+          name: form.full_name.value.trim(),
+          phone: form.phone_number.value.trim(),
+          address: {
+            line1: form.street_address1.value.trim(),
+            line2: form.street_address2.value.trim(),
+            city: form.town_or_city.value.trim(),
+            country: form.country.value.trim(),
+            postal_code: form.postcode.value.trim(),
+            state: form.county.value.trim(),
+          }
+        },
+      }).then(function (result) {
+        if (result.error) {
+          let errorDiv = document.querySelector('#card-errors');
+          let html = `
       <span class="icon" role="alert">
         <i class="fas fa-times"></i>
       </span>
       <span>${result.error.message}</span      
     `;
-      errorDiv.innerHTML = html;
-      card.disabled = false;
-      document.querySelector('#submit-button').disabled = false;
-    } else {
-      if (result.paymentIntent.status === 'succeeded') {
-        form.submit();
-      }
-    }
-  })
+          errorDiv.innerHTML = html;
+          card.disabled = false;
+          document.querySelector('#submit-button').disabled = false;
+        } else {
+          if (result.paymentIntent.status === 'succeeded') {
+            form.submit();
+          }
+        }
+      })
+    })
+    .catch(function (error) {
+      // Reloads the page
+      console.log('Error:', error);
+      location.reload();
+    });
 });

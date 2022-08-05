@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, render, redirect, reverse
+from django.shortcuts import get_object_or_404, render, redirect, reverse, HttpResponse
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.views.generic import View
@@ -8,6 +9,36 @@ from products.models import Product
 from cart.contexts import cart_contents
 
 import stripe
+from django.http import JsonResponse
+import json
+
+
+
+
+
+
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        req_json = json.loads(request.body)
+        pid = req_json['client_secret'].split('_secret')[0]
+        print(pid)
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'cart': json.dumps(request.session.get('cart', {})),
+            'save_info': req_json['save_info'],
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        print(e)
+        print(e)
+        return HttpResponse(content=e, status=400)
+
+
 
 # Create your views here.
 class Checkout(View):
