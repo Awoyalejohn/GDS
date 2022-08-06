@@ -41,3 +41,15 @@
     color: #000;
     border: 1px solid #000;
 }
+
+/* default colour for selected country */
+select,
+select option {
+  color: #000;
+}
+
+/* default colour when no country is selected */
+select:invalid,
+select option[value=""] {
+  color: #6c757d !important;
+}
