@@ -1,9 +1,11 @@
 from django.shortcuts import get_object_or_404, render
 from django.contrib import messages
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.http import HttpResponseRedirect
 from .models import UserProfile
 from .forms import UserProfileForm
+
+from checkout.models import Order
 
 class Profile(View):
     """ Display the user's Profile """
@@ -27,4 +29,20 @@ class Profile(View):
             form.save()
             messages.success(request, 'Profile updated successfully')
             return HttpResponseRedirect(self.request.path_info)
+
+
+class OrderHistory(TemplateView):
+     template_name = 'checkout/checkout_success.html'
+     def get_context_data(self, order_number, **kwargs):
+        context = super(OrderHistory, self).get_context_data(**kwargs)
+        order = get_object_or_404(Order, order_number=order_number)
+
+        messages.info(self.request, (
+        f'This is a past confirmation for order number {order_number}. '
+        'A confirmation email was sent on the order date.'
+        ))
+        context['order'] = order
+        context['from_profile'] = True
+        return context
+
 
