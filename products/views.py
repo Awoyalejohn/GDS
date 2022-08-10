@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.views.generic import View
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 from products.models import Product, Category
 
 # Create your views here.
@@ -67,3 +68,12 @@ class ProductDetailView(DetailView):
     A view to display and individual item's product page
     """
     model = Product
+
+
+
+class AddProductView(CreateView):
+    """ Add a product to the store """
+    model = Product
+    fields = ['name']
+
+
