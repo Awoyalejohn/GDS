@@ -100,8 +100,7 @@ class EditProductView(UpdateView):
     error_message = 'Failed to update product. Please ensure the form is valid.'
 
     def get_success_url(self):
-        slug = self.kwargs['slug']
-        return reverse('product_detail', args=[slug])
+        return reverse_lazy('product_detail', kwargs={'slug': self.object.slug})
 
     def form_valid(self, form):
         messages.success(self.request, self.success_message)

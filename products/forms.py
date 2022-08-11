@@ -6,4 +6,5 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = '__all__'
+        # Renders all fields except for the slug field
+        exclude = ('slug',)
