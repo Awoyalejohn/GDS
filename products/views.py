@@ -1,10 +1,12 @@
+from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.views.generic import View
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from products.models import Product, Category
 from .forms import ProductForm
 
@@ -62,8 +64,6 @@ class ProductListView(View):
         return render(request, 'products/product_list.html', context)
 
 
-
-
 class ProductDetailView(DetailView):
     """ 
     A view to display and individual item's product page
@@ -71,15 +71,16 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-
 class AddProductView(CreateView):
     """ Add a product to the store """
     model = Product
     form_class = ProductForm
     template_name = 'products/add_product.html'
-    success_url = '/products/'
     success_message = 'Successfully added product!'
     error_message = 'Failed to add product. Please ensure the form is valid.'
+
+    def get_success_url(self):
+        return reverse_lazy('product_detail', kwargs={'slug': self.object.slug})
 
     def form_valid(self, form):
         messages.success(self.request, self.success_message)
@@ -111,4 +112,10 @@ class EditProductView(UpdateView):
         return super().form_invalid(form)
 
 
+class DeleteProductView(SuccessMessageMixin, DeleteView):
+    """ Deletes a product in the store """
+    model = Product
+    template_name = 'products/delete_product.html'
+    success_url = reverse_lazy('products')
+    success_message = 'Successfully deleted product!'
 
