@@ -13,13 +13,13 @@
 
     <!-- Bootstrap card-->
       <div class="card product-card-bg">
-        <form method="post">
+        <form method="post" action="{% url 'add_product' %}" class="form" enctype="multipart/form-data">
           {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
-
+          {{ form|crispy }}
+          <input type="submit" value="Save" class="btn btn-primary">
+        </form>
       </div><!-- end/ Bootstap card -->
+
     </div>
   </section>
 

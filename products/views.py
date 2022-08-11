@@ -6,6 +6,7 @@ from django.views.generic import View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from products.models import Product, Category
+from .forms import ProductForm
 
 # Create your views here.
 class ProductListView(View):
@@ -74,6 +75,8 @@ class ProductDetailView(DetailView):
 class AddProductView(CreateView):
     """ Add a product to the store """
     model = Product
-    fields = ['name']
+    form_class = ProductForm
+    template_name = 'products/add_product.html'
+    success_url = '/products/'
 
 
