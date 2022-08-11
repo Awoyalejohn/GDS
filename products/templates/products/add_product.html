@@ -16,7 +16,8 @@
         <form method="post" action="{% url 'add_product' %}" class="form" enctype="multipart/form-data">
           {% csrf_token %}
           {{ form|crispy }}
-          <input type="submit" value="Save" class="btn btn-primary">
+          <a class="btn btn-light" href="{% url 'products' %}">Cancel</a>
+          <button type="submit" class="btn btn-primary">Add Product</button>
         </form>
       </div><!-- end/ Bootstap card -->
 
