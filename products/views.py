@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.views.generic import View
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from products.models import Product, Category
 from .forms import ProductForm
 
@@ -88,5 +88,27 @@ class AddProductView(CreateView):
     def form_invalid(self, form):
         messages.error(self.request, self.error_message)
         return super().form_invalid(form)
+
+
+class EditProductView(UpdateView):
+    """ Edits a product in the store """
+    model = Product
+    form_class = ProductForm
+    template_name = 'products/edit_product.html'
+    success_message = 'Successfully Updated product!'
+    error_message = 'Failed to update product. Please ensure the form is valid.'
+
+    def get_success_url(self):
+        slug = self.kwargs['slug']
+        return reverse('product_detail', args=[slug])
+
+    def form_valid(self, form):
+        messages.success(self.request, self.success_message)
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, self.error_message)
+        return super().form_invalid(form)
+
 
 
