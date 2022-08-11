@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View, TemplateView
 from django.http import HttpResponseRedirect
 from .models import UserProfile
@@ -7,7 +8,7 @@ from .forms import UserProfileForm
 
 from checkout.models import Order
 
-class Profile(View):
+class Profile(LoginRequiredMixin, View):
     """ Display the user's Profile """
     template_name = "profiles/profile.html"
     def get(self, request):
@@ -34,7 +35,7 @@ class Profile(View):
 
 
 
-class OrderHistory(TemplateView):
+class OrderHistory(LoginRequiredMixin, TemplateView):
      template_name = 'checkout/checkout_success.html'
      def get_context_data(self, order_number, **kwargs):
         context = super(OrderHistory, self).get_context_data(**kwargs)

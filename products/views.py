@@ -2,6 +2,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.views.generic import View
@@ -71,7 +73,15 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-class AddProductView(CreateView):
+class SuperUserCheck(UserPassesTestMixin, View):
+    """ 
+    A CBV mixin to prevent access from users that are not superusers
+    """
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class AddProductView(SuperUserCheck, CreateView):
     """ Add a product to the store """
     model = Product
     form_class = ProductForm
@@ -91,7 +101,7 @@ class AddProductView(CreateView):
         return super().form_invalid(form)
 
 
-class EditProductView(UpdateView):
+class EditProductView(SuperUserCheck, UpdateView):
     """ Edits a product in the store """
     model = Product
     form_class = ProductForm
@@ -111,7 +121,7 @@ class EditProductView(UpdateView):
         return super().form_invalid(form)
 
 
-class DeleteProductView(SuccessMessageMixin, DeleteView):
+class DeleteProductView(SuperUserCheck, SuccessMessageMixin, DeleteView):
     """ Deletes a product in the store """
     model = Product
     template_name = 'products/delete_product.html'
