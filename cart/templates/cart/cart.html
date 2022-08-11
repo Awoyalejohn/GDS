@@ -36,7 +36,11 @@
         <!-- Card cart item -->
         <div class="card cart-item bg-warning">
           <div class="card-body cart-item-img">
-            <img class="img-fluid bg-white rounded-1 p-2" src="{{ item.product.image.url }}" alt="">
+            {% if item.product.image %}
+              <img class="img-fluid bg-white rounded-1 p-2" src="{{ item.product.image.url}}" alt="{{ product.name }}">
+            {% else %}
+              <img class="img-fluid product-list-card-img bg-white rounded-1 p-2" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+            {% endif %}
           </div>
           <div class="card-body cart-info">
             <p class="h3">{{ item.product.name }}</p>

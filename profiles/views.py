@@ -29,6 +29,9 @@ class Profile(View):
             form.save()
             messages.success(request, 'Profile updated successfully')
             return HttpResponseRedirect(self.request.path_info)
+        else:
+            messages.error(request, 'Update failed. Please ensure the form is valid.')
+
 
 
 class OrderHistory(TemplateView):

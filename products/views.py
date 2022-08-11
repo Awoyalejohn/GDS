@@ -78,5 +78,15 @@ class AddProductView(CreateView):
     form_class = ProductForm
     template_name = 'products/add_product.html'
     success_url = '/products/'
+    success_message = 'Successfully added product!'
+    error_message = 'Failed to add product. Please ensure the form is valid.'
+
+    def form_valid(self, form):
+        messages.success(self.request, self.success_message)
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, self.error_message)
+        return super().form_invalid(form)
 
 
