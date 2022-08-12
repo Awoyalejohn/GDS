@@ -50,3 +50,14 @@ class OrderHistory(LoginRequiredMixin, TemplateView):
         return context
 
 
+class ProfileDownloads(TemplateView):
+    """ A view display orders for users to download """
+    template_name = 'profiles/profile_downloads.html'
+
+    def get_context_data(self, order_number, **kwargs):
+        context = super(ProfileDownloads, self).get_context_data(**kwargs)
+        order = get_object_or_404(Order, order_number=order_number)
+        context['order'] = order
+        return context
+
+
