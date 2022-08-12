@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
@@ -118,6 +118,16 @@ class EditProductView(SuperUserCheck, UpdateView):
     def form_invalid(self, form):
         messages.error(self.request, self.error_message)
         return super().form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(EditProductView, self).get_context_data(**kwargs)
+        product = get_object_or_404(Product, slug=self.object.slug)
+
+        messages.info(self.request, (
+        f'You are editing {product.name}'
+        ))
+        context['product'] = product
+        return context
 
 
 class DeleteProductView(SuperUserCheck, SuccessMessageMixin, DeleteView):
