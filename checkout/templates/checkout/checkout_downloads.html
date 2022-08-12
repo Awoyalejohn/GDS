@@ -30,16 +30,10 @@
             <p class="d-none d-md-block">{{ item.product.category }}</p>
           </div>
           <div class="card-body d-flex justify-content-between flex-md-row-reverse cart-price">
-            <a id="remove_{{ item.slug }}" download="{{ item.product.image.url}}" class="remove-item btn btn-success mx-1">Download</a>
+            <a id="remove_{{ item.slug }}" href="{{ item.product.image.url}}" download="{{ item.product.name }}" class="download-item btn btn-success mx-1">Download</a>
           </div>
         </div><!-- end/ Bootstap card -->
         {% endfor %}
-
-
-       
-
-
-
 
 
 
@@ -48,4 +42,9 @@
   </section>
 
 </main>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'checkout/js/download.js' %}"></script>
 {% endblock %}
