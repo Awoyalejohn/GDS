@@ -2,7 +2,8 @@ from django.shortcuts import get_object_or_404, render, redirect, reverse, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
-from django.views.generic import View
+from django.views.generic import View, TemplateView
+from django.views.generic.detail import DetailView
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
@@ -187,4 +188,17 @@ class CheckoutSuccess(View):
         template = 'checkout/checkout_success.html'
         context = {'order':order,}
         return render(request, template, context)
+
+
+
+
+class CheckoutDownloads(TemplateView):
+    """ A view display orders for users to download """
+    template_name = 'checkout/checkout_downloads.html'
+
+    def get_context_data(self, order_number, **kwargs):
+        context = super(CheckoutDownloads, self).get_context_data(**kwargs)
+        order = get_object_or_404(Order, order_number=order_number)
+        context['order'] = order
+        return context
         

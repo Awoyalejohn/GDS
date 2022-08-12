@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<main class="special-bg">
+
+  <section class="checkout-downloads-section py-5">
+    <div class="text-center my-3">
+      <h2 class="section-heading">Downloads</h2>
+    </div>
+
+
+
+    <div class="container">
+        
+        {% for item in order.lineitems.all %}
+        
+        <!-- Bootstrap card-->
+        <div class="card cart-item bg-warning mt-5">
+          <div class="card-body cart-item-img">
+            {% if item.product.image %}
+              <img class="img-fluid bg-white rounded-1 p-2" src="{{ item.product.image.url}}" alt="{{ product.name }}">
+            {% else %}
+              <img class="img-fluid product-list-card-img bg-white rounded-1 p-2" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+            {% endif %}
+          </div>
+          <div class="card-body cart-info">
+            <p class="h3">{{ item.product.name }}</p>
+            <p class="d-none d-md-block">{{ item.product.category }}</p>
+          </div>
+          <div class="card-body d-flex justify-content-between flex-md-row-reverse cart-price">
+            <a id="remove_{{ item.slug }}" download="{{ item.product.image.url}}" class="remove-item btn btn-success mx-1">Download</a>
+          </div>
+        </div><!-- end/ Bootstap card -->
+        {% endfor %}
+
+
+       
+
+
+
+
+
+
+
+    </div>
+  </section>
+
+</main>
+{% endblock %}

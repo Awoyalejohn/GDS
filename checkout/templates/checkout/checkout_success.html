@@ -197,6 +197,12 @@
 					</span>
 					<span class="text-uppercase">Continue shopping?</span>
 				</a>
+                <a href="{% url 'checkout_downloads' order.order_number %}" class="btn btn-black rounded-0 my-2">
+					<span class="icon mr-2">
+						<i class="fas fa-gifts"></i>
+					</span>
+					<span class="text-uppercase">Downloads</span>
+				</a>
                 {% endif %}
 			</div>
 
