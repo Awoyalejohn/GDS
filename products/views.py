@@ -123,9 +123,7 @@ class EditProductView(SuperUserCheck, UpdateView):
         context = super(EditProductView, self).get_context_data(**kwargs)
         product = get_object_or_404(Product, slug=self.object.slug)
 
-        messages.info(self.request, (
-        f'You are editing {product.name}'
-        ))
+        messages.info(self.request, f'You are editing {product.name}')
         context['product'] = product
         return context
 
