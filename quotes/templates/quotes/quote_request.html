@@ -6,22 +6,29 @@
   <section class="quote-request-section py-5">
     <div class="col text-center my-3">
       <h2 class="section-heading">Quote Request</h2>
-
-      <!-- Product categories filtering navigation buttons -->
-
-
-    <div class="container">
-    
-    
-      <!-- Bootstap cards grid -->
-      <div class="card main-bg">
-    
-    
-      </div><!-- end/ Bootstap cards grid -->
-    
     </div>
 
-    
+    <div class="container">   
+
+
+      <!-- Bootstrap card-->
+      <div class="card main-bg px-3">
+        <p class="text-white">Please fill out the form below</p>
+        <form action="" method="POST" id="" class="text-white">
+          {% csrf_token %}
+
+            {{ form | crispy }}
+          <button type="submit" class="btn btn-success">Submit Request</button>
+
+        </form>
+
+      </div><!-- end/ Bootstap card -->
+
+
+
+    </div>
+
+
   </section>
  
   
