@@ -13,16 +13,53 @@
 
       <!-- Bootstrap card-->
       <div class="card main-bg px-3">
-        <p class="text-white">Please fill out the form below</p>
+        <div class="card-body">
+          <p class="text-white">Please fill out the form below</p>
         <form action="" method="POST" id="" class="text-white">
           {% csrf_token %}
 
             {{ form | crispy }}
+
+
+            <div class="card total-box bg-info">
+              <div class="card-body d-flex justify-content-between py-1 h4">
+                <p class="my-1">Subtotal:</p>
+                <p  id="subtotal" class="my-1">£0.00</p>
+              </div>
+              <div class="card-body d-flex justify-content-between py-1 h4">
+                <p class="my-1">Discount:</p>
+                <p id="discount" class="my-1">-£0.00</p>
+              </div>
+              <div class="card-body d-flex justify-content-between py-1 h4">
+                <p class="my-1">Total:</p>
+                <p id="total" class="my-1">£0.00</p>
+              </div>
+            </div>
           <button type="submit" class="btn btn-success">Submit Request</button>
 
         </form>
+        </div>
+
+
+         <!-- Card order total box -->
+      <div class="total-wrapper d-flex justify-content-center justify-content-md-end border border-danger">
+
+      </div>
+        
 
       </div><!-- end/ Bootstap card -->
+
+
+     
+      
+      <!-- Discount info message -->
+      <div class="text-end text-white">
+        <p>You could save more!</p>
+      </div>
+
+
+
+
 
 
 
@@ -35,9 +72,7 @@
 </main>
 {% endblock %}
 
-
 {% block postloadjs %}
-{{ block.super }}
-<script>
-</script>
+    {{ block.super }}
+    <script src="{% static 'quotes/js/quote_request.js' %}"></script>
 {% endblock %}

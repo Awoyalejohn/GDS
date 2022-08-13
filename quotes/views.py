@@ -44,7 +44,7 @@ class QuoteRequestView(View):
 
         print(size_cost)
 
-        subtotal = type_cost + size_cost
+        subtotal = round(type_cost + size_cost, 2)
         print(subtotal)
 
         if subtotal > settings.DISCOUNT_THRESHOLD:
