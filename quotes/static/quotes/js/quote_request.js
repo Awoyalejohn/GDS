@@ -1,12 +1,11 @@
-  //  Code to calculate quote request form checkout total when the type and size are selected in the select box
-  let typeArray = [0];
-  let sizeArray = [0];
-  let subtotal = 0
-  let subtotalElement =  document.querySelector('#subtotal');
-  let discountPercent = 10
-  let discountElement = document.querySelector('#discount');
-  let totalElement = document.querySelector('#total');
-
+//  Code to calculate quote request form checkout total when the type and size are selected in the select box
+let typeArray = [0];
+let sizeArray = [0];
+let subtotal = 0
+let subtotalElement =  document.querySelector('#subtotal');
+let discountPercent = 10
+let discountElement = document.querySelector('#discount');
+let totalElement = document.querySelector('#total');
 
 // checks the type select box is selceted and changes the price shown on the card total box
 // on the quote request page

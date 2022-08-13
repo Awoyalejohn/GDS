@@ -4,18 +4,32 @@ from django.contrib import messages
 from django.conf import settings
 from .forms import QuoteRequestForm
 from math import ceil
+
+from django.http import JsonResponse
+
+import stripe
 # Create your views here.
 class QuoteRequestView(View):
     """ A view to request and purchase a specific graphic design """
     def get(self, request):
+        stripe_public_key = settings.STRIPE_PUBLIC_KEY
+        stripe_secret_key = settings.STRIPE_SECRET_KEY
+        stripe.api_key = stripe_secret_key
         form = QuoteRequestForm()
+
         template = 'quotes/quote_request.html'
-        context = {'form': form}
+        context = {
+            'form': form,
+            'stripe_public_key': stripe_public_key,
+            'stripe_secret_key': stripe_secret_key,
+
+        }
 
 
         return render(request, template, context)
     
     def post(self, request):
+
         print(request.POST)
         type_cost = None
         size_cost = None
@@ -59,8 +73,21 @@ class QuoteRequestView(View):
         print(discount)
         print(total)
 
+        stripe_total = round(total * 100)
+
+     
+
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+            payment_method_types=['card'],
+        )
+
+        print(intent)
+
+
         form = QuoteRequestForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Thank you for your request')
-            return redirect(reverse('quote_request'))
+            return JsonResponse({'clientSecret': intent.client_secret}), redirect(reverse('quote_request'))
