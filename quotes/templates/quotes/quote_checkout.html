@@ -17,16 +17,17 @@
 
       <!-- Bootstrap card-->
       <div class="card main-bg px-3 text-white">
-        <p>Description = {{ quote_description }}</p>
         <p>Subtotal = {{ quote_subtotal }}</p>
         <p>Discount = {{ quote_discount }}</p>
         <p>Total = {{ quote_total }}</p>
+        <p>Quote Item Name = {{ quote_item_name }}</p>
         <p>Selected type = {{ selected_type }}</p>
         <p>Selected size = {{ selected_size }}</p>
+        <p>Description = {{ quote_description }}</p>
 
 
 
-        <form action="" method="POST" id="" class="text-white">
+        <form action="" method="POST" id="payment-form" class="text-white">
           {% csrf_token %}
 
             {{ form | crispy }}
@@ -40,6 +41,20 @@
               <!-- Pass the client secret to the view to get the payment intent id -->
               <input type="hidden" value="{{ client_secret }}" name="client_secret">
             </fieldset>
+
+            <a href="" class="btn btn-danger ">
+              <span class="icon">
+                <i class="fas fa-chevron-left"></i>
+              </span>
+              <span class="font-weight-bold">Go back</span>
+            </a>
+
+            <button id="submit-button" class="btn btn-success">
+              <span class="font-weight-bold">Complete Order</span>
+              <span class="icon">
+                <i class="fas fa-lock"></i>
+              </span>
+            </button>
 
 
         </form>

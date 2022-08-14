@@ -38,54 +38,42 @@ card.addEventListener('change', (event) => {
       <span>${event.error.message}</span      
     `;
     errorDiv.innerHTML = html;
-  } else{
+  } else {
     errorDiv.textContent = '';
   }
 });
 
 
 
+// Handle form submit
 
+const form = document.querySelector('#payment-form');
 
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  card.disabled = true;
+  document.querySelector('#submit-button').disabled = true;
 
-
-
-
-
-
-
-
-// // Handle form submit
-// const form = document.querySelector('#payment-form');
-
-// form.addEventListener('submit', (event) => {
-//   // Prevents form from submitting
-//   event.preventDefault();
-//   //disables card element
-//   card.disabled = true;
-//   document.querySelector('#submit-button').disabled = true;
-
-//       stripe.confirmCardPayment(clientSecret, {
-//         payment_method: {
-//           card: card,
-//         }
-//       }).then(function (result) {
-//         if (result.error) {
-//           let errorDiv = document.querySelector('#card-errors');
-//           let html = `
-//       <span class="icon" role="alert">
-//         <i class="fas fa-times"></i>
-//       </span>
-//       <span>${result.error.message}</span      
-//     `;
-//           errorDiv.innerHTML = html;
-//           card.disabled = false;
-//           document.querySelector('#submit-button').disabled = false;
-//         } else {
-//           if (result.paymentIntent.status === 'succeeded') {
-//             form.submit();
-//           }
-//         }
-//       })
- 
-// });
+  stripe.confirmCardPayment(clientSecret, {
+    payment_method: {
+      card: card,
+    }
+  }).then(function (result) {
+    if (result.error) {
+      let errorDiv = document.querySelector('card-errors');
+      let html = `
+      <span class="icon" role="alert">
+        <i class="fas fa-times"></i>
+      </span>
+      <span>${result.error.message}</span      
+    `;
+      errorDiv.innerHTML = html;
+      card.disabled = false;
+      document.querySelector('#submit-button').disabled = false;
+    } else {
+      if (result.paymentIntent.status === 'succeeded') {
+        form.submit();
+      }
+    }
+  })
+});

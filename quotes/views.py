@@ -1,3 +1,4 @@
+from locale import currency
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import View
@@ -100,12 +101,14 @@ class QuoteRequestView(View):
         # )
 
         # print(intent)
+        quote_item_name = request.POST['name']
         quote_description = request.POST['description']
 
 
         form = QuoteRequestForm(request.POST)
         if form.is_valid():
             form.save()
+            request.session['quote_item_name'] = quote_item_name
             request.session['quote_description'] = quote_description
             request.session['quote_subtotal'] = subtotal
             request.session['quote_discount'] = discount
@@ -122,15 +125,32 @@ class QuoteCheckoutView(View):
         stripe_public_key = settings.STRIPE_PUBLIC_KEY
         stripe_secret_key = settings.STRIPE_SECRET_KEY
         form = QuoteOrderForm()
-        template = 'quotes/quote_checkout.html'
+        quote_item_name = request.session['quote_item_name']
         quote_description = request.session['quote_description']
         quote_subtotal = request.session['quote_subtotal']
         quote_discount = request.session['quote_discount']
         quote_total = request.session['quote_total']
         selected_type = request.session['selected_type']
         selected_size = request.session['selected_size']
+
+        stripe_total = round(quote_total * 100)
+        stripe.api_key = stripe_secret_key
+        payment_intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
+
+        print(payment_intent)
+
+        if not stripe_public_key:
+            messages.warning(request, 'Stripe public key is missing. \
+                Did you forget to set in your environment?')
+
+        template = 'quotes/quote_checkout.html'
+
         context = {
             'form': form,
+            'quote_item_name': quote_item_name,
             'quote_description': quote_description,
             'quote_subtotal': quote_subtotal,
             'quote_discount': quote_discount,
@@ -138,7 +158,7 @@ class QuoteCheckoutView(View):
             'selected_type': selected_type,
             'selected_size': selected_size,
             'stripe_public_key': stripe_public_key,
-            'client_secret': 'test client secret',
+            'client_secret': payment_intent.client_secret,
         }
 
         return render(request, template, context)
