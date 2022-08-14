@@ -4,8 +4,10 @@ from django.http import HttpResponseRedirect
 from django.views.generic import View
 from django.contrib import messages
 from django.conf import settings
+from profiles.models import UserProfile
 from .forms import QuoteRequestForm, QuoteOrderForm
 from math import ceil
+
 
 from django.http import JsonResponse
 
@@ -106,6 +108,7 @@ class QuoteRequestView(View):
 
 
         form = QuoteRequestForm(request.POST)
+        form.instance.user = UserProfile.objects.get(user=self.request.user)
         if form.is_valid():
             form.save()
             request.session['quote_item_name'] = quote_item_name

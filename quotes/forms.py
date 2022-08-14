@@ -5,10 +5,10 @@ from .models import QuoteRequest, QuoteOrder
 class QuoteRequestForm(forms.ModelForm):
     class Meta:
         model = QuoteRequest
-        fields = '__all__'
+        exclude = ('user',)
 
 
 class QuoteOrderForm(forms.ModelForm):
     class Meta:
         model = QuoteOrder
-        fields = ('name', 'email')
+        fields = ('user','name', 'email')
