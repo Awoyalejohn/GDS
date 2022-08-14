@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from django.http import HttpResponseRedirect
 from django.views.generic import View
 from django.contrib import messages
 from django.conf import settings
@@ -29,29 +30,46 @@ class QuoteRequestView(View):
         return render(request, template, context)
     
     def post(self, request):
-
         print(request.POST)
         type_cost = None
-        size_cost = None
+        selected_type = None
         type = request.POST['type']
         if type == 'IC' or type == 'ST':
             type_cost = 9.99
+            if type == 'IC':
+                selected_type = 'Icon'
+            else:
+                selected_type = 'Sticker'
         elif type == 'LG' or type == 'BN':
             type_cost = 19.99
+            if type == 'LG':
+                selected_type = 'Logo'
+            else:
+                selected_type = 'Banner'
         elif type == 'PS' or type == 'WP':
             type_cost = 39.99
+            if type == 'PS':
+                selected_type = 'Poster'
+            else:
+                selected_type = 'Wallpaper'            
         else:
             messages.error(request, 'Something went wrong wth your request')
             return redirect(reverse('quote_request'))
         print(type_cost)
 
+        size_cost = None
+        selected_size = None
+
         size = request.POST['size']
         if size == 'S':
             size_cost = 9.99
+            selected_size = 'Small'
         elif size == 'M':
             size_cost = 19.99
+            selected_size = 'Medium'
         elif size == 'L':
             size_cost = 29.99
+            selected_size = 'Large'
         else:
             messages.error(request, 'Something went wrong wth your request')
             return redirect(reverse('quote_request'))
@@ -71,7 +89,7 @@ class QuoteRequestView(View):
         print(discount)
         print(total)
 
-        stripe_total = round(total * 100)
+        # stripe_total = round(total * 100)
 
      
 
@@ -82,18 +100,39 @@ class QuoteRequestView(View):
         # )
 
         # print(intent)
+        quote_description = request.POST['description']
 
 
         form = QuoteRequestForm(request.POST)
         if form.is_valid():
             form.save()
+            request.session['quote_description'] = quote_description
+            request.session['quote_subtotal'] = subtotal
+            request.session['quote_discount'] = discount
+            request.session['quote_total'] = total
+            request.session['selected_type'] = selected_type
+            request.session['selected_size'] = selected_size
             messages.success(request, 'Thank you for your request')
-            return redirect(reverse('quote_request'))
+            return HttpResponseRedirect(reverse('quote_checkout'))
 
 
-class QuoteCheckout(View):
+class QuoteCheckoutView(View):
+     """ A view to checkout quote after getting the data from the QuoteRequestView """
      def get(self, request):
         template = 'quotes/quote_checkout.html'
-        context = {}
+        quote_description = request.session['quote_description']
+        quote_subtotal = request.session['quote_subtotal']
+        quote_discount = request.session['quote_discount']
+        quote_total = request.session['quote_total']
+        selected_type = request.session['selected_type']
+        selected_size = request.session['selected_size']
+        context = {
+            'quote_description': quote_description,
+            'quote_subtotal': quote_subtotal,
+            'quote_discount': quote_discount,
+            'quote_total': quote_total,
+            'selected_type': selected_type,
+            'selected_size': selected_size,
+        }
 
         return render(request, template, context)
