@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import View
 from django.contrib import messages
 from django.conf import settings
-from .forms import QuoteRequestForm
+from .forms import QuoteRequestForm, QuoteOrderForm
 from math import ceil
 
 from django.http import JsonResponse
@@ -119,6 +119,7 @@ class QuoteRequestView(View):
 class QuoteCheckoutView(View):
      """ A view to checkout quote after getting the data from the QuoteRequestView """
      def get(self, request):
+        form = QuoteOrderForm()
         template = 'quotes/quote_checkout.html'
         quote_description = request.session['quote_description']
         quote_subtotal = request.session['quote_subtotal']
@@ -127,6 +128,7 @@ class QuoteCheckoutView(View):
         selected_type = request.session['selected_type']
         selected_size = request.session['selected_size']
         context = {
+            'form': form,
             'quote_description': quote_description,
             'quote_subtotal': quote_subtotal,
             'quote_discount': quote_discount,

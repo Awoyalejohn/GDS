@@ -23,6 +23,16 @@
         <p>Total = {{ quote_total }}</p>
         <p>Selected type = {{ selected_type }}</p>
         <p>Selected size = {{ selected_size }}</p>
+
+
+        <form action="" method="POST" id="" class="text-white">
+          {% csrf_token %}
+
+            {{ form | crispy }}
+
+
+        </form>
+
      
 
 
