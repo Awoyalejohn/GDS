@@ -12,6 +12,7 @@ class QuoteRequest(models.Model):
     size = models.CharField(max_length=1, choices=SIZE_CHOICES)
     description = models.TextField()
     submitted = models.DateTimeField(auto_now_add=True)
+    quote_request_number = models.CharField(max_length=250, unique=True)
 
     def __str__(self):
         return self.name
@@ -29,7 +30,7 @@ class QuoteOrder(models.Model):
     discount = models.CharField(max_length=250)
     total = models.CharField(max_length=250)
     submitted = models.DateTimeField(auto_now_add=True)
-    quote_order_number = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    quote_order_number = models.CharField(max_length=250, unique=True)
     stripe_pid = models.CharField(max_length=250, null=False, blank=False, default='')
 
     def __str__(self):

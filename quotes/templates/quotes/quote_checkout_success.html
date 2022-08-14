@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<main class="special-bg">
+  <section class="quote-checkout-success-section py-5">
+    <div class="col text-center my-3">
+      <h2 class="section-heading">Thank you</h2>
+    </div>
+
+
+    <div class="container">
+      <!-- Bootstrap card-->
+      <div class="card main-bg px-3">
+        <p class="text-muted">Your Quote request order information is below. A confirmation email will be sent to <strong>{{ quote_order.email }}</strong>.</p>
+
+         <!-- Quote Request Order confirmaton wrapper-->
+        <div class="order-confirmation-wrapper p-2 border">
+
+          <div class="row">
+              <div class="col">
+                  <small class="text-muted">Quote Order Info:</small>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-12 col-md-4">
+                  <p class="mb-0 text-black font-weight-bold">Quote Order Number:</p>
+              </div>
+              <div class="col-12 col-md-4 text-md-right">
+                  <p class="mb-0">{{ quote_order.quote_order_number }}</p>
+              </div>
+          </div>
+         
+          <div class="row">
+              <div class="col-12 col-md-4">
+                  <p class="mb-0 text-black font-weight-bold">Quote Order Date:</p>
+              </div>
+              <div class="col-12 col-md-4 text-md-right">
+                  <p class="mb-0">{{ quote_order.submitted }}</p>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col">
+                  <small class="text-muted">Quote Order Details:</small>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col">
+                  <small class="text-muted">Billing information for:</small>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-12 col-md-4">
+                  <p class="mb-0 text-black font-weight-bold">Name</p>
+              </div>
+              <div class="col-12 col-md-4 text-md-right">
+                  <p class="mb-0">{{ quote_order.name }}</p>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-12 col-md-4">
+                  <p class="mb-0 text-black font-weight-bold">Email</p>
+              </div>
+              <div class="col-12 col-md-4 text-md-right">
+                  <p class="mb-0">{{ quote_order.email }}</p>
+              </div>
+          </div>
+
+
+          <div class="row">
+              <div class="col-12 col-md-4">
+                  <p class="mb-0 text-black font-weight-bold">Quote Order Subtotal</p>
+              </div>
+              <div class="col-12 col-md-4 text-md-right">
+                  <p class="mb-0">£{{ quote_order.subtotal }}</p>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-12 col-md-4">
+                  <p class="mb-0 text-black font-weight-bold">Discount</p>
+              </div>
+              <div class="col-12 col-md-4 text-md-right">
+                  <p class="mb-0">-£{{ quote_order.discount }}</p>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-12 col-md-4">
+                  <p class="mb-0 text-black font-weight-bold">Total</p>
+              </div>
+              <div class="col-12 col-md-4 text-md-right">
+                  <p class="mb-0">£{{ quote_order.total}}</p>
+              </div>
+          </div>
+          
+      </div><!-- end/ Quote Request Order confirmaton wrapper-->
+
+
+
+
+       
+  
+      </div><!-- end/ Bootstap card -->
+
+
+
+
+    </div>
+
+
+
+  </section>
+ 
+  
+</main>
+{% endblock %}
+

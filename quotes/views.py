@@ -1,12 +1,13 @@
-from locale import currency
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views.generic import View
 from django.contrib import messages
 from django.conf import settings
 from profiles.models import UserProfile
+from .models import QuoteOrder
 from .forms import QuoteRequestForm, QuoteOrderForm
 from math import ceil
+import uuid
 
 
 from django.http import JsonResponse
@@ -105,10 +106,15 @@ class QuoteRequestView(View):
         # print(intent)
         quote_item_name = request.POST['name']
         quote_description = request.POST['description']
+        # quote_request_number = request.POST['quote_request_number']
+        # print(quote_request_number)
 
 
         form = QuoteRequestForm(request.POST)
         form.instance.user = UserProfile.objects.get(user=self.request.user)
+        uuid_number = str(uuid.uuid4())
+        print(uuid_number)
+        form.instance.quote_request_number = uuid_number  
         if form.is_valid():
             form.save()
             request.session['quote_item_name'] = quote_item_name
@@ -118,6 +124,7 @@ class QuoteRequestView(View):
             request.session['quote_total'] = total
             request.session['selected_type'] = selected_type
             request.session['selected_size'] = selected_size
+            request.session['quote_request_number'] = uuid_number
             messages.success(request, 'Thank you for your request')
             return HttpResponseRedirect(reverse('quote_checkout'))
 
@@ -135,6 +142,7 @@ class QuoteCheckoutView(View):
         quote_total = request.session['quote_total']
         selected_type = request.session['selected_type']
         selected_size = request.session['selected_size']
+        quote_order_number = request.session['quote_request_number']
 
         stripe_total = round(quote_total * 100)
         stripe.api_key = stripe_secret_key
@@ -160,33 +168,65 @@ class QuoteCheckoutView(View):
             'quote_total': quote_total,
             'selected_type': selected_type,
             'selected_size': selected_size,
+            'quote_order_number': quote_order_number,
             'stripe_public_key': stripe_public_key,
             'client_secret': payment_intent.client_secret,
         }
 
         return render(request, template, context)
 
-     def get(self, request):
+     def post(self, request):
         stripe_public_key = settings.STRIPE_PUBLIC_KEY
         stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-        form_data = {
-            'user': UserProfile.objects.get(user=self.request.user),
-            'name': request.POST['name'],
-            'email': request.POST['email'],
-            'quote_request_name': request.session['quote_item_name'],
-            'type': request.session['selected_type'],
-            'size': request.session['selected_size'],
-            'description': request.session['quote_description'],
-            'subtotal': request.session['quote_subtotal'],
-            'discount': request.session['quote_discount'],
-            'total': request.session['quote_total'],
-        }
+        quote_order_number = request.session['quote_request_number']
 
-        form = QuoteOrderForm(form_data)
+        # form_data = {
+        #     'user': UserProfile.objects.get(user=self.request.user),
+        #     'name': request.POST['name'],
+        #     'email': request.POST['email'],
+        #     'quote_request_name': request.session['quote_item_name'],
+        #     'type': request.session['selected_type'],
+        #     'size': request.session['selected_size'],
+        #     'description': request.session['quote_description'],
+        #     'subtotal': request.session['quote_subtotal'],
+        #     'discount': request.session['quote_discount'],
+        #     'total': request.session['quote_total'],
+        #     'quote_order_number': quote_order_number,
+        # }
+
+
+        form = QuoteOrderForm(request.POST)
+        form.instance.user = UserProfile.objects.get(user=self.request.user)
+        form.instance.name = request.POST['name']
+        form.instance.email = request.POST['email']
+        form.instance.quote_request_name = request.session['quote_item_name']
+        form.instance.type = request.session['selected_type']
+        form.instance.size = request.session['selected_size']
+        form.instance.description = request.session['quote_description']
+        form.instance.subtotal = request.session['quote_subtotal']
+        form.instance.discount = request.session['quote_discount']
+        form.instance.total = request.session['quote_total']
+        form.instance.quote_order_number = request.session['quote_request_number']
+
+        # form = QuoteOrderForm(form_data)
+
         if form.is_valid():
             form.save()
-            return redirect(reverse('quote_checkout_success', args=[quote_order.quote_order_number]))
+            return redirect(reverse('quote_checkout_success', args=[quote_order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
             Please double check your information.')
+
+
+class QuoteCheckoutSuccess(View):
+    """ A view to handle successful quote request checkouts """
+    def get(self, request, quote_order_number):
+        quote_order = get_object_or_404(QuoteOrder, quote_order_number=quote_order_number)
+        messages.success(request, f"Order successfuly processed! \
+            Your order number is {quote_order_number}. A confirmation \
+            email will be sent to {quote_order.email}.")
+        
+        template = 'quotes/quote_checkout_success.html'
+        context = {'quote_order': quote_order}
+        return render(request, template, context)
