@@ -63,11 +63,9 @@ class QuoteRequestView(View):
 
         if subtotal > settings.DISCOUNT_THRESHOLD:
             discount = ceil(subtotal * settings.DISCOUNT_PERCENTAGE / 100)
-            discount_delta = 0
         
         else:
             discount = 0
-            discount_delta = settings.DISCOUNT_THRESHOLD - subtotal
         
         total = (round(subtotal - discount, 2)) 
         print(discount)
@@ -77,17 +75,25 @@ class QuoteRequestView(View):
 
      
 
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,
-            payment_method_types=['card'],
-        )
+        # intent = stripe.PaymentIntent.create(
+        #     amount=stripe_total,
+        #     currency=settings.STRIPE_CURRENCY,
+        #     payment_method_types=['card'],
+        # )
 
-        print(intent)
+        # print(intent)
 
 
         form = QuoteRequestForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Thank you for your request')
-            return JsonResponse({'clientSecret': intent.client_secret}), redirect(reverse('quote_request'))
+            return redirect(reverse('quote_request'))
+
+
+class QuoteCheckout(View):
+     def get(self, request):
+        template = 'quotes/quote_checkout.html'
+        context = {}
+
+        return render(request, template, context)
