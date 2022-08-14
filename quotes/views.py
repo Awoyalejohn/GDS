@@ -165,3 +165,28 @@ class QuoteCheckoutView(View):
         }
 
         return render(request, template, context)
+
+     def get(self, request):
+        stripe_public_key = settings.STRIPE_PUBLIC_KEY
+        stripe_secret_key = settings.STRIPE_SECRET_KEY
+
+        form_data = {
+            'user': UserProfile.objects.get(user=self.request.user),
+            'name': request.POST['name'],
+            'email': request.POST['email'],
+            'quote_request_name': request.session['quote_item_name'],
+            'type': request.session['selected_type'],
+            'size': request.session['selected_size'],
+            'description': request.session['quote_description'],
+            'subtotal': request.session['quote_subtotal'],
+            'discount': request.session['quote_discount'],
+            'total': request.session['quote_total'],
+        }
+
+        form = QuoteOrderForm(form_data)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('quote_checkout_success', args=[quote_order.quote_order_number]))
+        else:
+            messages.error(request, 'There was an error with your form. \
+            Please double check your information.')
