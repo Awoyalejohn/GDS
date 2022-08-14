@@ -11,4 +11,4 @@ class QuoteRequestForm(forms.ModelForm):
 class QuoteOrderForm(forms.ModelForm):
     class Meta:
         model = QuoteOrder
-        fields = '__all__'
+        fields = ('name', 'email')

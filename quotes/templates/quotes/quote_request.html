@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'quotes/css/quote_request.css' %}">
+    <link rel="stylesheet" href="{% static 'quotes/css/quotes.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -74,10 +74,7 @@
 </main>
 {% endblock %}
 
-<!-- {% block postloadjs %}
+{% block postloadjs %}
     {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'quotes/js/quote_request.js' %}"></script>
-    <script src="{% static 'quotes/js/stripe_elements.js' %}"></script>
-{% endblock %} -->
+{% endblock %}

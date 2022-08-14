@@ -119,6 +119,8 @@ class QuoteRequestView(View):
 class QuoteCheckoutView(View):
      """ A view to checkout quote after getting the data from the QuoteRequestView """
      def get(self, request):
+        stripe_public_key = settings.STRIPE_PUBLIC_KEY
+        stripe_secret_key = settings.STRIPE_SECRET_KEY
         form = QuoteOrderForm()
         template = 'quotes/quote_checkout.html'
         quote_description = request.session['quote_description']
@@ -135,6 +137,8 @@ class QuoteCheckoutView(View):
             'quote_total': quote_total,
             'selected_type': selected_type,
             'selected_size': selected_size,
+            'stripe_public_key': stripe_public_key,
+            'client_secret': 'test client secret',
         }
 
         return render(request, template, context)

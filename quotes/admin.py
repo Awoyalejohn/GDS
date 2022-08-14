@@ -10,3 +10,5 @@ class QuoteRequestAdmin(admin.ModelAdmin):
 @admin.register(QuoteOrder)
 class QuoteOrderAdmin(admin.ModelAdmin):
     list_display = ('quote_request_name', 'user', 'submitted')
+    readonly_fields = ('quote_request_name', 'type', 'size', 'description',
+                       'subtotal', 'discount', 'total', 'stripe_pid')
