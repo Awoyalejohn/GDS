@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views.generic import View
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from profiles.models import UserProfile
 from .models import QuoteOrder
@@ -14,7 +15,7 @@ from django.http import JsonResponse
 
 import stripe
 # Create your views here.
-class QuoteRequestView(View):
+class QuoteRequestView(LoginRequiredMixin, View):
     """ A view to request and purchase a specific graphic design """
     def get(self, request):
         stripe_public_key = settings.STRIPE_PUBLIC_KEY
