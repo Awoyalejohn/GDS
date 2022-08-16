@@ -94,22 +94,8 @@ class QuoteRequestView(LoginRequiredMixin, View):
         print(discount)
         print(total)
 
-        # stripe_total = round(total * 100)
-
-     
-
-        # intent = stripe.PaymentIntent.create(
-        #     amount=stripe_total,
-        #     currency=settings.STRIPE_CURRENCY,
-        #     payment_method_types=['card'],
-        # )
-
-        # print(intent)
         quote_item_name = request.POST['name']
         quote_description = request.POST['description']
-        # quote_request_number = request.POST['quote_request_number']
-        # print(quote_request_number)
-
 
         form = QuoteRequestForm(request.POST)
         form.instance.user = UserProfile.objects.get(user=self.request.user)
@@ -181,21 +167,6 @@ class QuoteCheckoutView(View):
         stripe_secret_key = settings.STRIPE_SECRET_KEY
 
         quote_order_number = request.session['quote_request_number']
-
-        # form_data = {
-        #     'user': UserProfile.objects.get(user=self.request.user),
-        #     'name': request.POST['name'],
-        #     'email': request.POST['email'],
-        #     'quote_request_name': request.session['quote_item_name'],
-        #     'type': request.session['selected_type'],
-        #     'size': request.session['selected_size'],
-        #     'description': request.session['quote_description'],
-        #     'subtotal': request.session['quote_subtotal'],
-        #     'discount': request.session['quote_discount'],
-        #     'total': request.session['quote_total'],
-        #     'quote_order_number': quote_order_number,
-        # }
-
 
         form = QuoteOrderForm(request.POST)
         form.instance.user = UserProfile.objects.get(user=self.request.user)
