@@ -12,4 +12,4 @@ class QuoteRequestAdmin(admin.ModelAdmin):
 class QuoteOrderAdmin(admin.ModelAdmin):
     list_display = ('quote_request_name', 'user', 'submitted', 'quote_order_number')
     readonly_fields = ('quote_request_name', 'type', 'size', 'description',
-                       'subtotal', 'discount', 'total', 'stripe_pid', 'quote_order_number')
+                       'subtotal', 'discount', 'total', 'quote_order_number')

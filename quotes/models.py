@@ -31,7 +31,6 @@ class QuoteOrder(models.Model):
     total = models.CharField(max_length=250)
     submitted = models.DateTimeField(auto_now_add=True)
     quote_order_number = models.CharField(max_length=250, unique=True)
-    stripe_pid = models.CharField(max_length=250, null=False, blank=False, default='')
 
     def __str__(self):
         return self.quote_request_name
