@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
@@ -202,3 +202,12 @@ class QuoteCheckoutSuccess(View):
         template = 'quotes/quote_checkout_success.html'
         context = {'quote_order': quote_order}
         return render(request, template, context)
+
+
+class QuoteHistoryView(TemplateView):
+    template_name = 'quotes/quote_history.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(QuoteHistoryView, self).get_context_data(**kwargs)
+        quote_order = QuoteOrder.objects.all()
+        return context
