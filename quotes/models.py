@@ -34,3 +34,12 @@ class QuoteOrder(models.Model):
 
     def __str__(self):
         return self.quote_request_name
+
+
+# class QuoteOrder(models.Model):
+#     quote_order = models.OneToOneField(QuoteOrder, null=True, blank=True, on_delete=models.SET_NULL)
+#     image = models.CharField(max_length=250)
+#     status = models.BooleanField(default=False)
+
+#     def __str__(self):
+#         return self.quote_order
