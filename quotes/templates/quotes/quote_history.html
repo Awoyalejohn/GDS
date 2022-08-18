@@ -55,17 +55,18 @@
               </tr>
             </thead>
             <tbody>
-             
+             {% for quote_order in quote_orders %}
               <tr>
                 <th scope="row">1</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ quote_order.quote_order_number }}</td>
+                <td>{{ quote_order.quote_request_name }}</td>
+                <td>{{ quote_order.type }}</td>
+                <td>{{ quote_order.size }}</td>
+                <td>£{{ quote_order.total }}</td>
+                <td>...</td>
+                <td>{{ quote_order.submitted }}</td>
               </tr>
+              {% endfor %}
          
             </tbody>
           </table><!-- end/ Bootstrap table-->

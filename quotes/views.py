@@ -209,5 +209,7 @@ class QuoteHistoryView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(QuoteHistoryView, self).get_context_data(**kwargs)
-        quote_order = QuoteOrder.objects.all()
+        profile = get_object_or_404(UserProfile, user=self.request.user)
+        quote_orders = profile.quoteorder_set.all()
+        context['quote_orders'] = quote_orders
         return context
