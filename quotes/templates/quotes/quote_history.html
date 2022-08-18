@@ -58,7 +58,7 @@
              {% for quote_order in quote_orders %}
               <tr>
                 <th scope="row">1</th>
-                <td>{{ quote_order.quote_order_number }}</td>
+                <td><a href="{{ url "quote_history_detail" }}">{{ quote_order.quote_order_number|truncatechars:13 }}</a></td>
                 <td>{{ quote_order.quote_request_name }}</td>
                 <td>{{ quote_order.type }}</td>
                 <td>{{ quote_order.size }}</td>

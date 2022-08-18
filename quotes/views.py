@@ -213,3 +213,19 @@ class QuoteHistoryView(TemplateView):
         quote_orders = profile.quoteorder_set.all()
         context['quote_orders'] = quote_orders
         return context
+
+
+class QuoteHistoryDetail(TemplateView):
+    template_name = "quotes/quote_checkout_success.html"
+    
+    def get_context_data(self, quote_order_number, **kwargs):
+        context = super(QuoteHistoryDetail, self).get_context_data(**kwargs)
+        quote_order = get_object_or_404(QuoteOrder, quote_order_number=quote_order_number)
+
+        messages.info(self.request, (
+        f'This is a past confirmation for quote order number {quote_order_number}. '
+        'A confirmation email was sent on the order date.'
+        ))
+        context['quote_order'] = quote_order
+        context['from_quote_history'] = True
+        return context
