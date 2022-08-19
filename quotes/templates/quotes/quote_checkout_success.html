@@ -51,7 +51,7 @@
 
           <div class="row">
             <div class="col-12 col-md-4">
-                <p class="mb-0  font-weight-bold">Design Name</p>
+                <p class="mb-0  font-weight-bold">Design Name:</p>
             </div>
             <div class="col-12 col-md-4 text-md-right">
                 <p class="mb-0">{{ quote_order.quote_request_name }}</p>
@@ -61,10 +61,19 @@
         
         <div class="row">
             <div class="col-12 col-md-4">
-                <p class="mb-0  font-weight-bold">Type</p>
+                <p class="mb-0  font-weight-bold">Type:</p>
             </div>
             <div class="col-12 col-md-4 text-md-right">
                 <p class="mb-0">{{ quote_order.type }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <p class="mb-0  font-weight-bold">Size:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+                <p class="mb-0">{{ quote_order.size }}</p>
             </div>
         </div>
 
@@ -76,7 +85,7 @@
 
           <div class="row">
               <div class="col-12 col-md-4">
-                  <p class="mb-0  font-weight-bold">Name</p>
+                  <p class="mb-0  font-weight-bold">Name:</p>
               </div>
               <div class="col-12 col-md-4 text-md-right">
                   <p class="mb-0">{{ quote_order.name }}</p>
@@ -85,7 +94,7 @@
 
           <div class="row">
               <div class="col-12 col-md-4">
-                  <p class="mb-0  font-weight-bold">Email</p>
+                  <p class="mb-0  font-weight-bold">Email:</p>
               </div>
               <div class="col-12 col-md-4 text-md-right">
                   <p class="mb-0">{{ quote_order.email }}</p>
@@ -95,7 +104,7 @@
 
           <div class="row">
               <div class="col-12 col-md-4">
-                  <p class="mb-0  font-weight-bold">Quote Order Subtotal</p>
+                  <p class="mb-0  font-weight-bold">Quote Order Subtotal:</p>
               </div>
               <div class="col-12 col-md-4 text-md-right">
                   <p class="mb-0">£{{ quote_order.subtotal }}</p>
@@ -104,7 +113,7 @@
 
           <div class="row">
               <div class="col-12 col-md-4">
-                  <p class="mb-0  font-weight-bold">Discount</p>
+                  <p class="mb-0  font-weight-bold">Discount:</p>
               </div>
               <div class="col-12 col-md-4 text-md-right">
                   <p class="mb-0">-£{{ quote_order.discount }}</p>
@@ -113,26 +122,38 @@
 
           <div class="row">
               <div class="col-12 col-md-4">
-                  <p class="mb-0  font-weight-bold">Total</p>
+                  <p class="mb-0  font-weight-bold">Total:</p>
               </div>
               <div class="col-12 col-md-4 text-md-right">
                   <p class="mb-0">£{{ quote_order.total}}</p>
               </div>
-          </div>
-          
+          </div>      
       </div><!-- end/ Quote Request Order confirmaton wrapper-->
-      <a href="{% url 'products' %}" class="btn btn-primary my-2">
-					<span class="icon mr-2">
-						<i class="fas fa-gifts"></i>
-					</span>
-					<span class="text-uppercase">Continue shopping?</span>
-				</a>
-                <a href="{% url 'quote_request' %}" class="btn btn-success my-2">
-					<span class="icon mr-2">
-						<i class="fas fa-gifts"></i>
-					</span>
-					<span class="text-uppercase">Request Another Quote?</span>
-				</a>
+
+
+      <div class="col-12 col-lg-7 text-right">
+    <a href="{% url 'quote_request' %}" class="btn btn-success my-2">
+        <span class="icon mr-2">
+            <i class="fas fa-gifts"></i>
+        </span>
+        <span class="text-uppercase">Request Another Quote?</span>
+    </a>
+    {% if from_quote_history %}
+    <a href="{% url 'quote_history' %}" class="btn btn-primary my-2">
+        <span class="icon mr-2">
+            <i class="fas fa-angle-left"></i>
+        </span>
+        <span class="text-uppercase">Back to Quote Requests?</span>
+    </a>
+    {% else %}
+    <a href="{% url 'products' %}" class="btn btn-primary my-2">
+        <span class="icon mr-2">
+            <i class="fas fa-gifts"></i>
+        </span>
+        <span class="text-uppercase">Continue shopping?</span>
+    </a>
+      </div>
+    {% endif %}
 
 
 
