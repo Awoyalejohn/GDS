@@ -7,7 +7,7 @@
 
   <section class="quote-history-section py-5">
     <div class="text-center my-3">
-      <h2 class="section-heading">My Profile</h2>
+      <h2 class="section-heading">Product Management</h2>
     </div>
 
     <div class="container">
@@ -17,10 +17,10 @@
             <div class="card-header bg-white">
               <ul class="nav nav-pills card-header-pills">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Products</a>
+                  <a class="nav-link" href="{% url 'add_product' %}">Products</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">Requests</a>
+                  <a class="nav-link active" href="{% url 'quote_orders' %}">Requests</a>
                 </li>
               </ul>
             </div>
