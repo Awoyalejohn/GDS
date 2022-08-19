@@ -1,5 +1,6 @@
+from dataclasses import field
 from django import forms
-from .models import QuoteRequest, QuoteOrder
+from .models import QuoteRequest, QuoteOrder, QuoteFufillment
 
 
 class QuoteRequestForm(forms.ModelForm):
@@ -24,3 +25,9 @@ class QuoteOrderForm(forms.ModelForm):
     class Meta:
         model = QuoteOrder
         fields = ('name', 'email')
+
+
+class QuoteFufillmentForm(forms.ModelForm):
+    class Meta:
+        model = QuoteFufillment
+        fields = '__all__'

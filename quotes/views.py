@@ -239,3 +239,11 @@ class QuoteOrderList(ListView):
     template_name = 'quotes/quote_order_list.html'
     context_object_name = 'quote_orders'
 
+
+class QuoteOrderDetail:
+    """
+    A view to display an individual customer quote order
+    and upload an graphic design for the customer to download
+    """
+    
+
