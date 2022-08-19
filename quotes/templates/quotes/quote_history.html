@@ -50,8 +50,8 @@
                 <th scope="col">Type</th>
                 <th scope="col">Size</th>
                 <th scope="col">Price</th>
-                <th scope="col">Status</th>
                 <th scope="col">Date</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -63,6 +63,7 @@
                 <td>{{ quote_order.type }}</td>
                 <td>{{ quote_order.size }}</td>
                 <td>£{{ quote_order.total }}</td>
+                <td>{{ quote_order.submitted }}</td>
                 <td>
                   {% if quote_order.quotefufillment.status  %}
                   <a href="{{ quote_order.quotefufillment.image.url }}" download="{{ quote_order.quote_request_name }}" class="download-item btn btn-success">Completed</a>
@@ -70,7 +71,6 @@
                   pending...
                   {% endif %}
                 </td>
-                <td>{{ quote_order.submitted }}</td>
               </tr>
               {% endfor %}
          
