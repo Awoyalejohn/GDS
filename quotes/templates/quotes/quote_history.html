@@ -63,7 +63,13 @@
                 <td>{{ quote_order.type }}</td>
                 <td>{{ quote_order.size }}</td>
                 <td>£{{ quote_order.total }}</td>
-                <td>...</td>
+                <td>
+                  {% if quote_order.quotefufillment.status  %}
+                  <a href="{{ quote_order.quotefufillment.image.url }}" download="{{ quote_order.quotefufillment }}" class="download-item btn btn-success">Completed</a>
+                  {% else %}
+                  pending...
+                  {% endif %}
+                </td>
                 <td>{{ quote_order.submitted }}</td>
               </tr>
               {% endfor %}
