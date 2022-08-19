@@ -42,4 +42,4 @@ class QuoteFufillment(models.Model):
     status = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.quote_order
+        return f"Quote Order Number: {self.quote_order.quote_order_number}"

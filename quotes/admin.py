@@ -18,3 +18,4 @@ class QuoteOrderAdmin(admin.ModelAdmin):
 @admin.register(QuoteFufillment)
 class QuoteFufillmentAdmin(admin.ModelAdmin):
     list_display = ('quote_order', 'image', 'status')
+    readonly_fields = ('quote_order',)
