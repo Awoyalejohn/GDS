@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
-from django.views.generic import View, TemplateView
+from django.views.generic import View, TemplateView, ListView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
@@ -205,6 +205,7 @@ class QuoteCheckoutSuccess(View):
 
 
 class QuoteHistoryView(TemplateView):
+    """ A view to list a users quote request history """
     template_name = 'quotes/quote_history.html'
 
     def get_context_data(self, **kwargs):
@@ -216,6 +217,7 @@ class QuoteHistoryView(TemplateView):
 
 
 class QuoteHistoryDetail(TemplateView):
+    """ A view to display a specific user quote request in more detail """
     template_name = "quotes/quote_checkout_success.html"
     
     def get_context_data(self, quote_order_number, **kwargs):
@@ -229,3 +231,10 @@ class QuoteHistoryDetail(TemplateView):
         context['quote_order'] = quote_order
         context['from_quote_history'] = True
         return context
+
+
+class QuoteOrderList(ListView):
+    """ A view to list all the customer quote orders for the admin """
+    model = QuoteOrder
+    template_name = 'quotes/quote_order_list.html'
+

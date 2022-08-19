@@ -1,7 +1,8 @@
 from django.urls import path
-from quotes.views import QuoteRequestView, QuoteCheckoutView, QuoteCheckoutSuccess, QuoteHistoryView, QuoteHistoryDetail
+from quotes.views import QuoteRequestView, QuoteCheckoutView, QuoteCheckoutSuccess, QuoteHistoryView, QuoteHistoryDetail, QuoteOrderList
 urlpatterns = [
     path('', QuoteRequestView.as_view(), name='quote_request'),
+    path('quote_orders', QuoteOrderList.as_view(), name='quote_orders'),
     path('quote_history/', QuoteHistoryView.as_view(), name='quote_history'),
     path('quote_history/<quote_order_number>', QuoteHistoryDetail.as_view(), name='quote_history_detail'),
     path('quote_checkout/', QuoteCheckoutView.as_view(), name='quote_checkout'),
