@@ -65,7 +65,7 @@
                 <td>£{{ quote_order.total }}</td>
                 <td>
                   {% if quote_order.quotefufillment.status  %}
-                  <a href="{{ quote_order.quotefufillment.image.url }}" download="{{ quote_order.quotefufillment }}" class="download-item btn btn-success">Completed</a>
+                  <a href="{{ quote_order.quotefufillment.image.url }}" download="{{ quote_order.quote_request_name }}" class="download-item btn btn-success">Completed</a>
                   {% else %}
                   pending...
                   {% endif %}
@@ -92,4 +92,9 @@
     </section>
 
 </main>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'checkout/js/download.js' %}"></script>
 {% endblock %}
