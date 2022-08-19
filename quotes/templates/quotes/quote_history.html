@@ -66,7 +66,11 @@
                 <td>{{ quote_order.submitted }}</td>
                 <td>
                   {% if quote_order.quotefufillment.status  %}
-                  <a href="{{ quote_order.quotefufillment.image.url }}" download="{{ quote_order.quote_request_name }}" class="download-item btn btn-success">Completed</a>
+                  <a href="{{ quote_order.quotefufillment.image.url }}" download="{{ quote_order.quote_request_name }}" 
+                     class="download-item btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top"
+                     data-bs-custom-class="custom-tooltip" data-bs-title="Clicke to download {{ quote_order.quote_request_name }}">
+                    Completed
+                  </a>
                   {% else %}
                   pending...
                   {% endif %}
@@ -97,4 +101,8 @@
 {% block postloadjs %}
     {{ block.super }}
     <script src="{% static 'checkout/js/download.js' %}"></script>
+    <script type="text/javascript">
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
 {% endblock %}
