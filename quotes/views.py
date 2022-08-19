@@ -1,12 +1,13 @@
+from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
-from django.views.generic import View, TemplateView, ListView
+from django.views.generic import View, TemplateView, ListView, CreateView, UpdateView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from profiles.models import UserProfile
-from .models import QuoteOrder
-from .forms import QuoteRequestForm, QuoteOrderForm
+from .models import QuoteOrder, QuoteFufillment
+from .forms import QuoteRequestForm, QuoteOrderForm, QuoteFufillmentForm
 from math import ceil
 import uuid
 
@@ -240,10 +241,25 @@ class QuoteOrderList(ListView):
     context_object_name = 'quote_orders'
 
 
-class QuoteOrderDetail:
+
+
+class QuoteOrderFufillCreate(View):
     """
     A view to display an individual customer quote order
     and upload an graphic design for the customer to download
     """
-    
+    def get(self, request, quote_order_number):
+            template = 'quotes/quote_fufillment_create.html'
+            quote_order = get_object_or_404(QuoteOrder, quote_order_number=quote_order_number)
+            form = QuoteFufillmentForm()
+            context = {'form': form, 'quote_order': quote_order}
 
+            return render(request, template, context)
+
+    def post(self, request, quote_order_number):
+        quote_order = get_object_or_404(QuoteOrder, quote_order_number=quote_order_number)
+        form = QuoteFufillmentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Quote was fufilled successfuly')
+            return redirect(reverse('quote_orders'))

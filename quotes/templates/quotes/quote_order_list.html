@@ -50,7 +50,7 @@
                 <td>{{ quote_order.email }}</td>
                 <td>{{ quote_order.submitted }}</td>
                 <td>£{{ quote_order.total }}</td>
-                <td>pending...</td>
+                <td><a href="{% url 'quote_orders_fufill' quote_order.quote_order_number %}" class="btn btn-danger btn-sm">Pending...</a></td>
               </tr>
               {% endfor %}
          
