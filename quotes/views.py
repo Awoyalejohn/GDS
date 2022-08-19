@@ -237,4 +237,5 @@ class QuoteOrderList(ListView):
     """ A view to list all the customer quote orders for the admin """
     model = QuoteOrder
     template_name = 'quotes/quote_order_list.html'
+    context_object_name = 'quote_orders'
 

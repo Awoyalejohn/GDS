@@ -33,7 +33,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Quote Order Number</th>
+                <th scope="col">Quote Order No.</th>
                 <th scope="col">Customer Name</th>
                 <th scope="col">Customer Email</th>
                 <th scope="col">Date</th>
@@ -44,13 +44,13 @@
             <tbody>
              {% for quote_order in quote_orders %}
               <tr>
-                <th scope="row">1</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ quote_order.quote_order_number|truncatechars:13 }}</td>
+                <td>{{ quote_order.name }}</td>
+                <td>{{ quote_order.email }}</td>
+                <td>{{ quote_order.submitted }}</td>
+                <td>£{{ quote_order.total }}</td>
+                <td>pending...</td>
               </tr>
               {% endfor %}
          
