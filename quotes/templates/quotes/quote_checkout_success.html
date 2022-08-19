@@ -21,7 +21,7 @@
 
           <div class="row">
               <div class="col">
-                  <small class="">Quote Order Info:</small>
+                  <small class="text-info">Quote Order Info:</small>
               </div>
           </div>
 
@@ -45,13 +45,32 @@
 
           <div class="row">
               <div class="col">
-                  <small class="">Quote Order Details:</small>
+                  <small class="text-info">Quote Order Details:</small>
               </div>
           </div>
 
           <div class="row">
+            <div class="col-12 col-md-4">
+                <p class="mb-0  font-weight-bold">Design Name</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+                <p class="mb-0">{{ quote_order.quote_request_name }}</p>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <p class="mb-0  font-weight-bold">Type</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+                <p class="mb-0">{{ quote_order.type }}</p>
+            </div>
+        </div>
+
+          <div class="row">
               <div class="col">
-                  <small class="">Billing information for:</small>
+                  <small class="text-info">Billing information for:</small>
               </div>
           </div>
 
