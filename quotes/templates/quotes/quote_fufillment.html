@@ -144,6 +144,14 @@
 
             {{ form | crispy }}
 
+    
+
+          <a href="{% url 'quote_orders' %}" class="btn btn-danger ">
+            <span class="icon">
+              <i class="fas fa-chevron-left"></i>
+            </span>
+            <span class="font-weight-bold">Go back</span>
+          </a>
           <button type="submit" class="btn btn-success">Submit Request</button>
 
         </form>
