@@ -1,5 +1,6 @@
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
@@ -69,6 +70,7 @@ class ProductListView(View):
 class ProductDetailView(View):
     """ 
     A view to display and individual item's product page
+    And to create and display customer product reviews
     """
     def get(self, request, slug):
         product = get_object_or_404(Product, slug=slug)
@@ -81,6 +83,13 @@ class ProductDetailView(View):
             'form': form,
         }
         return render(request, template, context)
+    
+    def post(self, request, slug):
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Review was successful')
+            return HttpResponseRedirect(self.request.path_info)
 
 
 
