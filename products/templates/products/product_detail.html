@@ -127,7 +127,7 @@
       <div class="card-body">
         <div class="d-flex justify-content-end align-items-center">
             <a type="button" href="{% url 'edit_review' review.id %}" class="btn btn-sm btn-outline-info mx-1">Edit</a>
-            <a type="button" href="" class="btn btn-sm btn-outline-light mx-1">Delete</a>
+            <a type="button" href="{% url 'delete_review' review.id %}" class="btn btn-sm btn-outline-light mx-1">Delete</a>
         </div>
       </div>
     </div><!-- end/ Bootstrap card-->

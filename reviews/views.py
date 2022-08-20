@@ -1,6 +1,11 @@
-from django.views.generic.edit import UpdateView
+from django.shortcuts import render, get_object_or_404, reverse
+from django.urls import reverse_lazy
+from django.views.generic.edit import View, UpdateView, DeleteView
+from django.http import HttpResponseRedirect
 from .models import Review
+from products.models import Product
 from .forms import ReviewForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -28,3 +33,27 @@ class UpdateReview(RedirectToPreviousMixin, UpdateView):
     def get_object(self):
         review = Review.objects.get(id=self.kwargs['review_id'])
         return review
+
+    
+
+class DeleteReview(View):
+    """ A view for users to delete reviews """
+    def get(self, request, review_id):
+        review = get_object_or_404(Review, id=review_id)
+        slug = review.product.slug
+        print(slug)
+        context = {'review': review}
+        template = 'reviews/delete_review.html'
+        return render(request, template, context)
+
+
+    def post(self, request, review_id):
+        review = get_object_or_404(Review, id=review_id)
+        slug = review.product.slug
+        print(slug)
+        review.delete()
+        messages.success(request, 'Review has been deleted')
+        return HttpResponseRedirect(reverse('product_detail', args=[slug]))
+
+
+
