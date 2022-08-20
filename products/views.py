@@ -72,9 +72,14 @@ class ProductDetailView(View):
     """
     def get(self, request, slug):
         product = get_object_or_404(Product, slug=slug)
+        reviews = product.product_review.all()
         form = ReviewForm()
         template = 'products/product_detail.html'
-        context = {'product': product, 'form':form}
+        context = {
+            'product': product,
+            'reviews': reviews,
+            'form': form,
+        }
         return render(request, template, context)
 
 

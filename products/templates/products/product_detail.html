@@ -104,8 +104,23 @@
       </div>
     </div><!-- end/ Bootstrap card-->
 
+
+    {% for review in reviews%}
+    <!-- Bootstrap card-->
+    <div class="card main-bg text-white">
+      <div class="card-body">
+        <h4>{{ review.title }}</h4>
+        <p>{{ review.submitted }}</p>
+        <p>{{ review.user }}</p>
+        <p>{{ review.body }}</p>
+      </div>
+    </div><!-- end/ Bootstrap card-->
+    {% endfor %}
+
   </section><!-- end/ Review section-->
   </div><!-- end/ container -->
+
+
 
 
 
