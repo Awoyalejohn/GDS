@@ -128,11 +128,178 @@
     {% endfor %}
 
   </section><!-- end/ Review section-->
-  </div><!-- end/ container -->
+
+  <section class="recently-viewed-section py-5">
+    <div class="mb-5">
+      <h2 class="section-heading">Recently Viewed</h2>
+    </div>
+
+        <!-- Bootstap cards grid -->
+ 
+
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
+          <div class="col">
+            <div class="card product-card-bg">
+              <!-- card image -->
+              <div class="card-body rounded-5">
+                <a href="{% url 'product_detail' product.slug %}">
+                  <img class="img-fluid bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+              </div>
+  
+              <!-- Card heading -->
+              <div class="card-body">
+                <h5 class="card-title text-white">{{ product.name }}</h5>
+              </div>
+              <!-- Card tags -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item product-card-bg text-white py-0">
+                  <a href="{% url 'products' %}?category={{ product.category.slug }}"><small>{{ product.category }}</small></a>
+                </li>
+                <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}</small></li>
+                <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
+              </ul>
+              <!-- Card buttons -->
+              <div class="card-body">
+                <div class="d-flex justify-content-end align-items-center">
+                    <a type="button" href="{% url 'edit_product' product.slug %}" class="btn btn-sm btn-outline-info mx-1">Edit</a>
+                    <a type="button" href="{% url 'delete_product' product.slug %}" class="btn btn-sm btn-outline-light mx-1">Delete</a>
+                </div>
+              </div>  
+            </div>
+          </div>
+          <div class="col">
+            <div class="card product-card-bg">
+              <!-- card image -->
+              <div class="card-body rounded-5">
+                <a href="{% url 'product_detail' product.slug %}">
+                  <img class="img-fluid bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+              </div>
+  
+              <!-- Card heading -->
+              <div class="card-body">
+                <h5 class="card-title text-white">{{ product.name }}</h5>
+              </div>
+              <!-- Card tags -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item product-card-bg text-white py-0">
+                  <a href="{% url 'products' %}?category={{ product.category.slug }}"><small>{{ product.category }}</small></a>
+                </li>
+                <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}</small></li>
+                <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
+              </ul>
+              <!-- Card buttons -->
+              <div class="card-body">
+                <div class="d-flex justify-content-end align-items-center">
+                    <a type="button" href="{% url 'edit_product' product.slug %}" class="btn btn-sm btn-outline-info mx-1">Edit</a>
+                    <a type="button" href="{% url 'delete_product' product.slug %}" class="btn btn-sm btn-outline-light mx-1">Delete</a>
+                </div>
+              </div>  
+            </div>
+          </div>
+          <div class="col">
+            <div class="card product-card-bg">
+              <!-- card image -->
+              <div class="card-body rounded-5">
+                <a href="{% url 'product_detail' product.slug %}">
+                  <img class="img-fluid bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+              </div>
+  
+              <!-- Card heading -->
+              <div class="card-body">
+                <h5 class="card-title text-white">{{ product.name }}</h5>
+              </div>
+              <!-- Card tags -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item product-card-bg text-white py-0">
+                  <a href="{% url 'products' %}?category={{ product.category.slug }}"><small>{{ product.category }}</small></a>
+                </li>
+                <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}</small></li>
+                <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
+              </ul>
+              <!-- Card buttons -->
+              <div class="card-body">
+                <div class="d-flex justify-content-end align-items-center">
+                    <a type="button" href="{% url 'edit_product' product.slug %}" class="btn btn-sm btn-outline-info mx-1">Edit</a>
+                    <a type="button" href="{% url 'delete_product' product.slug %}" class="btn btn-sm btn-outline-light mx-1">Delete</a>
+                </div>
+              </div>  
+            </div>
+          </div>
+          <div class="col">
+            <div class="card product-card-bg">
+              <!-- card image -->
+              <div class="card-body rounded-5">
+                <a href="{% url 'product_detail' product.slug %}">
+                  <img class="img-fluid bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+              </div>
+  
+              <!-- Card heading -->
+              <div class="card-body">
+                <h5 class="card-title text-white">{{ product.name }}</h5>
+              </div>
+              <!-- Card tags -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item product-card-bg text-white py-0">
+                  <a href="{% url 'products' %}?category={{ product.category.slug }}"><small>{{ product.category }}</small></a>
+                </li>
+                <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}</small></li>
+                <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
+              </ul>
+              <!-- Card buttons -->
+              <div class="card-body">
+                <div class="d-flex justify-content-end align-items-center">
+                    <a type="button" href="{% url 'edit_product' product.slug %}" class="btn btn-sm btn-outline-info mx-1">Edit</a>
+                    <a type="button" href="{% url 'delete_product' product.slug %}" class="btn btn-sm btn-outline-light mx-1">Delete</a>
+                </div>
+              </div>  
+            </div>
+          </div>
+          <div class="col">
+            <div class="card product-card-bg">
+              <!-- card image -->
+              <div class="card-body rounded-5">
+                <a href="{% url 'product_detail' product.slug %}">
+                  <img class="img-fluid bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+              </div>
+  
+              <!-- Card heading -->
+              <div class="card-body">
+                <h5 class="card-title text-white">{{ product.name }}</h5>
+              </div>
+              <!-- Card tags -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item product-card-bg text-white py-0">
+                  <a href="{% url 'products' %}?category={{ product.category.slug }}"><small>{{ product.category }}</small></a>
+                </li>
+                <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}</small></li>
+                <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
+              </ul>
+              <!-- Card buttons -->
+              <div class="card-body">
+                <div class="d-flex justify-content-end align-items-center">
+                    <a type="button" href="{% url 'edit_product' product.slug %}" class="btn btn-sm btn-outline-info mx-1">Edit</a>
+                    <a type="button" href="{% url 'delete_product' product.slug %}" class="btn btn-sm btn-outline-light mx-1">Delete</a>
+                </div>
+              </div>  
+            </div>
+          </div>
+
+        </div><!-- end/ Bootstap cards grid -->
 
 
 
 
+  </section>
+  
 
+
+
+
+</div><!-- end/ container -->
 </main>
 {% endblock %}
