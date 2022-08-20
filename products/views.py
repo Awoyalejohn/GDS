@@ -78,14 +78,38 @@ class ProductDetailView(View):
         reviews = product.product_review.all()
         avg_reviews = product.product_review.all().aggregate(Avg('rating'))
         print(avg_reviews)
-
         form = ReviewForm()
+
+        recently_viewed_products = None
+
+        if 'recently_viewed' in request.session:
+            if slug in request.session['recently_viewed']:
+                request.session['recently_viewed'].remove(slug)
+            
+            products = Product.objects.filter(slug__in=request.session['recently_viewed'])
+            recently_viewed_products = sorted(
+                products, key=lambda x: request.session['recently_viewed'].index(x.slug)
+            )
+
+            request.session['recently_viewed'].insert(0, slug)
+            if len(request.session['recently_viewed']) > 5:
+                request.session['recently_viewed'].pop()
+        else:
+            request.session['recently_viewed'] = [slug]
+        
+        
+        
+        request.session.modified = True
+        print(request.session['recently_viewed'])
+
+
         template = 'products/product_detail.html'
         context = {
             'product': product,
             'reviews': reviews,
             'form': form,
             'avg_reviews': avg_reviews,
+            'recently_viewed_products':recently_viewed_products,
         }
         return render(request, template, context)
     
