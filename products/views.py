@@ -80,6 +80,8 @@ class ProductDetailView(View):
         print(avg_reviews)
         form = ReviewForm()
 
+        # Display recently viewed products code from sessions tutourial on youtube
+        # https://www.youtube.com/watch?v=N-R5mT-nIDk&t=989s
         recently_viewed_products = None
 
         if 'recently_viewed' in request.session:
@@ -97,9 +99,9 @@ class ProductDetailView(View):
         else:
             request.session['recently_viewed'] = [slug]
         
-        
-        
         request.session.modified = True
+
+        related_products = Product.objects.filter(category=product.category).exclude(slug=slug)[:5]
         print(request.session['recently_viewed'])
 
 
@@ -110,6 +112,7 @@ class ProductDetailView(View):
             'form': form,
             'avg_reviews': avg_reviews,
             'recently_viewed_products':recently_viewed_products,
+            'related_products': related_products,
         }
         return render(request, template, context)
     
