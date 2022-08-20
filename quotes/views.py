@@ -259,6 +259,12 @@ class QuoteOrderFufillCreate(CreateView):
         quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])
         initial['quote_order'] = quote_order
         return initial
+    
+    def get_context_data(self, **kwargs):
+        context = super(QuoteOrderFufillCreate, self).get_context_data(**kwargs)
+        quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])
+        context['quote_order'] = quote_order
+        return context
 
 
 class QuoteOrderFufillUpdate(UpdateView):
@@ -274,4 +280,10 @@ class QuoteOrderFufillUpdate(UpdateView):
     def get_object(self):
         quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])
         return quote_order.quote_order_set
+    
+    def get_context_data(self, **kwargs):
+        context = super(QuoteOrderFufillUpdate, self).get_context_data(**kwargs)
+        quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])
+        context['quote_order'] = quote_order
+        return context
     

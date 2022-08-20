@@ -12,10 +12,134 @@
 
 
       <!-- Bootstrap card-->
-      <div class="card main-bg px-3">
+      <div class="card main-bg text-white px-3">
+
+      <!-- Quote order details-->
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+                <small class="text-info">Quote Order Info:</small>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <p class="mb-0  font-weight-bold">Quote Order Number:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+                <p class="mb-0">{{ quote_order.quote_order_number }}</p>
+            </div>
+        </div>
+       
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <p class="mb-0  font-weight-bold">Quote Order Date:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+                <p class="mb-0">{{ quote_order.submitted }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <small class="text-info">Quote Order Details:</small>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-md-4">
+              <p class="mb-0  font-weight-bold">Design Name:</p>
+          </div>
+          <div class="col-12 col-md-4 text-md-right">
+              <p class="mb-0">{{ quote_order.quote_request_name }}</p>
+          </div>
+      </div>
+
+      
+      <div class="row">
+          <div class="col-12 col-md-4">
+              <p class="mb-0  font-weight-bold">Type:</p>
+          </div>
+          <div class="col-12 col-md-4 text-md-right">
+              <p class="mb-0">{{ quote_order.type }}</p>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-12 col-md-4">
+              <p class="mb-0  font-weight-bold">Size:</p>
+          </div>
+          <div class="col-12 col-md-4 text-md-right">
+              <p class="mb-0">{{ quote_order.size }}</p>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-12 col-md-4">
+              <p class="mb-0  font-weight-bold"><small>Description:</small></p>
+          </div>
+          <div class="col-12 col-md-4 text-md-right">
+              <p class="mb-0"><small>{{ quote_order.description }}</small></p>
+          </div>
+      </div>
+
+        <div class="row">
+            <div class="col">
+                <small class="text-info">Billing information for:</small>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <p class="mb-0  font-weight-bold">Name:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+                <p class="mb-0">{{ quote_order.name }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <p class="mb-0  font-weight-bold">Email:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+                <p class="mb-0">{{ quote_order.email }}</p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <p class="mb-0  font-weight-bold">Quote Order Subtotal:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+                <p class="mb-0">£{{ quote_order.subtotal }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <p class="mb-0  font-weight-bold">Discount:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+                <p class="mb-0">-£{{ quote_order.discount|floatformat:2 }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <p class="mb-0  font-weight-bold">Total:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+                <p class="mb-0">£{{ quote_order.total}}</p>
+            </div>
+        </div> 
+          
+        </div><!-- end/ Quote order details-->
+
         <div class="card-body">
           <p class="text-white">Please fill out the form below</p>
-        <form action="" method="POST" class="form text-white" enctype="multipart/form-data">
+        <form action="" method="POST" class="form" enctype="multipart/form-data">
           {% csrf_token %}
 
             {{ form | crispy }}
