@@ -12,6 +12,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from products.models import Product, Category
 from .forms import ProductForm
 from reviews.forms import ReviewForm
+from profiles.models import UserProfile
 from django.db.models import Avg
 
 # Create your views here.
@@ -72,6 +73,7 @@ class ProductDetailView(View):
     """ 
     A view to display and individual item's product page
     And to create and display customer product reviews
+    Also displays recently viewed products and related products
     """
     def get(self, request, slug):
         product = get_object_or_404(Product, slug=slug)
@@ -80,7 +82,7 @@ class ProductDetailView(View):
         print(avg_reviews)
         form = ReviewForm()
 
-        # Display recently viewed products code from sessions tutourial on youtube
+        # Display recently viewed products code from sessions tutorial on youtube
         # https://www.youtube.com/watch?v=N-R5mT-nIDk&t=989s
         recently_viewed_products = None
 
@@ -101,11 +103,10 @@ class ProductDetailView(View):
         
         request.session.modified = True
 
+        # Display related products code from related products tutorial on youtube
+        # https://www.youtube.com/watch?v=fqIBA2Vpws0&t=178s
         related_products = Product.objects.filter(category=product.category).exclude(slug=slug)[:5]
         print(request.session['recently_viewed'])
-
-        edit_form = ReviewForm
-
 
         template = 'products/product_detail.html'
         context = {
@@ -119,7 +120,10 @@ class ProductDetailView(View):
         return render(request, template, context)
     
     def post(self, request, slug):
+        product = get_object_or_404(Product, slug=slug) 
         form = ReviewForm(request.POST)
+        form.instance.product = product
+        form.instance.user = UserProfile.objects.get(user=self.request.user)
         if form.is_valid():
             form.save()
             messages.success(request, 'Review was successful')
