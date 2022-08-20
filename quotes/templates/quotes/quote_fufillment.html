@@ -15,7 +15,7 @@
       <div class="card main-bg px-3">
         <div class="card-body">
           <p class="text-white">Please fill out the form below</p>
-        <form action="" method="POST" class="text-white">
+        <form action="" method="POST" class="form text-white" enctype="multipart/form-data">
           {% csrf_token %}
 
             {{ form | crispy }}

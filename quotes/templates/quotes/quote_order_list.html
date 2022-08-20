@@ -50,7 +50,10 @@
                 <td>{{ quote_order.email }}</td>
                 <td>{{ quote_order.submitted }}</td>
                 <td>£{{ quote_order.total }}</td>
-                <td><a href="{% url 'quote_orders_fufill' quote_order.quote_order_number %}" class="btn btn-danger btn-sm">Pending...</a></td>
+                <td>
+                  <a href="{% url 'quote_orders_fufill' quote_order.quote_order_number %}" class="btn btn-danger btn-sm">Pending...</a>
+                  <a href="{% url 'quote_fufill_update' quote_order.quote_order_number %}" class="btn btn-success btn-sm">Completed</a>
+                </td>
               </tr>
               {% endfor %}
          

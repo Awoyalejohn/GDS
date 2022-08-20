@@ -1,3 +1,4 @@
+from urllib import request
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
@@ -243,23 +244,34 @@ class QuoteOrderList(ListView):
 
 
 
-class QuoteOrderFufillCreate(View):
+class QuoteOrderFufillCreate(CreateView):
     """
     A view to display an individual customer quote order
-    and upload an graphic design for the customer to download
+    and upload a graphic design for the customer to download
     """
-    def get(self, request, quote_order_number):
-            template = 'quotes/quote_fufillment_create.html'
-            quote_order = get_object_or_404(QuoteOrder, quote_order_number=quote_order_number)
-            form = QuoteFufillmentForm()
-            context = {'form': form, 'quote_order': quote_order}
+    model = QuoteFufillment
+    template_name = 'quotes/quote_fufillment.html'
+    success_url = reverse_lazy('quote_orders')
+    form_class = QuoteFufillmentForm
 
-            return render(request, template, context)
+    def get_initial(self):
+        initial = super(QuoteOrderFufillCreate, self).get_initial()
+        quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])
+        initial['quote_order'] = quote_order
+        return initial
 
-    def post(self, request, quote_order_number):
-        quote_order = get_object_or_404(QuoteOrder, quote_order_number=quote_order_number)
-        form = QuoteFufillmentForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Quote was fufilled successfuly')
-            return redirect(reverse('quote_orders'))
+
+class QuoteOrderFufillUpdate(UpdateView):
+    """
+    A view to display an individual customer quote order
+    and change the uploaded graphic design for the customer to download
+    """
+    model = QuoteFufillment
+    template_name = 'quotes/quote_fufillment.html'
+    success_url = reverse_lazy('quote_orders')
+    form_class = QuoteFufillmentForm
+
+    def get_object(self):
+        quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])
+        return quote_order.quote_order_set
+    

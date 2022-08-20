@@ -37,7 +37,7 @@ class QuoteOrder(models.Model):
 
 
 class QuoteFufillment(models.Model):
-    quote_order = models.OneToOneField(QuoteOrder, null=True, blank=True, on_delete=models.SET_NULL)
+    quote_order = models.OneToOneField(QuoteOrder, null=True, blank=True, related_name='quote_order_set', on_delete=models.SET_NULL)
     image = models.ImageField(null=True, blank=True)
     status = models.BooleanField(default=False)
 
