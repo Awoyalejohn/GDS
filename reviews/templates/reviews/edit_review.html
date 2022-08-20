@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="special-bg">
+
+  <section class="edit-review-section py-5">
+    <div class="text-center my-3">
+      <h2 class="section-heading">Edit Review</h2>
+    </div>
+
+    <div class="container">  
+      <!-- Bootstrap card-->
+      <div class="card main-bg text-white px-3">
+        <div class="card-body">
+          <form method="post" action="" class="form">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <a class="btn btn-light" href="#">Cancel</a>
+            <button type="submit" class="btn btn-primary">Update Review</button>
+          </form>
+
+
+        </div>
+       
+      </div><!-- end/ Bootstap card -->
+
+    </div>
+  </section>
+
+</main>
+{% endblock %}

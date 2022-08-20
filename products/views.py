@@ -5,9 +5,9 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
+from reviews.forms import ReviewForm
 from django.db.models.functions import Lower
 from django.views.generic import View
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from products.models import Product, Category
 from .forms import ProductForm
@@ -103,6 +103,8 @@ class ProductDetailView(View):
 
         related_products = Product.objects.filter(category=product.category).exclude(slug=slug)[:5]
         print(request.session['recently_viewed'])
+
+        edit_form = ReviewForm
 
 
         template = 'products/product_detail.html'
