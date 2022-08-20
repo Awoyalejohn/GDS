@@ -12,6 +12,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from products.models import Product, Category
 from .forms import ProductForm
 from reviews.forms import ReviewForm
+from django.db.models import Avg
 
 # Create your views here.
 class ProductListView(View):
@@ -75,12 +76,16 @@ class ProductDetailView(View):
     def get(self, request, slug):
         product = get_object_or_404(Product, slug=slug)
         reviews = product.product_review.all()
+        avg_reviews = product.product_review.all().aggregate(Avg('rating'))
+        print(avg_reviews)
+
         form = ReviewForm()
         template = 'products/product_detail.html'
         context = {
             'product': product,
             'reviews': reviews,
             'form': form,
+            'avg_reviews': avg_reviews,
         }
         return render(request, template, context)
     

@@ -39,7 +39,16 @@
               <li class="list-group-item product-card-bg text-white py-0">
                 <a href="{% url 'products' %}?category={{ product.category }}"><small>{{ product.category }}</small></a>
               </li>
-              <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}</small></li>
+              <li class="list-group-item product-card-bg text-white py-0">
+                <small>Rating: {{ product.rating }} 
+                  {% if avg_reviews.rating__avg is not None %}
+                    {{ avg_reviews.rating__avg|floatformat:2 }} 
+                    {% else%} 
+                      0 
+                  {% endif %}
+
+                </small>
+              </li>
               <li class="list-group-item product-card-bg text-white ">{{ product.description }}</li>
               <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
             </ul>
@@ -112,6 +121,7 @@
         <h4>{{ review.title }}</h4>
         <p>{{ review.submitted }}</p>
         <p>{{ review.user }}</p>
+        <p>{{ review.rating }} stars</p>
         <p>{{ review.body }}</p>
       </div>
     </div><!-- end/ Bootstrap card-->
