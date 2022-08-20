@@ -65,11 +65,16 @@ class ProductListView(View):
         return render(request, 'products/product_list.html', context)
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(View):
     """ 
     A view to display and individual item's product page
     """
-    model = Product
+    def get(self, request, slug):
+        product = get_object_or_404(Product, slug=slug)
+        template = 'products/product_detail.html'
+        context = {'product': product}
+        return render(request, template, context)
+
 
 
 class SuperUserCheck(UserPassesTestMixin, View):
