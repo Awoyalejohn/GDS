@@ -34,8 +34,9 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Quote Order No.</th>
-                <th scope="col">Customer Name</th>
-                <th scope="col">Customer Email</th>
+                <th scope="col">Design Name</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Email</th>
                 <th scope="col">Date</th>
                 <th scope="col">Price</th>
                 <th scope="col">Status</th>
@@ -46,6 +47,7 @@
               <tr>
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{ quote_order.quote_order_number|truncatechars:13 }}</td>
+                <td>{{ quote_order.quote_request_name }}</td>
                 <td>{{ quote_order.name }}</td>
                 <td>{{ quote_order.email }}</td>
                 <td>{{ quote_order.submitted }}</td>
