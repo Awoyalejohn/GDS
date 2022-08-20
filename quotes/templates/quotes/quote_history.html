@@ -67,7 +67,7 @@
                 <td>
                   {% if quote_order.quote_order_set.status and quote_order.quote_order_set.image  %}
                   <a href="{{ quote_order.quote_order_set.image.url }}" download="{{ quote_order.quote_request_name }}" 
-                     class="download-item btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top"
+                     class="download-item btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
                      data-bs-custom-class="custom-tooltip" data-bs-title="Clicke to download {{ quote_order.quote_request_name }}">
                     Completed
                   </a>

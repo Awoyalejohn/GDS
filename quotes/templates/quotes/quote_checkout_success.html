@@ -125,7 +125,7 @@
                   <p class="mb-0  font-weight-bold">Discount:</p>
               </div>
               <div class="col-12 col-md-4 text-md-right">
-                  <p class="mb-0">-£{{ quote_order.discount }}</p>
+                  <p class="mb-0">-£{{ quote_order.discount|floatformat:2 }}</p>
               </div>
           </div>
 

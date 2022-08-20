@@ -17,9 +17,9 @@
 
       <!-- Bootstrap card-->
       <div class="card main-bg px-3 text-white">
-        <p>Subtotal = {{ quote_subtotal }}</p>
-        <p>Discount = {{ quote_discount }}</p>
-        <p>Total = {{ quote_total }}</p>
+        <p>Subtotal = £{{ quote_subtotal }}</p>
+        <p>Discount = £{{ quote_discount|floatformat:2 }}</p>
+        <p>Total = £{{ quote_total }}</p>
         <p>Quote Item Name = {{ quote_item_name }}</p>
         <p>Selected type = {{ selected_type }}</p>
         <p>Selected size = {{ selected_size }}</p>
