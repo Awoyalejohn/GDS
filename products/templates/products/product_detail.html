@@ -140,11 +140,17 @@
           <div class="col">
             <div class="card product-card-bg">
               <!-- card image -->
-              <div class="card-body rounded-5">
-                <a href="{% url 'product_detail' product.slug %}">
-                  <img class="img-fluid bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
-                </a>
-              </div>
+            <div class="card-body rounded-5">
+              {% if product.image %}
+              <a href="{% url 'product_detail' product.slug %}">
+                <img class="img-fluid bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
+              </a>
+              {% else %}
+              <a href="{% url 'product_detail' product.slug %}">
+                <img class="img-fluid product-list-card-img bg-white rounded-1 p-2" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+              </a>
+              {% endif %}
+            </div>
   
               <!-- Card heading -->
               <div class="card-body">
@@ -191,11 +197,17 @@
           <div class="col">
             <div class="card product-card-bg">
               <!-- card image -->
-              <div class="card-body rounded-5">
-                <a href="{% url 'product_detail' product.slug %}">
-                  <img class="img-fluid bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
-                </a>
-              </div>
+            <div class="card-body rounded-5">
+              {% if product.image %}
+              <a href="{% url 'product_detail' product.slug %}">
+                <img class="img-fluid bg-white rounded-1 p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
+              </a>
+              {% else %}
+              <a href="{% url 'product_detail' product.slug %}">
+                <img class="img-fluid product-list-card-img bg-white rounded-1 p-2" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+              </a>
+              {% endif %}
+            </div>
   
               <!-- Card heading -->
               <div class="card-body">
