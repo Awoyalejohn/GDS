@@ -10,6 +10,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from products.models import Product, Category
 from .forms import ProductForm
+from reviews.forms import ReviewForm
 
 # Create your views here.
 class ProductListView(View):
@@ -71,8 +72,9 @@ class ProductDetailView(View):
     """
     def get(self, request, slug):
         product = get_object_or_404(Product, slug=slug)
+        form = ReviewForm()
         template = 'products/product_detail.html'
-        context = {'product': product}
+        context = {'product': product, 'form':form}
         return render(request, template, context)
 
 

@@ -2,14 +2,15 @@
 {% load static %}
 
 {% block content %}
-<main>
-  <section class="products-detail-section py-5 special-bg">
+<main class="special-bg">
+  <div class="container">
+  <!-- Product section-->
+  <section class="products-detail-section py-5">
     <!-- Bootstap cards grid-->
     <div class="mb-5">
       <h2 class="section-heading">{{product.name}}</h2>
     </div>
 
-    <div class="container">
 
     <!-- Bootstrap card-->
       <div class="card product-card-bg">
@@ -76,8 +77,37 @@
           </div>
         </div>
       </div><!-- end/ Bootstap card -->
+    </section><!-- end/ Product section-->
+
+
+
+      <!-- Review section-->
+  <section class="review-section">
+    <div class="mb-5">
+      <h2 class="section-heading">Customer Reviews</h2>
     </div>
-  </section>
+
+
+    <!-- Bootstrap card-->
+    <div class="card main-bg text-white">
+      <div class="card-body">
+        <form action="" method="POST" class="form">
+          {% csrf_token %}
+
+            {{ form | crispy }}
+
+   
+          <button type="submit" class="btn btn-success">Submit</button>
+
+        </form>
+
+      </div>
+    </div><!-- end/ Bootstrap card-->
+
+  </section><!-- end/ Review section-->
+  </div><!-- end/ container -->
+
+
 
 </main>
 {% endblock %}
