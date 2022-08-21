@@ -1,5 +1,6 @@
 from django import forms
 from .models import UserProfile
+from django.contrib.auth.models import User
 
 
 class UserProfileForm(forms.ModelForm):
@@ -33,3 +34,8 @@ class UserProfileForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
                 # self.fields[field].widget.attrs['class'] = 'stripe-style-input'
                 self.fields[field].label = False
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email',)

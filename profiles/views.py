@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View, TemplateView
 from django.http import HttpResponseRedirect
 from .models import UserProfile
-from .forms import UserProfileForm
+from .forms import UserProfileForm, UserForm
 
 from checkout.models import Order
 
@@ -30,6 +30,15 @@ class Profile(LoginRequiredMixin, View):
             return HttpResponseRedirect(self.request.path_info)
         else:
             messages.error(request, 'Update failed. Please ensure the form is valid.')
+
+
+class ProfileInfo(LoginRequiredMixin, View):
+    """ A view to display form info from the user model """
+    def get(self, request):
+        user_form = UserForm(instance=request.user)
+        template = 'profiles/profile_info.html'
+        context = {'user_form': user_form}
+        return render(request, template, context)
 
 
 class OrderHistory(LoginRequiredMixin, TemplateView):
