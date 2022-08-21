@@ -11,6 +11,7 @@
       </div>
 
 
+      <!-- Bootstrap card-->
       <div class="card main-bg text-white">
         <div class="card-header bg-white">
           <ul class="nav nav-pills card-header-pills">
@@ -25,11 +26,52 @@
             </li>
           </ul>
         </div>
-        <div class="card-body">
 
+
+
+        
+        <div class="card-body text-white">
+          <p>Testimonial</p>
+          <!-- Bootstrap table-->
+          <div class="table-responsive-lg">
+            <table class="table text-nowrap text-white">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">User</th>
+                  <th scope="col">Testimonial</th>
+                  <th scope="col">Approved</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for testimonial in testimonials %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ testimonial }}</td>
+                  <td>{{ testimonial.body }}</td>
+                  <td>
+                    {% if testimonial.approved %}
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" checked value="{{ testimonial.id }}" name="checkboxes">
+                    </div>
+                    {% else %}
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="{{ testimonial.id }}" name="checkboxes">
+                    </div>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+        
+              </tbody>
+            </table><!-- end/ Bootstrap table-->
+          </div>
+          <button class="btn btn-primary" type="submit">Update Approval</button>
+        
         </div>
 
-      </div>
+
+      </div><!-- end/ Bootstrap card-->
       
 
     </section>

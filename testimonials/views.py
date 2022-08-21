@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
@@ -76,8 +77,16 @@ class DeleteTestimonialView(SuccessMessageMixin, DeleteView):
 class ApproveTestimonialsView(View):
     """ A view for approving user testimonials  """
     def get(self, request):
+        testimonials = Testimonial.objects.all()
+        if request.user.is_superuser:
+            messages.success(request, "Hello super user")
+ 
+        else:
+            messages.error(request, "You are not authorised to view this page!")
+            return HttpResponseRedirect(reverse('home'))
+
         template = 'testimonials/approve_testimonials.html'
-        context = {}
+        context = {'testimonials': testimonials}
 
         return render(request, template, context)
 
