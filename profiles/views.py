@@ -35,9 +35,11 @@ class Profile(LoginRequiredMixin, View):
 class ProfileInfo(LoginRequiredMixin, View):
     """ A view to display form info from the user model """
     def get(self, request):
+        profile = get_object_or_404(UserProfile, user=request.user)
         user_form = UserForm(instance=request.user)
+        profile_form = UserProfileForm(instance=profile)
         template = 'profiles/profile_info.html'
-        context = {'user_form': user_form}
+        context = {'user_form': user_form, 'profile_form': profile_form}
         return render(request, template, context)
 
 

@@ -46,6 +46,15 @@
               </form>
 
             </div>
+            <div class="card-body text-white">
+              <p>User Form</p>
+              <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                {% csrf_token %}
+                {{ profile_form|crispy }}
+                <button class="btn btn-info text-uppercase">Update Profile Information</button>
+              </form>
+
+            </div>
           </div><!-- end/ Bootstrap navigation card-->
     
     </div>
