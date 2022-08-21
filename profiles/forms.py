@@ -7,7 +7,7 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         # Renders all fields except for the user field
-        exclude = ('user',)
+        exclude = ('user', 'profile_image', 'first_name', 'last_name')
 
     def __init__(self, *args, **kwargs):
         """
@@ -39,7 +39,7 @@ class UserProfileForm(forms.ModelForm):
 class ProfileInfoForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('default_phone_number',)
+        fields = ('profile_image', 'default_phone_number', 'first_name', 'last_name')
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
