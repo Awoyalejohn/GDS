@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from .models import Testimonial
 from profiles.models import UserProfile
 from .forms import TestimonialForm
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 
 # Create your views here.
@@ -58,6 +59,18 @@ class EditTestimonialView(UpdateView):
     def form_invalid(self, form):
         messages.error(self.request, self.error_message)
         return super().form_invalid(form)
+
+
+class DeleteTestimonialView(SuccessMessageMixin, DeleteView):
+    """ Deletes a testimonial """
+    model = Testimonial
+    template_name = 'testimonials/delete_testimonial.html'
+    success_url = reverse_lazy('testimonials')
+    success_message = 'Successfully deleted testimonial!'
+
+    def get_object(self):
+        id = self.kwargs.get("id")
+        return get_object_or_404(Testimonial, id=id)
 
 
 
