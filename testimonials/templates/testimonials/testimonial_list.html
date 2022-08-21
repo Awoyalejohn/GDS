@@ -29,7 +29,14 @@
                 <h5>{{ testimonial.user.user }}</h5>
                 <p>{{ testimonial.body }}</p>
               </div>
-    
+
+              <!-- Card buttons -->
+      
+                <div class="d-flex justify-content-end align-items-center">
+                  <a type="button" href="{% url 'edit_testimonial' testimonial.id %}" class="btn btn-sm btn-outline-info mx-1">Edit</a>
+                  <a type="button" href="" class="btn btn-sm btn-outline-light mx-1">Delete</a>
+                </div>
+  
         </div><!-- end/ Bootstrap card-->
     
       </div>

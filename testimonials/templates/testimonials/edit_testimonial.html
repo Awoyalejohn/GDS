@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="special-bg">
+
+  <div class="container">
+    <section class="testimonials-section py-5">
+      <div class="text-center my-3">
+        <h2 class="section-heading">Testimonials</h2>
+      </div>
+
+
+      <div class="card main-bg text-white">
+        <div class="card-body">
+          <form method="post">{% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Save">
+        </div>
+      
+      </form>
+
+      </div>
+      
+
+    </section>
+  </div>
+
+</main>
+{% endblock %}
