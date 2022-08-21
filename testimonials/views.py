@@ -77,11 +77,10 @@ class DeleteTestimonialView(SuccessMessageMixin, DeleteView):
 class ApproveTestimonialsView(View):
     """ A view for approving user testimonials  """
     def get(self, request):
+        # From Approval with checkboxes tutorial on You Tube
+        # https://www.youtube.com/watch?v=FzV_Py68Y_I
         testimonials = Testimonial.objects.all()
-        if request.user.is_superuser:
-            messages.success(request, "Hello super user")
- 
-        else:
+        if not request.user.is_superuser:
             messages.error(request, "You are not authorised to view this page!")
             return HttpResponseRedirect(reverse('home'))
 
@@ -89,6 +88,22 @@ class ApproveTestimonialsView(View):
         context = {'testimonials': testimonials}
 
         return render(request, template, context)
+    
+    def post(self, request):
+        testimonials = Testimonial.objects.all()
+        checkboxes = request.POST.getlist('checkboxes')
+        print(checkboxes)
+
+        # Uncheck all events
+        testimonials.update(approved=False)
+
+        # Update the database
+        for checkbox in checkboxes:
+            Testimonial.objects.filter(pk=int(checkbox)).update(approved=True)
+
+        messages.success(request, "Successfully updated Testimonial approvals")
+        return HttpResponseRedirect(reverse('testimonials'))
+
 
 
 
