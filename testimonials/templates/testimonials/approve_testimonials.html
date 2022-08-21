@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="special-bg">
+
+  <div class="container">
+    <section class="testimonials-section py-5">
+      <div class="text-center my-3">
+        <h2 class="section-heading">Product Management</h2>
+      </div>
+
+
+      <div class="card main-bg text-white">
+        <div class="card-header bg-white">
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_product' %}">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'quote_orders' %}">Customer Requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'approve_testimonials' %}">Approve Testimonials</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+
+        </div>
+
+      </div>
+      
+
+    </section>
+  </div>
+
+</main>
+{% endblock %}

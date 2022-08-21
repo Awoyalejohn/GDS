@@ -5,7 +5,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from .models import Testimonial
 from profiles.models import UserProfile
 from .forms import TestimonialForm
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 
 
 # Create your views here.
@@ -71,6 +71,16 @@ class DeleteTestimonialView(SuccessMessageMixin, DeleteView):
     def get_object(self):
         id = self.kwargs.get("id")
         return get_object_or_404(Testimonial, id=id)
+
+
+class ApproveTestimonialsView(View):
+    """ A view for approving user testimonials  """
+    def get(self, request):
+        template = 'testimonials/approve_testimonials.html'
+        context = {}
+
+        return render(request, template, context)
+
 
 
 

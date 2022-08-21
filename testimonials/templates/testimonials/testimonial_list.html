@@ -14,6 +14,7 @@
       <!-- Bbbootsrap testimonial card layout example https://bbbootstrap.com/snippets/bootstrap-5-user-testimonial-star-ratings-51527336-->
       <div class="row g-2">
         {% for testimonial in testimonials %}
+        {% if testimonial.approved %}
       <div class="col-md-4">
         <!-- Bootstrap card-->
         <div class="card p-3 main-bg text-white text-center px-4">
@@ -40,6 +41,7 @@
         </div><!-- end/ Bootstrap card-->
     
       </div>
+      {% endif %}
       {% endfor %}
       </div>
       
