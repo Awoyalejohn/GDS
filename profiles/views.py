@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, reverse
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View, TemplateView
@@ -41,6 +41,18 @@ class ProfileInfo(LoginRequiredMixin, View):
         template = 'profiles/profile_info.html'
         context = {'user_form': user_form, 'profile_info_form': profile_info_form}
         return render(request, template, context)
+
+    def post(self, request):
+        profile = get_object_or_404(UserProfile, user=request.user)
+        user_form = UserForm(self.request.POST, instance=request.user)
+        profile_info_form = ProfileInfoForm(self.request.POST, request.FILES, instance=profile)
+        if user_form.is_valid() and profile_info_form.is_valid():
+            user_form.save()
+            profile_info_form.save()
+            messages.success(request, 'Your Profile has been updated successfully')
+            return HttpResponseRedirect(reverse('profile_info'))
+
+
 
 
 class OrderHistory(LoginRequiredMixin, TemplateView):
