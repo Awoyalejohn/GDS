@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<main class="special-bg">
+
+  <section class="profile-section py-5">
+    <div class="text-center my-3">
+      <h2 class="section-heading">My Profile</h2>
+    </div>
+
+    <div class="container">
+    
+      <!-- Bootstrap card-->
+      <div class="card main-bg">
+        <div class="card-header bg-white">
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' %}">Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'order_history' %}">Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Wishlist</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'quote_history' %}">Requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Reviews</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Testimonials</a>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="card-body text-white">
+          <p>Order History</p>
+          <div class="table-responsive-lg">
+            <table class="table text-nowrap text-white">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Order Number</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Items</th>
+                  <th scope="col">Order Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in orders %}
+                <tr>
+                  <th scope="row">1</th>
+                  <td>
+                    <a href="{% url 'order_history_detail' order.order_number %}" title="{{ order.order_number }}">
+                      {{ order.order_number|truncatechars:6 }}
+                    </a>
+                  </td>
+                  <td>{{ order.date }}</td>
+                  <td>
+                    <ul class="list-group list-group-flush">
+                      {% for item in order.lineitems.all %}
+                      <li class="list-group-item p-0">{{ item.product.name }}</li>
+                      {% endfor %}
+                    </ul>
+                  </td>
+                  <td>£{{ order.total }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table><!-- end/ Bootstrap table-->
+          </div>
+
+        </div>
+
+        <!-- Bootstrap table-->
+      
+        
+    
+      </div><!-- end/ Bootstap card -->
+    
+    </div>
+    </section>
+
+</main>
+{% endblock %}

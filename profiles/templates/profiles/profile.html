@@ -21,10 +21,10 @@
             <div class="card-header bg-white">
               <ul class="nav nav-pills card-header-pills">
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">Details</a>
+                  <a class="nav-link active" href="{% url 'profile' %}">Details</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Orders</a>
+                  <a class="nav-link" href="{% url 'order_history' %}">Orders</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Wishlist</a>
@@ -50,50 +50,6 @@
               </form>
             </div>
           </div><!-- end/ Bootstrap navigation card-->
-          
-    
-      <!-- Bootstrap card-->
-      <div class="card main-bg px-3">
-        <p>Order History</p>
-
-        <!-- Bootstrap table-->
-        <div class="table-responsive-lg">
-          <table class="table text-nowrap">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Order Number</th>
-                <th scope="col">Date</th>
-                <th scope="col">Items</th>
-                <th scope="col">Order Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for order in orders %}
-              <tr>
-                <th scope="row">1</th>
-                <td>
-                  <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
-                    {{ order.order_number|truncatechars:6 }}
-                  </a>
-                </td>
-                <td>{{ order.date }}</td>
-                <td>
-                  <ul class="list-group list-group-flush">
-                    {% for item in order.lineitems.all %}
-                    <li class="list-group-item p-0">{{ item.product.name }}</li>
-                    {% endfor %}
-                  </ul>
-                </td>
-                <td>£{{ order.total }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table><!-- end/ Bootstrap table-->
-        </div>
-        
-    
-      </div><!-- end/ Bootstap card -->
     
     </div>
     </section>

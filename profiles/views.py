@@ -14,12 +14,10 @@ class Profile(LoginRequiredMixin, View):
     def get(self, request):
         profile = get_object_or_404(UserProfile, user=request.user)
         form = UserProfileForm(instance=profile)
-        orders = profile.orders.all()
         template = 'profiles/profile.html'
         context = {
             'profile':profile,
             'form': form,
-            'orders': orders
         }
         return render(request, template, context)
 
@@ -34,11 +32,20 @@ class Profile(LoginRequiredMixin, View):
             messages.error(request, 'Update failed. Please ensure the form is valid.')
 
 
-
 class OrderHistory(LoginRequiredMixin, TemplateView):
+     template_name = 'profiles/profile_order_history.html'
+     def get_context_data(self, **kwargs):
+        context = super(OrderHistory, self).get_context_data(**kwargs)
+        profile = get_object_or_404(UserProfile, user=self.request.user)
+        orders = profile.orders.all()
+        context['orders'] = orders
+        return context
+
+
+class OrderHistoryDetail(LoginRequiredMixin, TemplateView):
      template_name = 'checkout/checkout_success.html'
      def get_context_data(self, order_number, **kwargs):
-        context = super(OrderHistory, self).get_context_data(**kwargs)
+        context = super(OrderHistoryDetail, self).get_context_data(**kwargs)
         order = get_object_or_404(Order, order_number=order_number)
 
         messages.info(self.request, (
