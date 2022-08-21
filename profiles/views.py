@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View, TemplateView
 from django.http import HttpResponseRedirect
 from .models import UserProfile
-from .forms import UserProfileForm, UserForm
+from .forms import UserProfileForm, UserForm, ProfileInfoForm
 
 from checkout.models import Order
 
@@ -37,9 +37,9 @@ class ProfileInfo(LoginRequiredMixin, View):
     def get(self, request):
         profile = get_object_or_404(UserProfile, user=request.user)
         user_form = UserForm(instance=request.user)
-        profile_form = UserProfileForm(instance=profile)
+        profile_info_form = ProfileInfoForm(instance=profile)
         template = 'profiles/profile_info.html'
-        context = {'user_form': user_form, 'profile_form': profile_form}
+        context = {'user_form': user_form, 'profile_info_form': profile_info_form}
         return render(request, template, context)
 
 

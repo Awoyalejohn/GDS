@@ -35,7 +35,13 @@ class UserProfileForm(forms.ModelForm):
                 # self.fields[field].widget.attrs['class'] = 'stripe-style-input'
                 self.fields[field].label = False
 
+
+class ProfileInfoForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('default_phone_number',)
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email',)
+
