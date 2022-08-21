@@ -8,13 +8,13 @@ from .forms import UserProfileForm, UserForm, ProfileInfoForm
 
 from checkout.models import Order
 
-class Profile(LoginRequiredMixin, View):
+class ProfileBillingDetails(LoginRequiredMixin, View):
     """ Display the user's Profile """
     template_name = "profiles/profile.html"
     def get(self, request):
         profile = get_object_or_404(UserProfile, user=request.user)
         form = UserProfileForm(instance=profile)
-        template = 'profiles/profile.html'
+        template = 'profiles/profile_billing_details.html'
         context = {
             'profile':profile,
             'form': form,
@@ -35,14 +35,20 @@ class Profile(LoginRequiredMixin, View):
 class ProfileInfo(LoginRequiredMixin, View):
     """ A view to display form info from the user model """
     def get(self, request):
+        # from django update user profile tutorial https://dev.to/earthcomfy/django-update-user-profile-33ho
         profile = get_object_or_404(UserProfile, user=request.user)
         user_form = UserForm(instance=request.user)
         profile_info_form = ProfileInfoForm(instance=profile)
         template = 'profiles/profile_info.html'
-        context = {'user_form': user_form, 'profile_info_form': profile_info_form}
+        context = {
+            'profile': profile,
+            'user_form': user_form,
+            'profile_info_form': profile_info_form
+        }
         return render(request, template, context)
 
     def post(self, request):
+        # from django update user profile tutorial https://dev.to/earthcomfy/django-update-user-profile-33ho
         profile = get_object_or_404(UserProfile, user=request.user)
         user_form = UserForm(self.request.POST, instance=request.user)
         profile_info_form = ProfileInfoForm(self.request.POST, request.FILES, instance=profile)

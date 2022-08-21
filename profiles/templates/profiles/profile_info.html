@@ -17,7 +17,10 @@
             <div class="card-header bg-white">
               <ul class="nav nav-pills card-header-pills">
                 <li class="nav-item">
-                  <a class="nav-link active" href="{% url 'profile' %}">Details</a>
+                  <a class="nav-link active" href="{% url 'profile_info' %}">Profile Info</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'profile_billing_details' %}">Billing Details</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'order_history' %}">Orders</a>
@@ -36,9 +39,20 @@
                 </li>
               </ul>
             </div>
+
+            <div class="card-body">
+              <p>Profile Info</p>
+            </div>
+
+            <div class="card-body text-center">
+              {% if profile.profile_image %}
+                <img class="rounded" src="{{ profile.profile_image.url }}" alt="Profile Picture">
+              {% else %}
+                <img class="rounded" src="{{ MEDIA_URL }}no_image_available.svg" alt="Profile Picture">
+              {% endif %}
+            </div>
           
             <div class="card-body text-white">
-              <p>Profile Info</p>
               <form class="mt-3" action="{% url 'profile_info' %}" method="POST" id="profile-info-form" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ profile_info_form.profile_image|as_crispy_field }}
@@ -51,7 +65,6 @@
               </form>
 
             </div>
-
           </div><!-- end/ Bootstrap navigation card-->
     
     </div>
