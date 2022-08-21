@@ -10,17 +10,32 @@
         <h2 class="section-heading">Testimonials</h2>
       </div>
 
-      <!-- Bootstrap card-->
-      <div class="card main-bg text-white px-3">
-        {% for testimonial in testimonials %}
-        <div class="card-body">
-          
-          {{ testimonial.body }}
-          
-        </div>
-        {% endfor %}
 
-      </div><!-- end/ Bootstap card -->
+      <!-- Bbbootsrap testimonial card layout example https://bbbootstrap.com/snippets/bootstrap-5-user-testimonial-star-ratings-51527336-->
+      <div class="row g-2">
+        {% for testimonial in testimonials %}
+      <div class="col-md-4">
+        <!-- Bootstrap card-->
+        <div class="card p-3 main-bg text-white text-center px-4">
+            <div class="card-body">
+                {% if testimonial.user.profile_image %}
+                  <img class="img-fluid rounded-circle" width="80" src="{{ testimonial.user.profile_image.url }}" alt="{{ product.name }}">
+                {% else %}
+                  <img class="img-fluid rounded-circle" width="80" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+                {% endif %}
+              </div>
+    
+              <div class="card-body">
+                <h5>{{ testimonial.user.user }}</h5>
+                <p>{{ testimonial.body }}</p>
+              </div>
+    
+        </div><!-- end/ Bootstrap card-->
+    
+      </div>
+      {% endfor %}
+      </div>
+      
 
     </section>
   </div>
