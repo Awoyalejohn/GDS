@@ -26,10 +26,10 @@
                   <a class="nav-link" href="{% url 'order_history' %}">Orders</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Wishlist</a>
+                  <a class="nav-link active" href="#">Wishlist</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="{% url 'quote_history' %}">Requests</a>
+                  <a class="nav-link" href="{% url 'quote_history' %}">Requests</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Reviews</a>
@@ -42,31 +42,44 @@
           
             <div class="card-body text-white">
               <p>My Wishlist</p>
-                      <!-- Bootstrap table-->
-        <div class="table-responsive-lg">
-          <table class="table text-nowrap text-white">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table><!-- end/ Bootstrap table-->
-        </div>
-        
-        </div>
+              <!-- Bootstrap table-->
+              <div class="table-responsive-lg">
+                <table class="table text-nowrap text-white">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Product</th>
+                      <th scope="col">Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in wish_list_items %}
+                    <tr>
+                      <th scope="row">{{ forloop.counter }}</th>
+                      <td>
+                        {% if item.product.image %}
+                        <a href="{% url 'product_detail' item.product.slug %}">
+                          <img class="img-fluid bg-white rounded-1 p-2" width="80" src="{{ item.product.image.url }}"
+                            alt="{{ item.product.name }}">
+                        </a>
+                        {% else %}
+                        <a href="{% url 'product_detail' item.product.slug %}">
+                          <img class="img-fluid product-list-card-img bg-white rounded-1 p-2" width="80"
+                            src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ item.product.name }}">
+                        </a>
+                        {% endif %}
+            
+                      </td>
+                      <td>{{ item.product.name }}</td>
+                      <td>{{ item.product.price }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table><!-- end/ Bootstrap table-->
+              </div>
+            
+            </div>
 
           </div><!-- end/ Bootstrap navigation card-->
           
