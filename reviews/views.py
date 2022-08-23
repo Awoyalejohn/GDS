@@ -2,8 +2,11 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views.generic.edit import View
 from django.http import HttpResponseRedirect
 from .models import Review
+from products.models import Product
 from .forms import ReviewForm
 from django.contrib import messages
+from django.db.models import Avg
+
 
 
 class UpdateReview(View):
@@ -19,11 +22,16 @@ class UpdateReview(View):
 
     def post(self, request, review_id):
         review = get_object_or_404(Review, id=review_id)
+        product = review.product
+        reviews = product.product_review.all()
         slug = review.product.slug
         print(slug)
         form = ReviewForm(self.request.POST, instance=review)
         if form.is_valid():
             form.save()
+            avg_reviews = reviews.aggregate(Avg('rating')) 
+            product.rating = avg_reviews['rating__avg']
+            product.save()
             messages.success(request, 'Review was updated successfully')
             return HttpResponseRedirect(reverse('product_detail', args=[slug]))
 
@@ -40,9 +48,14 @@ class DeleteReview(View):
 
     def post(self, request, review_id):
         review = get_object_or_404(Review, id=review_id)
+        product = review.product
+        reviews = product.product_review.all()
         slug = review.product.slug
         print(slug)
         review.delete()
+        avg_reviews = reviews.aggregate(Avg('rating')) 
+        product.rating = avg_reviews['rating__avg']
+        product.save()
         messages.success(request, 'Review has been deleted')
         return HttpResponseRedirect(reverse('product_detail', args=[slug]))
 
