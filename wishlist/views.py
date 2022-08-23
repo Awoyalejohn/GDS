@@ -38,3 +38,32 @@ class AddToWishList(View):
             messages.error(request, f'Error adding: {e}')
             print(e)
             return HttpResponse(status=500)
+
+
+
+class RemoveFromWishList(View):
+    """ A view to remove an item from the user's wishlist """
+    def post(self, request, slug):
+        try:
+            profile = get_object_or_404(UserProfile, user=self.request.user)
+            user_wishlist = get_object_or_404(WishList, user_profile=profile)
+            product = get_object_or_404(Product, slug=slug)
+            wish_list_item = get_object_or_404(WishListItem, wish_list=user_wishlist, product=product)
+            redirect_url = request.POST.get('redirect_url')
+            wish_list_item.delete()
+
+
+            if wish_list_item.exists():
+                messages.error(request, f"Error removing {product.name} from wish list!")
+                return redirect(redirect_url)
+            
+            else:
+                messages.success(request, f'Removed {product.name} from wishlist')
+                return HttpResponse(status=200)
+
+        except Exception as e:
+            messages.error(request, f'Error removing item: {e}')
+            return HttpResponse(status=500)
+
+
+        
