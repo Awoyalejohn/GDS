@@ -51,15 +51,8 @@ class RemoveFromWishList(View):
             wish_list_item = get_object_or_404(WishListItem, wish_list=user_wishlist, product=product)
             redirect_url = request.POST.get('redirect_url')
             wish_list_item.delete()
-
-
-            if wish_list_item.exists():
-                messages.error(request, f"Error removing {product.name} from wish list!")
-                return redirect(redirect_url)
-            
-            else:
-                messages.success(request, f'Removed {product.name} from wishlist')
-                return HttpResponse(status=200)
+            messages.success(request, f'Removed {product.name} from wishlist')
+            return HttpResponse(status=200)
 
         except Exception as e:
             messages.error(request, f'Error removing item: {e}')
