@@ -1,8 +1,8 @@
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, HttpResponse
 from django.views.generic import TemplateView, View
 from profiles.models import UserProfile
 from products.models import Product
-from wishlist.models import WishListItem
+from wishlist.models import WishListItem, WishList
 from django.contrib import messages
 
 # Create your views here.
@@ -21,16 +21,20 @@ class WishListView(TemplateView):
 class AddToWishList(View):
     """ A view to add items to the user's wishlist """
     def post(self, request, slug):
-        profile = get_object_or_404(UserProfile, user=self.request.user)
-        product = get_object_or_404(Product, slug=slug)
-        #gets the redirect url
-        redirect_url = request.POST.get('redirect_url')
-        wish_list_item, created = WishListItem.objects.get_or_create(wish_list=profile, product=product)
-        if created:
-        # A new wislist item object created
-            messages.success(request, f"Added {product.name} to your wish list")
-        else:
-        # wishlist item object already exists
-            messages.error(request, f"Error adding item to wishlist!")
-        return redirect(redirect_url)
+        try:
+            profile = get_object_or_404(UserProfile, user=self.request.user)
+            user_wishlist = get_object_or_404(WishList, user_profile=profile)
+            product = get_object_or_404(Product, slug=slug)
+            wish_list_item, created = WishListItem.objects.get_or_create(wish_list=user_wishlist, product=product)
+            if created:
+            # A new wislist item object created
+                messages.success(request, f"Added {product.name} to your wish list")
+            else:
+            # wishlist item object already exists
+                messages.error(request, f"Error {product.name} already in wishlist!")
+            return HttpResponse(status=200)
 
+        except Exception as e:
+            messages.error(request, f'Error adding: {e}')
+            print(e)
+            return HttpResponse(status=500)
