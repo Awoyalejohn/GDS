@@ -12,80 +12,108 @@
 
     <div class="container">
 
-          <!-- Bootstrap navigation card-->
-          <div class="card main-bg">
-            <div class="card-header bg-white">
-              <ul class="nav nav-pills card-header-pills">
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'profile_info' %}">Profile Info</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'profile_billing_details' %}">Billing Details</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'order_history' %}">Orders</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">Wishlist</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'quote_history' %}">Requests</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Reviews</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Testimonials</a>
-                </li>
-              </ul>
-            </div>
-          
-            <div class="card-body text-white">
-              <p>My Wishlist</p>
-              <!-- Bootstrap table-->
-              <div class="table-responsive-lg">
-                <table class="table text-nowrap text-white">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Image</th>
-                      <th scope="col">Product</th>
-                      <th scope="col">Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for item in wish_list_items %}
-                    <tr>
-                      <th scope="row">{{ forloop.counter }}</th>
-                      <td>
-                        {% if item.product.image %}
-                        <a href="{% url 'product_detail' item.product.slug %}">
-                          <img class="img-fluid bg-white rounded-1 p-2" width="80" src="{{ item.product.image.url }}"
-                            alt="{{ item.product.name }}">
-                        </a>
-                        {% else %}
-                        <a href="{% url 'product_detail' item.product.slug %}">
-                          <img class="img-fluid product-list-card-img bg-white rounded-1 p-2" width="80"
-                            src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ item.product.name }}">
-                        </a>
-                        {% endif %}
-            
-                      </td>
-                      <td>{{ item.product.name }}</td>
-                      <td>{{ item.product.price }}</td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table><!-- end/ Bootstrap table-->
-              </div>
-            
-            </div>
+      <!-- Bootstrap card-->
+      <div class="card main-bg">
 
-          </div><!-- end/ Bootstrap navigation card-->
-          
-    
+        <div class="card-header bg-white">
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile_info' %}">Profile Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile_billing_details' %}">Billing Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'order_history' %}">Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Wishlist</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'quote_history' %}">Requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Reviews</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Testimonials</a>
+            </li>
+          </ul>
+        </div>
+
+
+        {% if wish_list_items%}
+        <!-- Amount of items in cart info -->
+        <div class="card-header">
+          <h5 class="card-title text-white">4 items in Wishlist</h5>
+        </div>
+
+
+        <div class="card-body">
+          <!-- Card table header -->
+          <div class="card cart-table-header bg-danger d-none d-md-block h3">
+            <div class="card-body d-flex justify-content-between">
+              <p>Product Info</p>
+              <p>Price</p>
+            </div>
+          </div>
+
+          {% for item in wish_list_items %}
+
+          <!-- Card cart item -->
+          <div class="card cart-item bg-success">
+
+            <div class="card-body cart-item-img">
+              {% if item.product.image %}
+              <a href="{% url 'product_detail' item.product.slug %}">
+                <img class="img-fluid bg-white rounded p-2" width="80" src="{{ item.product.image.url }}"
+                  alt="{{ item.product.name }}">
+              </a>
+              {% else %}
+              <a href="{% url 'product_detail' item.product.slug %}">
+                <img class="img-fluid product-list-card-img bg-white rounded p-2" width="80"
+                  src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ item.product.name }}">
+              </a>
+              {% endif %}
+            </div>
+            <div class="card-body cart-info">
+              <p class="h3">{{ item.product.name }}</p>
+              <p class="d-none d-md-block">{{ item.product.category }}</p>
+            </div>
+            <div class="card-body d-flex justify-content-between flex-md-row-reverse cart-price">
+              <p class="h3">£{{ item.product.price }}</p>
+              <a id="remove-{{ item.slug }}" class="remove-item btn btn-danger mx-1"><i class="fa-solid fa-x"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+
+        {% else %}
+        <!-- No items in wishlist info -->
+        <div class="card-header">
+          <h5 class="card-title text-white">Your wish list is empty</h5>
+        </div>
+        <a type="button" href="{% url 'products' %}" lass="btn btn-primary btn-lg my-1 mx-1">Keep shopping</a>
+        {% endif %}
+      </div><!-- end/ Bootstap card -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
-    </section>
+  </section>
 
 </main>
 {% endblock %}
