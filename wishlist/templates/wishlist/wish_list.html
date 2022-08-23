@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<main class="special-bg">
+
+  <section class="wishlist-section py-5">
+    <div class="text-center my-3">
+      <h2 class="section-heading">My Profile</h2>
+    </div>
+
+    <div class="container">
+
+          <!-- Bootstrap navigation card-->
+          <div class="card main-bg">
+            <div class="card-header bg-white">
+              <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'profile_info' %}">Profile Info</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'profile_billing_details' %}">Billing Details</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'order_history' %}">Orders</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Wishlist</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'quote_history' %}">Requests</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Reviews</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Testimonials</a>
+                </li>
+              </ul>
+            </div>
+          
+            <div class="card-body text-white">
+              <p>My Wishlist</p>
+                      <!-- Bootstrap table-->
+        <div class="table-responsive-lg">
+          <table class="table text-nowrap text-white">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table><!-- end/ Bootstrap table-->
+        </div>
+        
+        </div>
+
+          </div><!-- end/ Bootstrap navigation card-->
+          
+    
+    </div>
+    </section>
+
+</main>
+{% endblock %}
