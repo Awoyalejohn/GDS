@@ -8,30 +8,6 @@ from .forms import UserProfileForm, UserForm, ProfileInfoForm
 
 from checkout.models import Order
 
-class ProfileBillingDetails(LoginRequiredMixin, View):
-    """ Display the user's Profile """
-    template_name = "profiles/profile.html"
-    def get(self, request):
-        profile = get_object_or_404(UserProfile, user=request.user)
-        form = UserProfileForm(instance=profile)
-        template = 'profiles/profile_billing_details.html'
-        context = {
-            'profile':profile,
-            'form': form,
-        }
-        return render(request, template, context)
-
-    def post (self, request):
-        profile = get_object_or_404(UserProfile, user=self.request.user)
-        form = UserProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Profile updated successfully')
-            return HttpResponseRedirect(self.request.path_info)
-        else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
-
-
 class ProfileInfo(LoginRequiredMixin, View):
     """ A view to display form info from the user model """
     def get(self, request):
@@ -59,6 +35,28 @@ class ProfileInfo(LoginRequiredMixin, View):
             return HttpResponseRedirect(reverse('profile_info'))
 
 
+class ProfileBillingDetails(LoginRequiredMixin, View):
+    """ Display the user's Profile """
+    template_name = "profiles/profile.html"
+    def get(self, request):
+        profile = get_object_or_404(UserProfile, user=request.user)
+        form = UserProfileForm(instance=profile)
+        template = 'profiles/profile_billing_details.html'
+        context = {
+            'profile':profile,
+            'form': form,
+        }
+        return render(request, template, context)
+
+    def post (self, request):
+        profile = get_object_or_404(UserProfile, user=self.request.user)
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully')
+            return HttpResponseRedirect(self.request.path_info)
+        else:
+            messages.error(request, 'Update failed. Please ensure the form is valid.')
 
 
 class OrderHistory(LoginRequiredMixin, TemplateView):
