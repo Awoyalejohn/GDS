@@ -120,12 +120,17 @@ class ProductDetailView(View):
         return render(request, template, context)
     
     def post(self, request, slug):
-        product = get_object_or_404(Product, slug=slug) 
+        product = get_object_or_404(Product, slug=slug)
+        print(product)
+        reviews = product.product_review.all()
         form = ReviewForm(request.POST)
         form.instance.product = product
         form.instance.user = UserProfile.objects.get(user=self.request.user)
         if form.is_valid():
             form.save()
+            avg_reviews = reviews.aggregate(Avg('rating')) 
+            product.rating = avg_reviews['rating__avg']
+            product.save()
             messages.success(request, 'Review was successful')
             return HttpResponseRedirect(self.request.path_info)
 
