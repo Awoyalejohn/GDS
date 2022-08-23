@@ -83,6 +83,7 @@
             <div class="card-body d-flex justify-content-between flex-md-row-reverse cart-price">
               <p class="h3">£{{ item.product.price }}</p>
               <a id="remove-{{ item.product.slug }}" class="remove-item btn btn-danger mx-1"><i class="fa-solid fa-x"></i></a>
+              <a id="add-{{ item.product.slug }}" class="add-item btn btn-primary mx-1"><i class="fa-solid fa-cart-arrow-down"></i></a>
             </div>
           </div>
           {% endfor %}
@@ -94,9 +95,12 @@
         <div class="card-header">
           <h5 class="card-title text-white">Your wish list is empty</h5>
         </div>
-        <a type="button" href="{% url 'products' %}" lass="btn btn-primary btn-lg my-1 mx-1">Keep shopping</a>
-        {% endif %}
+        <div class="card-body">
+          
+          <a type="button" href="{% url 'products' %}" lass="btn btn-primary btn-lg my-1 mx-1">Keep shopping</a>
+        </div>
       </div><!-- end/ Bootstap card -->
+        {% endif %}
 
     </div>
   </section>
@@ -131,5 +135,31 @@ for (let removeItem of removeItems) {
   })
 }
 </script>
+<script type="text/javascript">
+  const addItems = document.querySelectorAll(".add-item")
+  for (let addItem of addItems) {
+    addItem.addEventListener('click', function() {
+      
+    const csrftoken = "{{ csrf_token }}";
+    let id = this.getAttribute('id');
+    let slug = id.split('add-')[1];
+    let url = `/wishlist/add_to_cart/${slug}/`;
+    console.log(url)
+  
+    // AJAX request with csrftoken from Django docs
+    const request = new Request(
+      url,
+      {
+          method: 'POST',
+          headers: {'X-CSRFToken': csrftoken},
+          mode: 'same-origin' // Do not send CSRF token to another domain.
+      }
+    );
+    fetch(request).then(function(response) {
+      location.reload();
+    });
+    })
+  }
+  </script>
 
 {% endblock %}

@@ -55,8 +55,36 @@ class RemoveFromWishList(View):
             return HttpResponse(status=200)
 
         except Exception as e:
-            messages.error(request, f'Error removing item: {e}')
+            messages.error(request, f'Error removing: {e}')
             return HttpResponse(status=500)
 
+
+class AddToCart(View):
+    """ A view to add items to the cart from the wishlist """
+    def post(self, request, slug):
+        try:
+            product = get_object_or_404(Product, slug=slug)
+            quantity = 1
+
+            #checks if the cart is in the session and then creates an empty dict if it isn't
+            cart = request.session.get('cart', {})
+            
+            #checks if the slug is in the cart dictionary
+            if slug in list(cart.keys()):
+                messages.error(request, f"You already added {product.name} to your cart!")
+                
+            else:
+                cart[slug] = quantity
+                messages.success(request, f'Added {product.name} to your cart')
+
+            #Adds the amount of that item to its value in the dictionary
+            request.session['cart'] = cart
+            
+            return HttpResponse(status=200)
+
+        except Exception as e:
+            messages.error(request, f'Error adding: {e}')
+            print(e)
+            return HttpResponse(status=500)
 
         
