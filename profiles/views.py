@@ -95,3 +95,13 @@ class ProfileDownloads(TemplateView):
         return context
 
 
+class ProfileReviews(TemplateView):
+     template_name = 'profiles/profile_reviews.html'
+     def get_context_data(self, **kwargs):
+        context = super(ProfileReviews, self).get_context_data(**kwargs)
+        profile = get_object_or_404(UserProfile, user=self.request.user)
+        reviews = profile.user_review.all()
+        context['reviews'] = reviews
+        return context
+
+

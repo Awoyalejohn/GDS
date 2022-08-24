@@ -45,29 +45,30 @@
       
 
 
-        <div class="card-body">
-
-          
-    {% for review in reviews%}
-    <!-- Bootstrap card-->
-    <div class="card main-bg text-white">
-      <div class="card-body">
-        <h4>{{ review.title }}</h4>
-        <p>{{ review.submitted }}</p>
-        <p>{{ review.user }}</p>
-        <p>{{ review.rating }} stars</p>
-        <p>{{ review.body }}</p>
-      </div>
-      <div class="card-body">
-        <div class="d-flex justify-content-end align-items-center">
-            <a type="button" href="{% url 'edit_review' review.id %}" class="btn btn-sm btn-outline-info mx-1">Edit</a>
-            <a type="button" href="{% url 'delete_review' review.id %}" class="btn btn-sm btn-outline-light mx-1">Delete</a>
-        </div>
-      </div>
-    </div><!-- end/ Bootstrap card-->
-    {% endfor %}
-
-
+        <div class="card-body text-white">
+          <p>My Reviews</p>
+        
+        
+          {% for review in reviews %}
+          <!-- Bootstrap card-->
+          <div class="card main-bg text-white">
+            <div class="card-body">
+              <h4>{{ review.title }}</h4>
+              <p>{{ review.submitted }}</p>
+              <p>{{ review.user }}</p>
+              <p>{{ review.rating }} stars</p>
+              <p>{{ review.body }}</p>
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-end align-items-center">
+                <a type="button" href="{% url 'edit_review' review.id %}" class="btn btn-sm btn-outline-info mx-1">Edit</a>
+                <a type="button" href="{% url 'delete_review' review.id %}" class="btn btn-sm btn-outline-light mx-1">Delete</a>
+              </div>
+            </div>
+          </div><!-- end/ Bootstrap card-->
+          {% endfor %}
+        
+        
         </div>
 
       
