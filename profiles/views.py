@@ -105,3 +105,13 @@ class ProfileReviews(TemplateView):
         return context
 
 
+class ProfileTestimonials(TemplateView):
+     template_name = 'profiles/profile_testimonials.html'
+     def get_context_data(self, **kwargs):
+        context = super(ProfileTestimonials, self).get_context_data(**kwargs)
+        profile = get_object_or_404(UserProfile, user=self.request.user)
+        testimonials = profile.user_testmonial.all()
+        context['testimonials'] = testimonials
+        return context
+
+

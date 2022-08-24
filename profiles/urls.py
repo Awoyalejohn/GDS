@@ -1,5 +1,5 @@
 from django.urls import path
-from profiles.views import ProfileBillingDetails, OrderHistory, OrderHistoryDetail, ProfileDownloads, ProfileInfo, ProfileReviews
+from profiles.views import ProfileBillingDetails, OrderHistory, OrderHistoryDetail, ProfileDownloads, ProfileInfo, ProfileReviews, ProfileTestimonials
 
 urlpatterns = [
     path('profile_info/', ProfileInfo.as_view(), name='profile_info'),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('order_history_detail/<order_number>', OrderHistoryDetail.as_view(), name='order_history_detail'),
     path('order_history_detail/<order_number>/downloads', ProfileDownloads.as_view(), name='profile_downloads'),
     path('reviews/', ProfileReviews.as_view(), name='profile_reviews'),
+    path('testimonials/', ProfileTestimonials.as_view(), name='profile_testimonials'),
 ]
