@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<main class="special-bg">
+
+  <section class="wishlist-section py-5">
+    <div class="text-center my-3">
+      <h2 class="section-heading">My Profile</h2>
+    </div>
+
+    <div class="container">
+
+      <!-- Bootstrap card-->
+      <div class="card main-bg">
+
+        <div class="card-header bg-white">
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile_info' %}">Profile Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile_billing_details' %}">Billing Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'order_history' %}">Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'wish_list' %}">Wishlist</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="{% url 'quote_history' %}">Requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Reviews</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Testimonials</a>
+            </li>
+          </ul>
+        </div>
+
+
+      
+
+
+        <div class="card-body">
+
+          
+    {% for review in reviews%}
+    <!-- Bootstrap card-->
+    <div class="card main-bg text-white">
+      <div class="card-body">
+        <h4>{{ review.title }}</h4>
+        <p>{{ review.submitted }}</p>
+        <p>{{ review.user }}</p>
+        <p>{{ review.rating }} stars</p>
+        <p>{{ review.body }}</p>
+      </div>
+      <div class="card-body">
+        <div class="d-flex justify-content-end align-items-center">
+            <a type="button" href="{% url 'edit_review' review.id %}" class="btn btn-sm btn-outline-info mx-1">Edit</a>
+            <a type="button" href="{% url 'delete_review' review.id %}" class="btn btn-sm btn-outline-light mx-1">Delete</a>
+        </div>
+      </div>
+    </div><!-- end/ Bootstrap card-->
+    {% endfor %}
+
+
+        </div>
+
+      
+
+    </div>
+  </section>
+
+</main>
+{% endblock %}
