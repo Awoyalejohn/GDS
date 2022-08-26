@@ -68,9 +68,11 @@
             </li>
           </ul>
         </div>
+        <div class="card-body text-info">
+          <p>Order History</p>
+        </div>
         
         <div class="card-body text-white">
-          <p>Order History</p>
           <div class="table-responsive-lg">
             <table class="table text-nowrap text-white">
               <thead>
@@ -93,7 +95,7 @@
                   </td>
                   <td>{{ order.date }}</td>
                   <td>
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush rounded">
                       {% for item in order.lineitems.all %}
                       <li class="list-group-item p-0">{{ item.product.name }}</li>
                       {% endfor %}

@@ -72,9 +72,11 @@
                 </li>
               </ul>
             </div>
-          
-            <div class="card-body text-white">
+            
+            <div class="card-body text-info">
               <p>Default Billing Information</p>
+            </div>
+            <div class="card-body text-white">
               <form class="mt-3" action="{% url 'profile_billing_details' %}" method="POST" id="profile-update-form">
                 {% csrf_token %}
                 {{ form|crispy }}

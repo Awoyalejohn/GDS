@@ -73,8 +73,15 @@
 
         {% if wish_list_items%}
         <!-- Amount of items in cart info -->
-        <div class="card-header">
-          <h5 class="card-title text-white">4 items in Wishlist</h5>
+        <div class="card-body">
+          <h5 class="card-title text-info">
+            {% if wish_list_items.count >= 2 %}
+            {{ wish_list_items.count }} 
+            items in Wishlist
+            {% else %}
+            1 item in Wishlist
+            {% endif %}
+          </h5>
         </div>
 
 
