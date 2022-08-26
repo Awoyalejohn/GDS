@@ -79,7 +79,7 @@
         <div class="card-body text-white">
         
         
-          <a href="{% url 'add_testimonial' %}" class="btn btn-info">Add a Testimonial</a>
+          <a href="{% url 'add_testimonial' %}" class="btn btn-info mb-3">Add a Testimonial</a>
         
         
           <!-- Bbbootsrap testimonial card layout example https://bbbootstrap.com/snippets/bootstrap-5-user-testimonial-star-ratings-51527336-->
@@ -87,13 +87,13 @@
             {% for testimonial in testimonials %}
             <div class="col-md-4">
               <!-- Bootstrap card-->
-              <div class="card p-3 main-bg text-white text-center px-4">
+              <div class="card p-3 main-bg text-white text-center border">
                 <div class="card-body">
                   {% if testimonial.user.profile_image %}
                   <img class="img-fluid rounded-circle" width="80" src="{{ testimonial.user.profile_image.url }}"
                     alt="{{ product.name }}">
                   {% else %}
-                  <img class="img-fluid rounded-circle" width="80" src="{{ MEDIA_URL }}no_image_available.svg"
+                  <img class="img-fluid rounded-circle" width="80" src="{{ MEDIA_URL }}blank-profile-picture.png"
                     alt="{{ product.name }}">
                   {% endif %}
                 </div>
