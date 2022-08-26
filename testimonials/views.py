@@ -70,7 +70,7 @@ class EditTestimonialView(UserPassesTestMixin, UpdateView):
         return self.request.user.is_superuser or self.request.user == testimonial.user.user
 
 
-class DeleteTestimonialView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class DeleteTestimonialView(UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     """ Deletes a testimonial """
     model = Testimonial
     template_name = 'testimonials/delete_testimonial.html'
@@ -80,6 +80,13 @@ class DeleteTestimonialView(LoginRequiredMixin, SuccessMessageMixin, DeleteView)
     def get_object(self):
         id = self.kwargs.get("id")
         return get_object_or_404(Testimonial, id=id)
+
+    # restric access mixin from https://stackoverflow.com/questions/58217055/how-can-i-restrict-access-to-a-view-to-only-super-users-in-django
+    def test_func(self):
+        id = self.kwargs.get("id")
+        testimonial = get_object_or_404(Testimonial, id=id)
+        return self.request.user.is_superuser or self.request.user == testimonial.user.user
+        
 
 class SuperUserCheck(UserPassesTestMixin, View):
     """ 
