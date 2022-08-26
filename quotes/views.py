@@ -199,6 +199,22 @@ class QuoteCheckoutView(LoginRequiredMixin, View):
 
         if form.is_valid():
             form.save()
+            #send email
+            quote_order = get_object_or_404(QuoteOrder, quote_order_number=form.instance.quote_order_number)
+            cust_email = quote_order.email
+            subject = render_to_string(
+                'quotes/confirmation_emails/confirmation_email_subject.txt',
+                {'quote_order': quote_order})
+            body = render_to_string(
+                'quotes/confirmation_emails/confirmation_email_body.txt',
+                {'quote_order': quote_order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+            
+            send_mail(
+                subject,
+                body,
+                settings.DEFAULT_FROM_EMAIL,
+                [cust_email]
+            )
             return redirect(reverse('quote_checkout_success', args=[quote_order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
@@ -213,20 +229,7 @@ class QuoteCheckoutSuccess(LoginRequiredMixin, View):
             Your order number is {quote_order_number}. A confirmation \
             email will be sent to {quote_order.email}.")
         
-        cust_email = quote_order.email
-        subject = render_to_string(
-            'quotes/confirmation_emails/confirmation_email_subject.txt',
-            {'quote_order': quote_order})
-        body = render_to_string(
-            'quotes/confirmation_emails/confirmation_email_body.txt',
-            {'quote_order': quote_order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [cust_email]
-        )
+
         
         template = 'quotes/quote_checkout_success.html'
         context = {'quote_order': quote_order}
