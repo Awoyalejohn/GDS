@@ -80,7 +80,11 @@
               <li class="list-group-item product-card-bg text-white py-0">
                 <a href="{% url 'products' %}?category={{ product.category.slug }}"><small>{{ product.category }}</small></a>
               </li>
-              <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}</small></li>
+              {% if product.rating %}
+              <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}/5<i class="fa-solid fa-star"></i></small></li>
+              {% else %}
+              <li class="list-group-item product-card-bg text-white py-0"><small>No rating</small></li>
+              {% endif %}
               <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
             </ul>
             
