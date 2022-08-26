@@ -221,15 +221,17 @@ class QuoteCheckoutView(LoginRequiredMixin, View):
             Please double check your information.')
 
 
-class QuoteCheckoutSuccess(LoginRequiredMixin, View):
+class QuoteCheckoutSuccess(View):
     """ A view to handle successful quote request checkouts """
     def get(self, request, quote_order_number):
         quote_order = get_object_or_404(QuoteOrder, quote_order_number=quote_order_number)
+        if not (self.request.user.is_superuser or self.request.user == quote_order.user.user):
+            messages.error(request, "You are not authorised to view this page!")
+            return HttpResponseRedirect(reverse('home'))
         messages.success(request, f"Order successfuly processed! \
             Your order number is {quote_order_number}. A confirmation \
             email will be sent to {quote_order.email}.")
         
-
         
         template = 'quotes/quote_checkout_success.html'
         context = {'quote_order': quote_order}
