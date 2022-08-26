@@ -132,16 +132,20 @@
 
     {% for review in reviews%}
     <!-- Bootstrap card-->
-    <div class="card main-bg text-white">
+    <div class="card main-bg text-white mt-3">
       <div class="card-body">
-        {% if review.rating %}
-        <p>{{ review.rating }}/5<i class="fa-solid fa-star text-warning"></i></p>
-        {% else %}
-        <p>No rating</p>
-        {% endif %}
-        <h4>{{ review.title }}</h4>
-        <p>{{ review.submitted }}</p>
-        <p>{{ review.user }}</p>
+        
+        <p>
+          {% if review.rating %}
+          {{ review.rating }}/5<i class="fa-solid fa-star text-warning"></i>
+          {% else %}
+          No rating
+          {% endif %}
+          <span class="h4">{{ review.title }}</span> 
+        </p>
+        <p>
+          <small class="text-info">Review by {{ review.user }} on {{ review.submitted }}</small>
+        </p>
         <p>{{ review.body }}</p>
       </div>
 
