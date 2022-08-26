@@ -300,11 +300,6 @@ class QuoteOrderFufillCreate(SuperUserCheck, CreateView):
     success_url = reverse_lazy('quote_orders')
     form_class = QuoteFufillmentForm
 
-    def get_initial(self):
-        initial = super(QuoteOrderFufillCreate, self).get_initial()
-        quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])
-        initial['quote_order'] = quote_order
-        return initial
     
     def get_context_data(self, **kwargs):
         context = super(QuoteOrderFufillCreate, self).get_context_data(**kwargs)
@@ -313,6 +308,7 @@ class QuoteOrderFufillCreate(SuperUserCheck, CreateView):
         return context
 
     def form_valid(self, form):
+        form.instance.quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])
         status = form.cleaned_data['status']
         if status:
             quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])

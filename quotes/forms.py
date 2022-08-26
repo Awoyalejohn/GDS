@@ -30,4 +30,4 @@ class QuoteOrderForm(forms.ModelForm):
 class QuoteFufillmentForm(forms.ModelForm):
     class Meta:
         model = QuoteFufillment
-        fields = '__all__'
+        exclude = ('quote_order',)
