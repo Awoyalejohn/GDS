@@ -113,18 +113,28 @@
     <!-- Bootstrap card-->
     <div class="card main-bg text-white">
       <div class="card-body">
-        <form action="" method="POST" class="form">
-          {% csrf_token %}
-
-            {{ form | crispy }}
-
-          {% if request.user.is_authenticated %}
-          <button type="submit" class="btn btn-success">Submit</button>
-          {% else %}
-          <button id="review-tooltip" type="submit" disabled class="btn btn-success">Submit</button>
-          {% endif %}
-
-        </form>
+        <div class="d-flex justify-content-between">
+          <p>Write Customer review</p>
+          <!-- Bootstrap COLLAPSE BUTTON-->
+          <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseReviewForm" aria-expanded="false" aria-controls="collapseReviewForm">
+            Write a review
+          </button>
+        </div>
+        <div class="collapse" id="collapseReviewForm">
+          <form action="" method="POST" class="form">
+            {% csrf_token %}
+  
+              {{ form | crispy }}
+  
+            {% if request.user.is_authenticated %}
+            <button type="submit" class="btn btn-success">Submit</button>
+            {% else %}
+            <button id="review-tooltip" type="submit" disabled class="btn btn-success">Submit</button>
+            {% endif %}
+  
+          </form>
+        </div>
+ 
 
       </div>
     </div><!-- end/ Bootstrap card-->
@@ -195,7 +205,12 @@
                 <li class="list-group-item product-card-bg text-white py-0">
                   <a href="{% url 'products' %}?category={{ product.category.slug }}"><small>{{ product.category }}</small></a>
                 </li>
-                <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}</small></li>
+                {% if product.rating %}
+                <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}/5<i
+                      class="fa-solid fa-star text-warning"></i></small></li>
+                {% else %}
+                <li class="list-group-item product-card-bg text-white py-0"><small>No rating</small></li>
+                {% endif %}
                 <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
               </ul>
               <!-- Card buttons -->
@@ -254,7 +269,12 @@
                 <li class="list-group-item product-card-bg text-white py-0">
                   <a href="{% url 'products' %}?category={{ product.category.slug }}"><small>{{ product.category }}</small></a>
                 </li>
-                <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}</small></li>
+                {% if product.rating %}
+                <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}/5<i
+                      class="fa-solid fa-star text-warning"></i></small></li>
+                {% else %}
+                <li class="list-group-item product-card-bg text-white py-0"><small>No rating</small></li>
+                {% endif %}
                 <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
               </ul>
               <!-- Card buttons -->
