@@ -15,8 +15,37 @@
       <!-- Bootstrap card-->
       <div class="card main-bg">
 
-        <div class="card-header bg-white">
+        <div class="card-header bg-white d-none d-lg-block">
           <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile_info' %}">Profile Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile_billing_details' %}">Billing Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'order_history' %}">Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'wish_list' %}">Wishlist</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'quote_history' %}">Requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile_reviews' %}">Reviews</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile_testimonials' %}">Testimonials</a>
+            </li>
+          </ul>
+        </div>
+        <!-- collapsing bootstrap button for mobile nav-->
+        <div class="card-header bg-white text-center d-lg-none">
+          <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#profileNav" aria-expanded="false" aria-controls="collapseProfileNav">
+            <i class="fa-solid fa-bars"></i> Profile menu
+          </button>
+          <ul class="nav flex-column nav-pills card-header-pills collapse mt-1" id="profileNav">
             <li class="nav-item">
               <a class="nav-link" href="{% url 'profile_info' %}">Profile Info</a>
             </li>
