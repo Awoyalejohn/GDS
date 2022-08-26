@@ -87,7 +87,7 @@
               <tbody>
                 {% for order in orders %}
                 <tr>
-                  <th scope="row">1</th>
+                  <th scope="row">{{ forloop.counter }}</th>
                   <td>
                     <a href="{% url 'order_history_detail' order.order_number %}" title="{{ order.order_number }}">
                       {{ order.order_number|truncatechars:6 }}
@@ -97,7 +97,7 @@
                   <td>
                     <ul class="list-group list-group-flush rounded">
                       {% for item in order.lineitems.all %}
-                      <li class="list-group-item p-0">{{ item.product.name }}</li>
+                      <li class="list-group-item p-0 text-primary text-center">{{ item.product.name }}</li>
                       {% endfor %}
                     </ul>
                   </td>
