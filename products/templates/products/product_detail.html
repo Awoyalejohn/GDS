@@ -62,11 +62,12 @@
               <div class="card-body">
                 <div class="d-flex flex-column gx-3">
                   <input type="submit" class="btn btn-outline-info my-1" value="Add to Cart">
-                  <a type="button" class="btn btn-outline-light my-1">Request Quote</a>
                   {% if request.user.is_authenticated %}
+                  <a type="button" class="btn btn-outline-light my-1">Request Quote</a>
                   <a type="button" id="add-{{ product.slug }}" class="add-item btn btn-outline-warning my-1">Add to Wishlist</a>
                   {% else %}
-                  <a type="button" id="tool-tip-button" class="btn btn-outline-warning my-1">Add to Wishlist</a>
+                  <button type="button" disabled class="btn btn-outline-light my-1">Request Quote</button>
+                  <button type="button" id="tool-tip-button"  disabled class="btn btn-outline-warning my-1">Add to Wishlist</button>
                   {% endif %}
                   <a type="button" href="{% url 'products' %}"  class="btn btn-outline-success my-1">Keep Shopping</a>
                 </div>
@@ -111,8 +112,11 @@
 
             {{ form | crispy }}
 
-   
+          {% if request.user.is_authenticated %}
           <button type="submit" class="btn btn-success">Submit</button>
+          {% else %}
+          <button id="review-tooltip" type="submit" disabled class="btn btn-success">Submit</button>
+          {% endif %}
 
         </form>
 
