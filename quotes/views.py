@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import View, TemplateView, ListView, CreateView, UpdateView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
@@ -251,8 +252,16 @@ class QuoteHistoryDetail(LoginRequiredMixin, TemplateView):
         context['from_quote_history'] = True
         return context
 
+class SuperUserCheck(UserPassesTestMixin, View):
+    """ 
+    A CBV mixin to prevent access from users that are not superusers
+    From https://stackoverflow.com/questions/67351312/django-check-if-superuser-in-class-based-view
 
-class QuoteOrderList(LoginRequiredMixin, ListView):
+    """
+    def test_func(self):
+        return self.request.user.is_superuser
+
+class QuoteOrderList(SuperUserCheck, ListView):
     """ A view to list all the customer quote orders for the admin """
     model = QuoteOrder
     template_name = 'quotes/quote_order_list.html'
@@ -261,7 +270,7 @@ class QuoteOrderList(LoginRequiredMixin, ListView):
 
 
 
-class QuoteOrderFufillCreate(LoginRequiredMixin, CreateView):
+class QuoteOrderFufillCreate(SuperUserCheck, CreateView):
     """
     A view to display an individual customer quote order
     and upload a graphic design for the customer to download
@@ -304,7 +313,7 @@ class QuoteOrderFufillCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class QuoteOrderFufillUpdate(LoginRequiredMixin, UpdateView):
+class QuoteOrderFufillUpdate(SuperUserCheck, UpdateView):
     """
     A view to display an individual customer quote order
     and change the uploaded graphic design for the customer to download

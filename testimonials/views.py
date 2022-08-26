@@ -79,11 +79,11 @@ class ApproveTestimonialsView(View):
     def get(self, request):
         # From Approval with checkboxes tutorial on You Tube
         # https://www.youtube.com/watch?v=FzV_Py68Y_I
-        testimonials = Testimonial.objects.all()
         if not request.user.is_superuser:
             messages.error(request, "You are not authorised to view this page!")
             return HttpResponseRedirect(reverse('home'))
 
+        testimonials = Testimonial.objects.all()
         template = 'testimonials/approve_testimonials.html'
         context = {'testimonials': testimonials}
 
