@@ -250,7 +250,7 @@ class QuoteHistoryView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class QuoteHistoryDetail(LoginRequiredMixin, TemplateView):
+class QuoteHistoryDetail(UserPassesTestMixin, TemplateView):
     """ A view to display a specific user quote request in more detail """
     template_name = "quotes/quote_checkout_success.html"
     
@@ -265,6 +265,12 @@ class QuoteHistoryDetail(LoginRequiredMixin, TemplateView):
         context['quote_order'] = quote_order
         context['from_quote_history'] = True
         return context
+
+        # restric access mixin from https://stackoverflow.com/questions/58217055/how-can-i-restrict-access-to-a-view-to-only-super-users-in-django
+    def test_func(self):
+        quote_order_number = self.kwargs.get("quote_order_number")
+        quote_order = get_object_or_404(QuoteOrder, quote_order_number=quote_order_number)
+        return self.request.user.is_superuser or self.request.user == quote_order.user.user
 
 class SuperUserCheck(UserPassesTestMixin, View):
     """ 

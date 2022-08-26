@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, reverse
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic import View, TemplateView
 from django.http import HttpResponseRedirect
 from .models import UserProfile
@@ -69,9 +70,9 @@ class OrderHistory(LoginRequiredMixin, TemplateView):
         return context
 
 
-class OrderHistoryDetail(LoginRequiredMixin, TemplateView):
-     template_name = 'checkout/checkout_success.html'
-     def get_context_data(self, order_number, **kwargs):
+class OrderHistoryDetail(UserPassesTestMixin, TemplateView):
+    template_name = 'checkout/checkout_success.html'
+    def get_context_data(self, order_number, **kwargs):
         context = super(OrderHistoryDetail, self).get_context_data(**kwargs)
         order = get_object_or_404(Order, order_number=order_number)
 
@@ -82,6 +83,12 @@ class OrderHistoryDetail(LoginRequiredMixin, TemplateView):
         context['order'] = order
         context['from_profile'] = True
         return context
+
+        # restric access mixin from https://stackoverflow.com/questions/58217055/how-can-i-restrict-access-to-a-view-to-only-super-users-in-django
+    def test_func(self):
+        order_number = self.kwargs.get("order_number")
+        order = get_object_or_404(Order, order_number=order_number)
+        return self.request.user.is_superuser or self.request.user == order.user_profile.user
 
 
 class ProfileDownloads(LoginRequiredMixin, TemplateView):
