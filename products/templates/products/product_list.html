@@ -9,7 +9,7 @@
 
       <!-- Product categories filtering navigation buttons -->
       {% for c in current_categories %}
-      <a class="btn btn-sm btn-dark" href="{% url 'products' %}?category={{ c.slug }}">{{ c.name }}</a>
+      <a class="btn btn-primary btn-sm main-bg my-1" href="{% url 'products' %}?category={{ c.slug }}">{{ c.name }}</a>
       {% endfor %}
     </div>
 
@@ -37,7 +37,7 @@
             <div class="col-12 col-md-6 order-md-first">
                 <p class="text-dark mt-3 text-center text-md-start">
                     {% if search_term or current_categories or current_sorting != 'None_None' %}
-                        <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
+                        <span class="small"><a class="btn btn-primary btn-sm main-bg" href="{% url 'products' %}">Products Home</a> | </span>
                     {% endif %}
                     {{ product_list|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                 </p>
