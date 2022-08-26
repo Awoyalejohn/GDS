@@ -14,6 +14,10 @@ class UpdateReview(LoginRequiredMixin, View):
     """ A view to edit a product review """
     def get(self, request, review_id):
         review = get_object_or_404(Review, id=review_id)
+        print(review.user)
+        if not (self.request.user.is_superuser or self.request.user == review.user.user):
+            messages.error(request, "You are not authorised to view this page!")
+            return HttpResponseRedirect(reverse('home'))
         slug = review.product.slug
         print(slug)
         form = ReviewForm(instance=review)

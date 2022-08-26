@@ -132,7 +132,7 @@
       </div>
 
       <!-- Card buttons -->
-      {% if request.user.is_superuser %}
+      {% if request.user.is_superuser or request.user == review.user.user %}
       <div class="card-body">
         <div class="d-flex justify-content-end align-items-center">
             <a type="button" href="{% url 'edit_review' review.id %}" class="btn btn-sm btn-outline-info mx-1">Edit</a>
