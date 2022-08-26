@@ -135,7 +135,13 @@ class QuoteCheckoutView(LoginRequiredMixin, View):
 
         stripe_public_key = settings.STRIPE_PUBLIC_KEY
         stripe_secret_key = settings.STRIPE_SECRET_KEY
-        form = QuoteOrderForm()
+
+        data_dict = {
+            'name': self.request.user,
+            'email': UserProfile.objects.get(user=self.request.user).user.email
+        }
+
+        form = QuoteOrderForm(data_dict)
         quote_item_name = request.session['quote_item_name']
         quote_description = request.session['quote_description']
         quote_subtotal = request.session['quote_subtotal']
