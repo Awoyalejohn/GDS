@@ -116,9 +116,19 @@
         <div class="d-flex justify-content-between">
           <p>Write Customer review</p>
           <!-- Bootstrap COLLAPSE BUTTON-->
+          {% if request.user.is_authenticated %}
           <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseReviewForm" aria-expanded="false" aria-controls="collapseReviewForm">
             Write a review
           </button>
+          {% else %}
+          <button type="button" class="btn btn-primary" 
+            data-bs-container="body"
+            data-bs-toggle="popover" 
+            data-bs-placement="top" 
+            data-bs-content="You need to sign up for an account to write reviews">
+            Write a review
+          </button>
+          {% endif %}
         </div>
         <div class="collapse" id="collapseReviewForm">
           <form action="" method="POST" class="form">
@@ -342,6 +352,10 @@
     });
   })
 
+</script>
+<script type="text/javascript">
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+  const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 </script>
 
 {% endblock %}
