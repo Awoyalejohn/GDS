@@ -16,9 +16,11 @@
 
 
       <!-- Bootstrap card-->
-      <div class="card main-bg px-3">
+      <div class="card main-bg">
+        <div class="card-header text-info">
+          <p>Please fill out the form below</p>
+        </div>
         <div class="card-body">
-          <p class="text-white">Please fill out the form below</p>
         <form action="" method="POST" id="payment-form" class="text-white">
           {% csrf_token %}
 

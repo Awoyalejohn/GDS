@@ -13,11 +13,13 @@
 
     <div class="container">
       <!-- Bootstrap card-->
-      <div class="card text-white main-bg px-3">
-        <p class="">Your Quote request order information is below. A confirmation email will be sent to <strong>{{ quote_order.email }}</strong>.</p>
+      <div class="card text-white main-bg">
+        <div class="card-header text-info">
+            <p class="">Your Quote request order information is below. A confirmation email will be sent to <strong>{{ quote_order.email }}</strong>.</p>
+        </div>
 
          <!-- Quote Request Order confirmaton wrapper-->
-        <div class="order-confirmation-wrapper p-2 border">
+        <div class="card-body order-confirmation-wrapper border">
 
           <div class="row">
               <div class="col">
@@ -138,42 +140,45 @@
               </div>
           </div>      
       </div><!-- end/ Quote Request Order confirmaton wrapper-->
-
-
-      <div class="col-12 col-lg-7 text-right">
-    {% if from_quote_history %}
-    <a href="{% url 'quote_history' %}" class="btn btn-primary my-2">
-        <span class="icon mr-2">
-            <i class="fas fa-angle-left"></i>
-        </span>
-        <span class="text-uppercase">Back to Quote Requests?</span>
-    </a>
-    {% else %}
-    <a href="{% url 'products' %}" class="btn btn-primary my-2">
-        <span class="icon mr-2">
-            <i class="fas fa-gifts"></i>
-        </span>
-        <span class="text-uppercase">Shop for Products</span>
-    </a>
-    {% endif %}
-    <a href="{% url 'quote_request' %}" class="btn btn-success my-2">
-        <span class="icon mr-2">
-            <i class="fas fa-gifts"></i>
-        </span>
-        <span class="text-uppercase">Request Another Quote?</span>
-    </a>
-    {% if from_quote_history %}
-    {% if quote_order.quote_order_set.status and quote_order.quote_order_set.image  %}
-    <a href="{{ quote_order.quote_order_set.image.url }}" download="{{ quote_order.quote_request_name }}" 
-       class="download-item btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top"
-       data-bs-custom-class="custom-tooltip" data-bs-title="Clicke to download {{ quote_order.quote_request_name }}">
-      Completed
-    </a>
-    {% else %}
-    pending...
-    {% endif %}
-    {% endif  %}
+      <div class="card-body">
+          <div class="col-12 col-lg-7 text-right">
+        {% if from_quote_history %}
+        <a href="{% url 'quote_history' %}" class="btn btn-outline-light">
+            <span class="icon mr-2">
+                <i class="fas fa-angle-left"></i>
+            </span>
+            <span class="text-uppercase">Back to Quote Requests?</span>
+        </a>
+        {% else %}
+        <a href="{% url 'products' %}" class="btn btn-outline-light">
+            <span class="icon mr-2">
+                <i class="fas fa-angle-left"></i>
+            </span>
+            <span class="text-uppercase">Shop for Products</span>
+        </a>
+        {% endif %}
+        <a href="{% url 'quote_request' %}" class="btn btn-outline-info">
+            <span class="icon mr-2">
+                <i class="fas fa-gifts"></i>
+            </span>
+            <span class="text-uppercase">Request Another Quote?</span>
+        </a>
+        {% if from_quote_history %}
+        {% if quote_order.quote_order_set.status and quote_order.quote_order_set.image  %}
+        <a href="{{ quote_order.quote_order_set.image.url }}" download="{{ quote_order.quote_request_name }}" 
+           class="download-item btn btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="top"
+           data-bs-custom-class="custom-tooltip" data-bs-title="Clicke to download {{ quote_order.quote_request_name }}">
+          Completed
+        </a>
+        {% else %}
+        pending...
+        {% endif %}
+        {% endif  %}
+          </div>
+        
       </div>
+
+
 
 
 
