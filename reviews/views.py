@@ -45,6 +45,9 @@ class DeleteReview(LoginRequiredMixin, View):
     """ A view for users to delete reviews """
     def get(self, request, review_id):
         review = get_object_or_404(Review, id=review_id)
+        if not (self.request.user.is_superuser or self.request.user == review.user.user):
+            messages.error(request, "You are not authorised to view this page!")
+            return HttpResponseRedirect(reverse('home'))
         slug = review.product.slug
         print(slug)
         context = {'review': review}
