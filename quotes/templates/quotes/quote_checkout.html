@@ -2,55 +2,116 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'quotes/css/quotes.css' %}">
+<link rel="stylesheet" href="{% static 'quotes/css/quotes.css' %}">
 {% endblock %}
 
 {% block content %}
 <main class="special-bg">
-  <section class="quote-checkout-section py-5">
-    <div class="col text-center my-3">
-      <h2 class="section-heading">Quote Checkout</h2>
-    </div>
+  <div class="container">
+    <section class="quote-checkout-section py-5">
+      <div class="col text-center my-3">
+        <h2 class="section-heading">Quote Checkout</h2>
+      </div>
 
-    <div class="container">   
 
 
       <!-- Bootstrap card-->
-      <div class="card main-bg px-3 text-white">
-        <p>Subtotal = £{{ quote_subtotal }}</p>
-        <p>Discount = £{{ quote_discount|floatformat:2 }}</p>
-        <p>Total = £{{ quote_total }}</p>
-        <p>Quote Item Name = {{ quote_item_name }}</p>
-        <p>Selected type = {{ selected_type }}</p>
-        <p>Selected size = {{ selected_size }}</p>
-        <p>Description = {{ quote_description }}</p>
-        <p>Quote Order Number = {{ quote_order_number }}</p>
+      <div class="card main-bg text-white">
+        <div class="card-header text-info">
+          <p>Quote Order summary</p>
+        </div>
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <p class="mb-0  font-weight-bold">Design Name:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+              <p class="mb-0">{{ quote_item_name }}</p>
+            </div>
+          </div>
 
 
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <p class="mb-0  font-weight-bold">Type:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+              <p class="mb-0">{{ selected_type }}</p>
+            </div>
+          </div>
 
-        <form action="" method="POST" id="payment-form" class="text-white">
-          {% csrf_token %}
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <p class="mb-0  font-weight-bold">Size:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+              <p class="mb-0">{{ selected_size }}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <p class="mb-0  font-weight-bold"><small>Description:</small></p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+              <p class="mb-0"><small>{{ quote_description }}</small></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <p class="mb-0  font-weight-bold">Quote Order Subtotal:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+              <p class="mb-0">£{{ quote_subtotal }}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <p class="mb-0  font-weight-bold">Discount:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+              <p class="mb-0">-£{{ quote_discount|floatformat:2 }}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <p class="mb-0  font-weight-bold">Total:</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-right">
+              <p class="mb-0">£{{ quote_total }}</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card-body">
+          <form action="" method="POST" id="payment-form" class="text-white">
+            {% csrf_token %}
 
             {{ form | crispy }}
-            <fieldset class="px-3">
-              <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+            <fieldset>
+              <legend class="fieldset-label small text-white w-auto">Payment</legend>
               <!-- A Stripe card element will go here -->
               <div class="mb-3" id="card-element"></div>
-  
+
               <!-- Used to display form errors -->
               <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
               <!-- Pass the client secret to the view to get the payment intent id -->
               <input type="hidden" value="{{ client_secret }}" name="client_secret">
             </fieldset>
 
-            <a href="{% url 'quote_request' %}" class="btn btn-danger ">
+            <a href="{% url 'quote_request' %}" class="btn btn-outline-light ">
               <span class="icon">
                 <i class="fas fa-chevron-left"></i>
               </span>
               <span class="font-weight-bold">Go back</span>
             </a>
 
-            <button id="submit-button" class="btn btn-success">
+            <button id="submit-button" class="btn btn-outline-info">
               <span class="font-weight-bold">Complete Order</span>
               <span class="icon">
                 <i class="fas fa-lock"></i>
@@ -58,36 +119,26 @@
             </button>
 
 
-        </form>
+          </form>
 
-     
-
+        </div>
 
       </div><!-- end/ Bootstap card -->
 
 
-     
-      
- 
+
+    </section>
+  </div>
 
 
 
 
-
-
-
-    </div>
-
-
-  </section>
- 
-  
 </main>
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'quotes/js/stripe_elements.js' %}"></script>
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'quotes/js/stripe_elements.js' %}"></script>
 {% endblock %}

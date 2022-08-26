@@ -117,7 +117,7 @@
           <p>Write Customer review</p>
           <!-- Bootstrap COLLAPSE BUTTON-->
           {% if request.user.is_authenticated %}
-          <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseReviewForm" aria-expanded="false" aria-controls="collapseReviewForm">
+          <button type="button" class="btn btn-outline-info" data-bs-toggle="collapse" data-bs-target="#collapseReviewForm" aria-expanded="false" aria-controls="collapseReviewForm">
             Write a review
           </button>
           {% else %}
@@ -137,9 +137,9 @@
               {{ form | crispy }}
   
             {% if request.user.is_authenticated %}
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-outline-info">Submit</button>
             {% else %}
-            <button id="review-tooltip" type="submit" disabled class="btn btn-success">Submit</button>
+            <button id="review-tooltip" type="submit" disabled class="btn btn-outline-info">Submit</button>
             {% endif %}
   
           </form>
