@@ -120,7 +120,7 @@ class QuoteRequestView(LoginRequiredMixin, View):
             return HttpResponseRedirect(reverse('quote_checkout'))
 
 
-class QuoteCheckoutView(View):
+class QuoteCheckoutView(LoginRequiredMixin, View):
      """ A view to checkout quote after getting the data from the QuoteRequestView """
      def get(self, request):
         stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -195,7 +195,7 @@ class QuoteCheckoutView(View):
             Please double check your information.')
 
 
-class QuoteCheckoutSuccess(View):
+class QuoteCheckoutSuccess(LoginRequiredMixin, View):
     """ A view to handle successful quote request checkouts """
     def get(self, request, quote_order_number):
         quote_order = get_object_or_404(QuoteOrder, quote_order_number=quote_order_number)
@@ -223,7 +223,7 @@ class QuoteCheckoutSuccess(View):
         return render(request, template, context)
 
 
-class QuoteHistoryView(TemplateView):
+class QuoteHistoryView(LoginRequiredMixin, TemplateView):
     """ A view to list a users quote request history """
     template_name = 'quotes/quote_history.html'
 
@@ -235,7 +235,7 @@ class QuoteHistoryView(TemplateView):
         return context
 
 
-class QuoteHistoryDetail(TemplateView):
+class QuoteHistoryDetail(LoginRequiredMixin, TemplateView):
     """ A view to display a specific user quote request in more detail """
     template_name = "quotes/quote_checkout_success.html"
     
@@ -252,7 +252,7 @@ class QuoteHistoryDetail(TemplateView):
         return context
 
 
-class QuoteOrderList(ListView):
+class QuoteOrderList(LoginRequiredMixin, ListView):
     """ A view to list all the customer quote orders for the admin """
     model = QuoteOrder
     template_name = 'quotes/quote_order_list.html'
@@ -261,7 +261,7 @@ class QuoteOrderList(ListView):
 
 
 
-class QuoteOrderFufillCreate(CreateView):
+class QuoteOrderFufillCreate(LoginRequiredMixin, CreateView):
     """
     A view to display an individual customer quote order
     and upload a graphic design for the customer to download
@@ -304,7 +304,7 @@ class QuoteOrderFufillCreate(CreateView):
         return super().form_valid(form)
 
 
-class QuoteOrderFufillUpdate(UpdateView):
+class QuoteOrderFufillUpdate(LoginRequiredMixin, UpdateView):
     """
     A view to display an individual customer quote order
     and change the uploaded graphic design for the customer to download

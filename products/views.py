@@ -139,6 +139,8 @@ class ProductDetailView(View):
 class SuperUserCheck(UserPassesTestMixin, View):
     """ 
     A CBV mixin to prevent access from users that are not superusers
+    From https://stackoverflow.com/questions/67351312/django-check-if-superuser-in-class-based-view
+
     """
     def test_func(self):
         return self.request.user.is_superuser

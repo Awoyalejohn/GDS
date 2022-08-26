@@ -84,7 +84,7 @@ class OrderHistoryDetail(LoginRequiredMixin, TemplateView):
         return context
 
 
-class ProfileDownloads(TemplateView):
+class ProfileDownloads(LoginRequiredMixin, TemplateView):
     """ A view display orders for users to download """
     template_name = 'profiles/profile_downloads.html'
 
@@ -95,7 +95,7 @@ class ProfileDownloads(TemplateView):
         return context
 
 
-class ProfileReviews(TemplateView):
+class ProfileReviews(LoginRequiredMixin, TemplateView):
      template_name = 'profiles/profile_reviews.html'
      def get_context_data(self, **kwargs):
         context = super(ProfileReviews, self).get_context_data(**kwargs)
@@ -105,7 +105,7 @@ class ProfileReviews(TemplateView):
         return context
 
 
-class ProfileTestimonials(TemplateView):
+class ProfileTestimonials(LoginRequiredMixin, TemplateView):
      template_name = 'profiles/profile_testimonials.html'
      def get_context_data(self, **kwargs):
         context = super(ProfileTestimonials, self).get_context_data(**kwargs)

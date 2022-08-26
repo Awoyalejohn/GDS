@@ -5,11 +5,12 @@ from .models import Review
 from products.models import Product
 from .forms import ReviewForm
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Avg
 
 
 
-class UpdateReview(View):
+class UpdateReview(LoginRequiredMixin, View):
     """ A view to edit a product review """
     def get(self, request, review_id):
         review = get_object_or_404(Review, id=review_id)
@@ -36,7 +37,7 @@ class UpdateReview(View):
             return HttpResponseRedirect(reverse('product_detail', args=[slug]))
 
 
-class DeleteReview(View):
+class DeleteReview(LoginRequiredMixin, View):
     """ A view for users to delete reviews """
     def get(self, request, review_id):
         review = get_object_or_404(Review, id=review_id)

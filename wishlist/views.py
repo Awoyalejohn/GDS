@@ -4,9 +4,10 @@ from profiles.models import UserProfile
 from products.models import Product
 from wishlist.models import WishListItem, WishList
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-class WishListView(TemplateView):
+class WishListView(LoginRequiredMixin, TemplateView):
     """ A view to display items in the users wishlist """
     template_name = 'wishlist/wish_list.html'
 
@@ -18,7 +19,7 @@ class WishListView(TemplateView):
         return context
 
 
-class AddToWishList(View):
+class AddToWishList(LoginRequiredMixin, View):
     """ A view to add items to the user's wishlist """
     def post(self, request, slug):
         try:
@@ -41,7 +42,7 @@ class AddToWishList(View):
 
 
 
-class RemoveFromWishList(View):
+class RemoveFromWishList(LoginRequiredMixin, View):
     """ A view to remove an item from the user's wishlist """
     def post(self, request, slug):
         try:
@@ -59,7 +60,7 @@ class RemoveFromWishList(View):
             return HttpResponse(status=500)
 
 
-class AddToCart(View):
+class AddToCart(LoginRequiredMixin, View):
     """ A view to add items to the cart from the wishlist """
     def post(self, request, slug):
         try:
