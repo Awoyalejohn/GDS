@@ -91,7 +91,7 @@ class OrderHistoryDetail(UserPassesTestMixin, TemplateView):
         return self.request.user.is_superuser or self.request.user == order.user_profile.user
 
 
-class ProfileDownloads(LoginRequiredMixin, TemplateView):
+class ProfileDownloads(UserPassesTestMixin, TemplateView):
     """ A view display orders for users to download """
     template_name = 'profiles/profile_downloads.html'
 
@@ -100,6 +100,12 @@ class ProfileDownloads(LoginRequiredMixin, TemplateView):
         order = get_object_or_404(Order, order_number=order_number)
         context['order'] = order
         return context
+
+        # restric access mixin from https://stackoverflow.com/questions/58217055/how-can-i-restrict-access-to-a-view-to-only-super-users-in-django
+    def test_func(self):
+        order_number = self.kwargs.get("order_number")
+        order = get_object_or_404(Order, order_number=order_number)
+        return self.request.user.is_superuser or self.request.user == order.user_profile.user
 
 
 class ProfileReviews(LoginRequiredMixin, TemplateView):
