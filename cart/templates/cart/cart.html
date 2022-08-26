@@ -31,7 +31,7 @@
         <div class="card cart-table-header bg-info d-none d-md-block h3">
           <div class="card-body d-flex justify-content-between">
             <p>Product Info</p>
-            <p>Price</p>
+            <p class="px-5">Price</p>
           </div>
         </div>
       
@@ -50,7 +50,7 @@
             <p class="h3">{{ item.product.name }}</p>
             <p class="d-none d-md-block">{{ item.product.category }}</p>
           </div>
-          <div class="card-body d-flex justify-content-between flex-md-row-reverse cart-price">
+          <div class="card-body d-flex justify-content-between flex-md-row cart-price">
             <p class="h3">£{{ item.product.price }}</p>
             <a id="remove_{{ item.slug }}" class="remove-item btn btn-danger mx-1"><i class="fa-solid fa-x"></i></a>
           </div>
@@ -58,7 +58,7 @@
         {% endfor %}
       
         <!-- Card order total box -->
-        <div class="total-wrapper d-flex justify-content-center justify-content-md-end border border-danger">
+        <div class="total-wrapper d-flex justify-content-center justify-content-md-end mt-3">
           <div class="card total-box text-dark bg-info">
             <div class="card-body d-flex justify-content-between py-1 h4">
               <p class="my-1">Subtotal:</p>
@@ -82,8 +82,7 @@
         {% endif %}
       
         <!-- Card buttons -->
-        <div
-          class="card-body cart-buttons d-flex flex-column align-items-center justify-content-md-end border border-danger ">
+        <div class="card-body cart-buttons d-flex flex-column align-items-center justify-content-md-end">
           <a type="button" href="{% url 'products' %}" class="btn btn-outline-light btn-lg my-1 mx-1">Keep shopping</a>
           <a type="button" href="{% url 'checkout' %}" class="btn btn-outline-info btn-lg my-1 mx-1">Secure Checkout</a>
         </div>

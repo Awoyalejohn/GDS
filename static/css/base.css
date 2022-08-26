@@ -121,6 +121,7 @@ footer {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(5, 20%);
+  height: 7rem;
 
 }
 
