@@ -46,9 +46,9 @@
 
             <div class="card-body text-center">
               {% if profile.profile_image %}
-                <img class="rounded" src="{{ profile.profile_image.url }}" alt="Profile Picture">
+                <img class="img-fluid rounded-circle" width="300" src="{{ profile.profile_image.url }}" alt="Profile Picture">
               {% else %}
-                <img class="rounded" src="{{ MEDIA_URL }}no_image_available.svg" alt="Profile Picture">
+                <img class="img-fluid rounded-circle" width="300" src="{{ MEDIA_URL }}blank-profile-picture.png" alt="Profile Picture">
               {% endif %}
             </div>
           
