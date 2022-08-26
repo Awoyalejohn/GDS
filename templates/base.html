@@ -149,19 +149,23 @@
           <div class="col-lg-2 col-md-6">
               <h5 class="text-white mb-3">Quick links</h5>
               <ul class="list-unstyled text-muted">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Get started</a></li>
-                  <li><a href="#">FAQ</a></li>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'products' %}?sort=price&direction=asc">By Price</a></li>
+                  <li><a href="{% url 'products' %}?sort=rating&direction=desc">By Rating</a></li>
+                  <li><a href="{% url 'products' %}?sort=category&direction=asc">By Category</a></li>
               </ul>
           </div>
           <div class="col-lg-2 col-md-6">
               <h5 class="text-white mb-3">Quick links</h5>
               <ul class="list-unstyled text-muted">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Get started</a></li>
-                  <li><a href="#">FAQ</a></li>
+                <li><a href="{% url 'products' %}?category=icons,logos,posters,stickers,wallpapers,banners">All Graphic Designs</a></li>
+                <li><a href="{% url 'quote_request' %}">Request a Quote</a></li>
+                <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'account_logout' %}">Sign out</a></li>
+                {% else %}
+                <li><a href="{% url 'account_login' %}">Sign in</a></li>
+                {% endif %}
               </ul>
           </div>
           <div class="col-lg-4 col-md-6">
