@@ -13,7 +13,7 @@
 
       <!-- Bootstrap card-->
       <div class="card main-bg text-white">
-        <div class="card-header bg-white">
+        <div class="card-header bg-white d-none d-sm-block">
           <ul class="nav nav-pills card-header-pills">
             <li class="nav-item">
               <a class="nav-link" href="{% url 'add_product' %}">Products</a>
@@ -26,7 +26,20 @@
             </li>
           </ul>
         </div>
-
+        <!-- Mobile nav-->
+        <div class="card-header bg-white text-center d-sm-none">
+          <ul class="nav nav-pills flex-column card-header-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_product' %}">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'quote_orders' %}">Customer Requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'approve_testimonials' %}">Approve Testimonials</a>
+            </li>
+          </ul>
+        </div>
 
 
         
