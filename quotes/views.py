@@ -117,6 +117,7 @@ class QuoteRequestView(LoginRequiredMixin, View):
             request.session['selected_type'] = selected_type
             request.session['selected_size'] = selected_size
             request.session['quote_request_number'] = uuid_number
+            request.session['from_quote_request'] = True
             messages.success(request, 'Thank you for your request')
             return HttpResponseRedirect(reverse('quote_checkout'))
 
@@ -124,6 +125,14 @@ class QuoteRequestView(LoginRequiredMixin, View):
 class QuoteCheckoutView(LoginRequiredMixin, View):
      """ A view to checkout quote after getting the data from the QuoteRequestView """
      def get(self, request):
+        # Checks if the user was sent here from quote request view
+        if not 'from_quote_request' in request.session:
+            messages.info(request, "You need to submit a request before checkout!")
+            return HttpResponseRedirect(reverse('quote_request'))
+        # Removes from_quote_request key from the session to prevent
+        # access to the checkout view if it was not from the quote request view
+        request.session.pop('from_quote_request')
+
         stripe_public_key = settings.STRIPE_PUBLIC_KEY
         stripe_secret_key = settings.STRIPE_SECRET_KEY
         form = QuoteOrderForm()
