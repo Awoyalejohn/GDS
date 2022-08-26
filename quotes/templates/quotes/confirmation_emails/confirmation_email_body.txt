@@ -1,0 +1,20 @@
+Hello {{ quote_order.name }}!
+
+This is a confirmation of your quote order at Graphics Design Space. Your quote order information is below:
+
+Quote Order Number: {{ quote_order.quote_order_number }}
+Quote Order Date: {{ quote_order.submitted }}
+
+Quote Order Subtotal: £{{ quote_order.subtotal }}
+Discount: -£{{ quote_order.discount }}
+Total: £{{ quote_order.total }}
+
+Your quote order is currently being processed, and we will notify you when it is finished and ready for download.
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your order!
+
+Sincerely,
+
+Graphics Design Space

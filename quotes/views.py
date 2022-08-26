@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.views.generic import View, TemplateView, ListView, CreateView, UpdateView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.conf import settings
 from profiles.models import UserProfile
 from .models import QuoteOrder, QuoteFufillment
@@ -200,6 +202,21 @@ class QuoteCheckoutSuccess(View):
         messages.success(request, f"Order successfuly processed! \
             Your order number is {quote_order_number}. A confirmation \
             email will be sent to {quote_order.email}.")
+        
+        cust_email = quote_order.email
+        subject = render_to_string(
+            'quotes/confirmation_emails/confirmation_email_subject.txt',
+            {'quote_order': quote_order})
+        body = render_to_string(
+            'quotes/confirmation_emails/confirmation_email_body.txt',
+            {'quote_order': quote_order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+        
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [cust_email]
+        )
         
         template = 'quotes/quote_checkout_success.html'
         context = {'quote_order': quote_order}
