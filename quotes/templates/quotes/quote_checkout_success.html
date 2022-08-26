@@ -162,6 +162,17 @@
         </span>
         <span class="text-uppercase">Request Another Quote?</span>
     </a>
+    {% if from_quote_history %}
+    {% if quote_order.quote_order_set.status and quote_order.quote_order_set.image  %}
+    <a href="{{ quote_order.quote_order_set.image.url }}" download="{{ quote_order.quote_request_name }}" 
+       class="download-item btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top"
+       data-bs-custom-class="custom-tooltip" data-bs-title="Clicke to download {{ quote_order.quote_request_name }}">
+      Completed
+    </a>
+    {% else %}
+    pending...
+    {% endif %}
+    {% endif  %}
       </div>
 
 
@@ -183,5 +194,14 @@
  
   
 </main>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'checkout/js/download.js' %}"></script>
+    <script type="text/javascript">
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
 {% endblock %}
 
