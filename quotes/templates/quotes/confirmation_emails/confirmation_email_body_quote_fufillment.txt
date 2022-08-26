@@ -1,0 +1,11 @@
+Hello {{ quote_order.name }}!
+
+Your quote order has now been fufilled and is available to download from your user profile
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your order!
+
+Sincerely,
+
+Graphics Design Space

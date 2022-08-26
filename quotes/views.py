@@ -283,6 +283,26 @@ class QuoteOrderFufillCreate(CreateView):
         context['quote_order'] = quote_order
         return context
 
+    def form_valid(self, form):
+        status = form.cleaned_data['status']
+        if status:
+            quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])
+            cust_email = quote_order.email
+            subject = render_to_string(
+                'quotes/confirmation_emails/confirmation_email_subject_quote_fufillment.txt',
+                {'quote_order': quote_order})
+            body = render_to_string(
+                'quotes/confirmation_emails/confirmation_email_body_quote_fufillment.txt',
+                {'quote_order': quote_order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+            
+            send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [cust_email]
+        )
+        return super().form_valid(form)
+
 
 class QuoteOrderFufillUpdate(UpdateView):
     """
@@ -303,4 +323,24 @@ class QuoteOrderFufillUpdate(UpdateView):
         quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])
         context['quote_order'] = quote_order
         return context
+
+    def form_valid(self, form):
+        status = form.cleaned_data['status']
+        if status:
+            quote_order = QuoteOrder.objects.get(quote_order_number=self.kwargs['quote_order_number'])
+            cust_email = quote_order.email
+            subject = render_to_string(
+                'quotes/confirmation_emails/confirmation_email_subject_quote_fufillment.txt',
+                {'quote_order': quote_order})
+            body = render_to_string(
+                'quotes/confirmation_emails/confirmation_email_body_quote_fufillment.txt',
+                {'quote_order': quote_order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+            
+            send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [cust_email]
+        )
+        return super().form_valid(form)
     
