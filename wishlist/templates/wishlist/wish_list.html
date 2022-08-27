@@ -128,12 +128,14 @@
 
         {% else %}
         <!-- No items in wishlist info -->
-        <div class="card-header">
-          <h5 class="card-title text-white">Your wish list is empty</h5>
+        <div class="card-header text-info">
+          <h5 class="card-title">Your wish list is empty</h5>
         </div>
         <div class="card-body">
           
-          <a type="button" href="{% url 'products' %}" lass="btn btn-primary btn-lg my-1 mx-1">Keep shopping</a>
+          <a type="button" href="{% url 'products' %}" class="btn btn-outline-light">
+            <i class="fas fa-chevron-left"></i>Keep shopping
+          </a>
         </div>
       </div><!-- end/ Bootstap card -->
         {% endif %}
