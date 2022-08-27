@@ -12,13 +12,16 @@
     <div class="container">
 
     <!-- Bootstrap card-->
-      <div class="card product-card-bg">
-        <form method="post" action="." class="form" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form|crispy }}
-          <a class="btn btn-light" href="{% url 'products' %}">Cancel</a>
-          <button type="submit" class="btn btn-primary">Update Product</button>
-        </form>
+      <div class="card main-bg text-white">
+
+        <div class="card-body">
+          <form method="post" action="." class="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <a class="btn btn-outline-light" href="{% url 'products' %}">Cancel</a>
+            <button type="submit" class="btn btn-outline-info">Update Product</button>
+          </form>
+        </div>
       </div><!-- end/ Bootstap card -->
 
     </div>
