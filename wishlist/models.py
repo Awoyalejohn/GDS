@@ -25,4 +25,3 @@ def create_wish_list(sender, instance, created, **kwargs):
     """ Create a wishlist for a user's profile """
     if created:
         WishList.objects.create(user_profile=instance)
-    print('wishlist signal received')

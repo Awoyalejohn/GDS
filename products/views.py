@@ -80,7 +80,6 @@ class ProductDetailView(View):
         product = get_object_or_404(Product, slug=slug)
         reviews = product.product_review.all()
         avg_reviews = product.product_review.all().aggregate(Avg('rating'))
-        print(avg_reviews)
         form = ReviewForm()
 
         # Display recently viewed products code from sessions tutorial on youtube
@@ -107,10 +106,8 @@ class ProductDetailView(View):
         # Display related products code from related products tutorial on youtube
         # https://www.youtube.com/watch?v=fqIBA2Vpws0&t=178s
         related_products = Product.objects.filter(category=product.category).exclude(slug=slug)[:5]
-        print(request.session['recently_viewed'])
 
         profile = get_object_or_404(UserProfile, user=self.request.user )
-        print(profile)
 
         wishlist = get_object_or_404(WishList, user_profile=profile)
         wish_list = []
@@ -131,7 +128,6 @@ class ProductDetailView(View):
     
     def post(self, request, slug):
         product = get_object_or_404(Product, slug=slug)
-        print(product)
         reviews = product.product_review.all()
         form = ReviewForm(request.POST)
         form.instance.product = product

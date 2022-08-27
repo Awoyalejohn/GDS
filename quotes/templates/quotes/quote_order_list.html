@@ -74,7 +74,7 @@
                 <td>£{{ quote_order.total }}</td>
                 <td><!-- Displays pending or completed if the quote has or has not been complted-->
                   {% if quote_order.quote_order_set.status and quote_order.quote_order_set.image  %}
-                  <a href="{% url 'quote_fufill_update' quote_order.quote_order_number %}" class="btn btn-info btn-sm">Completed</a>
+                  <a href="{% url 'quote_fufill_update' quote_order.quote_order_number %}" class="btn btn-success btn-sm">Completed</a>
                   {% elif quote_order.quote_order_set.status or quote_order.quote_order_set.image  %}
                   <a href="{% url 'quote_fufill_update' quote_order.quote_order_number %}" class="btn btn-warning btn-sm">Pending...</a>
                   {% else  %}

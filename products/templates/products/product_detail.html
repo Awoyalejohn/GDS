@@ -337,16 +337,12 @@
 
     const csrftoken = "{{ csrf_token }}";
     let id = this.getAttribute('id');
-    console.log(id);
     let slug = id.split('add-')[1];
-    console.log(slug)
 
     // From stackoverflow answer https://stackoverflow.com/questions/6042007/how-to-get-the-host-url-using-javascript-from-the-current-page
     let path = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port;
-    console.log(path);
 
     let url = path + `/wishlist/add/${slug}/`;
-    console.log(url)
 
     // AJAX request with csrftoken from Django docs
     const request = new Request(

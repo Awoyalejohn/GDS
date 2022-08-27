@@ -112,7 +112,6 @@ class ApproveTestimonialsView(SuperUserCheck, View):
     def post(self, request):
         testimonials = Testimonial.objects.all()
         checkboxes = request.POST.getlist('checkboxes')
-        print(checkboxes)
 
         # Uncheck all events
         testimonials.update(approved=False)

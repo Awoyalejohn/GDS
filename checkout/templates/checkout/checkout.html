@@ -22,7 +22,7 @@
         
         <!-- Amount of items in cart info -->
         <div class="card-header">
-          <h5 class="card-title text-info">Order Summary ({{ product_count }})</h5>
+          <p class="card-title text-info">Order Summary ({{ product_count }})</p>
         </div>
 
         <div class="card-body">
@@ -57,7 +57,7 @@
         
           <!-- Card order total box -->
           <div class="total-wrapper d-flex justify-content-center justify-content-md-end mt-3">
-            <div class="card total-box text-dark bg-info">
+            <div class="card total-box text-dark bg-light">
               <div class="card-body d-flex justify-content-between py-1 h4">
                 <p class="my-1">Order Subtotal:</p>
                 <p class="my-1">£{{ subtotal|floatformat:2 }}</p>

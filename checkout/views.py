@@ -26,7 +26,6 @@ def cache_checkout_data(request):
     try:
         req_json = json.loads(request.body)
         pid = req_json['client_secret'].split('_secret')[0]
-        print(pid)
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
             'cart': json.dumps(request.session.get('cart', {})),
@@ -37,8 +36,6 @@ def cache_checkout_data(request):
     except Exception as e:
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
-        print(e)
-        print(e)
         return HttpResponse(content=e, status=400)
 
 
@@ -64,7 +61,6 @@ class Checkout(View):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        print(intent)
 
         # Checks if the user is authenticated, if it is true it gets the profile
         # and prefills all its fields with the relaevant data for the order form
@@ -119,15 +115,12 @@ class Checkout(View):
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
-            print(pid)
             order.stripe_pid = pid
             order.original_cart = json.dumps(cart)
             order.save()
             for slug, item_data in cart.items():
-                print(cart.items())
                 try:
                     product = Product.objects.get(slug=slug)
-                    print(product)
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,

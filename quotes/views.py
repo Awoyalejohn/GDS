@@ -40,7 +40,6 @@ class QuoteRequestView(LoginRequiredMixin, View):
         return render(request, template, context)
     
     def post(self, request):
-        print(request.POST)
         type_cost = None
         selected_type = None
         type = request.POST['type']
@@ -65,7 +64,6 @@ class QuoteRequestView(LoginRequiredMixin, View):
         else:
             messages.error(request, 'Something went wrong wth your request')
             return redirect(reverse('quote_request'))
-        print(type_cost)
 
         size_cost = None
         selected_size = None
@@ -84,10 +82,8 @@ class QuoteRequestView(LoginRequiredMixin, View):
             messages.error(request, 'Something went wrong wth your request')
             return redirect(reverse('quote_request'))
 
-        print(size_cost)
 
         subtotal = round(type_cost + size_cost, 2)
-        print(subtotal)
 
         if subtotal > settings.DISCOUNT_THRESHOLD:
             discount = ceil(subtotal * settings.DISCOUNT_PERCENTAGE / 100)
@@ -96,8 +92,6 @@ class QuoteRequestView(LoginRequiredMixin, View):
             discount = 0
         
         total = (round(subtotal - discount, 2)) 
-        print(discount)
-        print(total)
 
         quote_item_name = request.POST['name']
         quote_description = request.POST['description']
@@ -105,7 +99,6 @@ class QuoteRequestView(LoginRequiredMixin, View):
         form = QuoteRequestForm(request.POST)
         form.instance.user = UserProfile.objects.get(user=self.request.user)
         uuid_number = str(uuid.uuid4())
-        print(uuid_number)
         form.instance.quote_request_number = uuid_number  
         if form.is_valid():
             form.save()
@@ -158,7 +151,6 @@ class QuoteCheckoutView(LoginRequiredMixin, View):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        print(payment_intent)
 
         if not stripe_public_key:
             messages.warning(request, 'Stripe public key is missing. \
@@ -201,7 +193,6 @@ class QuoteCheckoutView(LoginRequiredMixin, View):
         form.instance.total = request.session['quote_total']
         form.instance.quote_order_number = request.session['quote_request_number']
 
-        # form = QuoteOrderForm(form_data)
 
         if form.is_valid():
             form.save()

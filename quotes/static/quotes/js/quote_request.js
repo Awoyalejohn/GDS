@@ -25,7 +25,6 @@ const selectType = document.querySelector('#id_type');
       typeCost = 0;
     }
 
-    console.log(typeCost);
     typeArray[0] = typeCost;
     subtotal = (typeArray[0] + sizeArray[0]).toFixed(2)
     if (subtotal > 40) {
@@ -34,7 +33,6 @@ const selectType = document.querySelector('#id_type');
       discount = (0).toFixed(2);
     }
     
-    console.log(subtotal);
     subtotalElement.textContent = "£" + subtotal.toString();
     discountElement.textContent = "-£" + discount.toString();
     let total = (subtotal - discount).toFixed(2);
@@ -61,7 +59,6 @@ const selectSize = document.querySelector('#id_size');
       sizeCost = 0;
     }
 
-    console.log(sizeCost);
     sizeArray[0] = sizeCost;
     subtotal = (typeArray[0] + sizeArray[0]).toFixed(2)
     if (subtotal > 40) {
@@ -69,18 +66,10 @@ const selectSize = document.querySelector('#id_size');
     } else {
       discount = (0).toFixed(2);
     }
-    console.log(subtotal);
     subtotalElement.textContent = "£" + subtotal.toString();
     discountElement.textContent = "-£" + discount.toString();
     let total = (subtotal - discount).toFixed(2);
     totalElement.textContent = "£" + total.toString();
 
   });
-
-
-  console.log(typeArray);
-  console.log(sizeArray);
-
-
-  console.log((typeArray[0] + sizeArray[0]).toFixed(2));
 

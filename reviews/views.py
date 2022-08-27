@@ -14,12 +14,10 @@ class UpdateReview(LoginRequiredMixin, View):
     """ A view to edit a product review """
     def get(self, request, review_id):
         review = get_object_or_404(Review, id=review_id)
-        print(review.user)
         if not (self.request.user.is_superuser or self.request.user == review.user.user):
             messages.error(request, "You are not authorised to view this page!")
             return HttpResponseRedirect(reverse('home'))
         slug = review.product.slug
-        print(slug)
         form = ReviewForm(instance=review)
         context = {'review': review, 'form':form}
         template = 'reviews/edit_review.html'
@@ -30,7 +28,6 @@ class UpdateReview(LoginRequiredMixin, View):
         product = review.product
         reviews = product.product_review.all()
         slug = review.product.slug
-        print(slug)
         form = ReviewForm(self.request.POST, instance=review)
         if form.is_valid():
             form.save()
@@ -49,7 +46,6 @@ class DeleteReview(LoginRequiredMixin, View):
             messages.error(request, "You are not authorised to view this page!")
             return HttpResponseRedirect(reverse('home'))
         slug = review.product.slug
-        print(slug)
         context = {'review': review}
         template = 'reviews/delete_review.html'
         return render(request, template, context)
@@ -59,7 +55,6 @@ class DeleteReview(LoginRequiredMixin, View):
         product = review.product
         reviews = product.product_review.all()
         slug = review.product.slug
-        print(slug)
         review.delete()
         avg_reviews = reviews.aggregate(Avg('rating')) 
         product.rating = avg_reviews['rating__avg']

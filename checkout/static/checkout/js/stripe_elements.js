@@ -60,7 +60,6 @@ form.addEventListener('submit', (event) => {
   } else {
     saveInfo = false;
   }
-  console.log(saveInfo);
 
   // Gets CSRF Token from using {% csrf_token %} in the form
   const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -93,7 +92,6 @@ form.addEventListener('submit', (event) => {
 
   fetch(request)
     .then(function (data) {
-      console.log('Success:', data);
       stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: card,
@@ -143,7 +141,6 @@ form.addEventListener('submit', (event) => {
     })
     .catch(function (error) {
       // Reloads the page
-      console.log('Error:', error);
       location.reload();
     });
 });

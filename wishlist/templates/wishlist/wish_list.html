@@ -186,7 +186,6 @@ for (let removeItem of removeItems) {
     let id = this.getAttribute('id');
     let slug = id.split('add-')[1];
     let url = `/wishlist/add_to_cart/${slug}/`;
-    console.log(url)
   
     // AJAX request with csrftoken from Django docs
     const request = new Request(

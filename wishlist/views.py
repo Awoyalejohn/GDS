@@ -37,7 +37,6 @@ class AddToWishList(LoginRequiredMixin, View):
 
         except Exception as e:
             messages.error(request, f'Error adding: {e}')
-            print(e)
             return HttpResponse(status=500)
 
 
@@ -85,7 +84,6 @@ class AddToCart(LoginRequiredMixin, View):
 
         except Exception as e:
             messages.error(request, f'Error adding: {e}')
-            print(e)
             return HttpResponse(status=500)
 
         

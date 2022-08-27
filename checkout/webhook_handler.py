@@ -47,7 +47,6 @@ class StripeWH_Handler:
         Handle the payment_intent.succeeded webhook from Stripe
         """
         intent = event.data.object
-        print(intent)
         pid = intent.id
         cart = intent.metadata.cart
         save_info = intent.metadata.save_info
@@ -125,7 +124,6 @@ class StripeWH_Handler:
                 )
                 for slug, item_data in json.loads(cart).items():
                     product = Product.objects.get(slug=slug)
-                    print(product)
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
