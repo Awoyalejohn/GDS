@@ -8,15 +8,19 @@
 
 <main class="special-bg">
 
-  <section class="signup-section py-5">
-    <div class="text-center my-3">
-      <h1>{% trans "Sign Up" %}</h1>
-    </div>
+  <div class="container">
+    <section class="signup-section py-5">
+      <div class="text-center my-3">
+        <h1>{% trans "Sign Up" %}</h1>
+      </div>
 
-    <div class="container">  
       <!-- Bootstrap card-->
-      <div class="card main-bg px-3">
-        <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+      <div class="card main-bg text-white">
+        <div class="card-header">
+          <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+        </div>
+
+        <div class="card-body">
 
           <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
             {% csrf_token %}
@@ -24,13 +28,14 @@
             {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
-            <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+            <button type="submit" class="btn btn-outline-info">{% trans "Sign Up" %} &raquo;</button>
           </form>
-       
+
+        </div>
       </div><!-- end/ Bootstap card -->
 
-    </div>
-  </section>
+    </section>
+  </div>
 
 </main>
 
