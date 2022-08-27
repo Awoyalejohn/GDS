@@ -107,12 +107,16 @@ class ProductDetailView(View):
         # https://www.youtube.com/watch?v=fqIBA2Vpws0&t=178s
         related_products = Product.objects.filter(category=product.category).exclude(slug=slug)[:5]
 
-        profile = get_object_or_404(UserProfile, user=self.request.user )
 
-        wishlist = get_object_or_404(WishList, user_profile=profile)
-        wish_list = []
-        for item in wishlist.wish_list_item.all():
-            wish_list.append(item.product.slug)
+        if request.user.is_authenticated:
+            profile = get_object_or_404(UserProfile, user=self.request.user )
+
+            wishlist = get_object_or_404(WishList, user_profile=profile)
+            wish_list = []
+            for item in wishlist.wish_list_item.all():
+                wish_list.append(item.product.slug)
+        else:
+            wish_list = None
 
         template = 'products/product_detail.html'
         context = {
