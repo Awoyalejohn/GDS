@@ -11,12 +11,16 @@
       </div>
 
 
-      <div class="card main-bg text-white">
+      <div class="card main-bg text-white text-center">
         <div class="card-body">
           <form method="post">{% csrf_token %}
             <p>Are you sure you want to delete testimonial "{{ object.body }}"?</p>
             {{ form }}
-            <input type="submit" value="Confirm">
+            <a href="{{request.META.HTTP_REFERER}}" class="btn btn-outline-light mx-1">
+              <i class="fas fa-chevron-left"></i>
+              Cancel
+            </a>
+            <input class="btn btn-outline-info" type="submit" value="Confirm">
         </form>
         </div>
 
