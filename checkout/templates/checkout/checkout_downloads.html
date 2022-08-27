@@ -5,41 +5,68 @@
 {% block content %}
 <main class="special-bg">
 
-  <section class="checkout-downloads-section py-5">
-    <div class="text-center my-3">
-      <h2 class="section-heading">Downloads</h2>
-    </div>
-
-
-
+    <!-- Checkout downloads -->
     <div class="container">
-        
-        {% for item in order.lineitems.all %}
-        
+
+      <section class=" checkout-downloads-section py-5">
+        <div class="text-center my-3">
+          <h2 class="section-heading">Downloads</h2>
+        </div>
+
         <!-- Bootstrap card-->
-        <div class="card cart-item bg-warning mt-5">
-          <div class="card-body cart-item-img">
-            {% if item.product.image %}
-              <img class="img-fluid bg-white rounded-1 p-2" src="{{ item.product.image.url}}" alt="{{ product.name }}">
-            {% else %}
-              <img class="img-fluid product-list-card-img bg-white rounded-1 p-2" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
-            {% endif %}
+        <div class="card main-bg">
+
+          
+          
+          <!-- Amount of items in cart info -->
+          <div class="card-header">
+            <h5 class="card-title text-info">{{ order.lineitems.count }} items to download</h5>
           </div>
-          <div class="card-body cart-info">
-            <p class="h3">{{ item.product.name }}</p>
-            <p class="d-none d-md-block">{{ item.product.category }}</p>
+          
+          <div class="card-body">
+            {% for item in order.lineitems.all %}
+            
+            <!-- Card cart item -->
+            <div class="card cart-item bg-light">
+              <div class="card-body cart-item-img">
+                {% if item.product.image %}
+                  <img class="img-fluid bg-white rounded-1 p-2" src="{{ item.product.image.url}}" alt="{{ product.name }}">
+                {% else %}
+                  <img class="img-fluid product-list-card-img bg-white rounded-1 p-2" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+                {% endif %}
+              </div>
+              <div class="card-body cart-info">
+                <p class="h3">{{ item.product.name }}</p>
+                <p class="d-none d-md-block">{{ item.product.category }}</p>
+              </div>
+              <div class="card-body d-flex justify-content-between flex-md-row cart-price">
+                <a id="{{ item.slug }}" href="{{ item.product.image.url}}"
+                  download="{{ item.product.name }}" class="download-item btn btn-info main-bg text-white mx-1">Download
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+
+            
+            
           </div>
-          <div class="card-body d-flex justify-content-between flex-md-row-reverse cart-price">
-            <a id="{{ item.slug }}" href="{{ item.product.image.url}}" download="{{ item.product.name }}" class="download-item btn btn-success mx-1">Download</a>
+          <div class="card-body">
+            <a href="{% url 'products' %}" class="btn btn-outline-light">
+              <i class="fas fa-chevron-left"></i>Continue Shopping
+            </a>
           </div>
+
         </div><!-- end/ Bootstap card -->
-        {% endfor %}
 
 
+      </section>
+
+        
 
 
-    </div>
-  </section>
+      </div>  
+
+
 
 </main>
 {% endblock %}
