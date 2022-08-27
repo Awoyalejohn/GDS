@@ -18,7 +18,11 @@
           
                 <!-- Amount of items in cart info -->
                 <div class="card-header">
+                  {% if order.lineitems.count >= 2 %}
                   <h5 class="card-title text-info">{{ order.lineitems.count }} items to download</h5>
+                  {% else %}
+                  <h5 class="card-title text-info">1 item to download</h5>
+                  {% endif %}
                 </div>
                 
                 <div class="card-body">
