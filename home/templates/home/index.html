@@ -12,15 +12,19 @@
           <p class="fs-5 mb-4 text-white">
             Welcome to Graphics design space, a website where you can purchase graphic designs that you can download.
             We offer a wide variety of graphic designs, including posters, icons, and logos etc.. You have the option of
-            making a quick purchase of any of our earlier designs or request a quote for a more specialised product that will better
-            suit your requirements.
+            making a quick purchase of any of our previous designs or you can request a quote for a more specialised product that
+            will better suit your requirements.
           </p>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a type="button" href="{% url 'products' %}" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Shop Now</a>
             {% if request.user.is_authenticated %}
-            <a type="button" href="{% url 'quote_request' %}" class="btn btn-outline-light btn-lg px-4">Request a quote</a>
+            <a type="button" href="{% url 'quote_request' %}" class="btn btn-outline-light btn-lg px-4">Request a Quote</a>
             {% else %}
-            <button type="button" disabled class="btn btn-outline-light btn-lg px-4">Request a quote</button>
+            <button type="button" class="btn btn-outline-light btn-lg px-4"
+            data-bs-container="body"
+            data-bs-toggle="popover" 
+            data-bs-placement="bottom" 
+            data-bs-content="You need to sign up for an account to request  a quote">Request a Quote</button>
             {% endif %}
           </div>
         </div>
@@ -86,4 +90,13 @@
   </section>
   
 </main>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+  const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+</script>
+
 {% endblock %}
