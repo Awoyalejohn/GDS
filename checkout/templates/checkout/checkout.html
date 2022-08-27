@@ -9,6 +9,7 @@
 {% block content %}
 <main class="special-bg">
 
+  <div class="container">
   <section class="checkout-section py-5">
     <div class="text-center my-3">
       <h2 class="section-heading">Checkout</h2>
@@ -16,55 +17,62 @@
 
 
 
-    <div class="container">
       <!-- Bootstrap card-->
       <div class="card text-white main-bg px-3">
-        <div class="col-12 col-lg-6 order-lg-last mb-5">
-          <p class="text-white">Order Summary ({{ product_count }})</p>
-          <div class="row">
-              <div class="col-7 offset-2">
-                  <p class="mb-1 mt-0 small">Item</p>
-              </div>
-              <div class="col-3 text-right">
-                  <p class="mb-1 mt-0 small">Subtotal</p>
-              </div>
-          </div>
-          {% for item in cart_items %}
-              <div class="row">
-                  <div class="col-2 mb-1">
-                      <a href="{% url 'product_detail' item.product.id %}">
-                          {% if item.product.image %}
-                              <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
-                          {% else %}
-                              <img class="w-100" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
-                          {% endif %}
-                      </a>
-                  </div>
-                  <div class="col-7">
-                      <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                      <p class="my-0 small">Type:</p>
-                  </div>
-                  <div class="col-3 text-right">
-                      <p class="my-0 small">£{{ item.product.price }}</p>
-                      <p class="my-0 small">{{ item.product.category|stringformat:"s"|slice:":-1" }}</p>
-                  </div>
-              </div>
-          {% endfor %}
-  
-          <hr class="my-0">
-          <div class="row text-right">
-              <div class="col-7 offset-2">
-                  <p class="my-0">Order Subtotal:</p>
-                  <p class="my-0">Discount:</p>
-                  <p class="my-0">Order Total:</p>
-              </div>
-              <div class="col-3">
-                  <p class="my-0">£{{ subtotal | floatformat:2 }}</p>
-                  <p class="my-0">-£{{ discount | floatformat:2 }}</p>
-                  <p class="my-0"><strong>£{{ total | floatformat:2 }}</strong></p>
-              </div>
-          </div>
-      </div>
+
+        <div class="card-body">
+          <div class="col-12 col-lg-6 order-lg-last mb-5">
+            <div class="card-header">
+              <p class="text-info">Order Summary ({{ product_count }})</p>
+            </div>
+            <div class="row">
+                <div class="col-7 offset-2">
+                    <p class="mb-1 mt-0 small">Item</p>
+                </div>
+                <div class="col-3 text-right">
+                    <p class="mb-1 mt-0 small">Subtotal</p>
+                </div>
+            </div>
+            {% for item in cart_items %}
+                <div class="row">
+                    <div class="col-2 mb-1">
+                        <a href="{% url 'product_detail' item.product.id %}">
+                            {% if item.product.image %}
+                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <img class="w-100" src="{{ MEDIA_URL }}no_image_available.svg" alt="{{ product.name }}">
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="col-7">
+                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                        <p class="my-0 small">Type:</p>
+                    </div>
+                    <div class="col-3 text-right">
+                        <p class="my-0 small">£{{ item.product.price }}</p>
+                        <p class="my-0 small">{{ item.product.category|stringformat:"s"|slice:":-1" }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+    
+            <hr class="my-0">
+            <div class="row text-right">
+                <div class="col-7 offset-2">
+                    <p class="my-0">Order Subtotal:</p>
+                    <p class="my-0">Discount:</p>
+                    <p class="my-0">Order Total:</p>
+                </div>
+                <div class="col-3">
+                    <p class="my-0">£{{ subtotal | floatformat:2 }}</p>
+                    <p class="my-0">-£{{ discount | floatformat:2 }}</p>
+                    <p class="my-0"><strong>£{{ total | floatformat:2 }}</strong></p>
+                </div>
+            </div>
+        </div>
+
+        
+        </div>
+
   
       </div><!-- end/ Bootstap card -->
 
@@ -72,8 +80,13 @@
 
       
       <!-- Bootstrap card-->
-      <div class="card text-white main-bg px-3">
-        <p>Please fill out the form below</p>
+      <div class="card text-white main-bg">
+
+        <div class="card-header text-info">
+          <p>Please fill out the form below</p>
+        </div>
+
+
         <form action="{% url 'checkout' %}" method="POST" id="payment-form">
           {% csrf_token %}
           <fieldset class="rounded px-3 mb-5">
@@ -113,7 +126,7 @@
             <input type="hidden" value="{{ client_secret }}" name="client_secret">
           </fieldset>
 
-          <div class="submit-button text-right mt-5 mb-2">
+          <div class="card-body submit-button text-right">
             <a href="{% url 'display_cart' %}" class="btn btn-outline-light">
               <span class="icon">
                 <i class="fas fa-chevron-left"></i>
@@ -139,8 +152,8 @@
 
 
 
+    </section>
     </div>
-  </section>
 
 </main>
 {% endblock %}
