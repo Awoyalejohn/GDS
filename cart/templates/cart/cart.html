@@ -92,7 +92,11 @@
         <div class="card-header">
           <h5 class="card-title text-white">Your cart is empty</h5>
         </div>
-        <a type="button" href="{% url 'products' %}" lass="btn btn-outline-white btn-lg my-1 mx-1">Keep shopping</a>
+        <div class="card-body">
+          <a type="button" href="{% url 'products' %}" class="btn btn-outline-light">
+            <i class="fas fa-chevron-left"></i>Keep shopping
+          </a>
+        </div>
         {% endif %}
       </div><!-- end/ Bootstap card -->
         
