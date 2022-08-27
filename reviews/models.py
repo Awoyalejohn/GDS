@@ -13,5 +13,10 @@ class Review(models.Model):
     submitted =  models.DateTimeField(auto_now_add=True)
     edited_on = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['-submitted']
+
     def __str__(self):
         return self.title
+
+    

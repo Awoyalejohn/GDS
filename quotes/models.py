@@ -32,6 +32,9 @@ class QuoteOrder(models.Model):
     submitted = models.DateTimeField(auto_now_add=True)
     quote_order_number = models.CharField(max_length=250, unique=True)
 
+    class Meta:
+        ordering = ['-submitted']
+
     def __str__(self):
         return self.quote_request_name
 
