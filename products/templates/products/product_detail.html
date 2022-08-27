@@ -72,12 +72,18 @@
                   {% else %}
                   <button disabled class="btn btn-outline-info my-1">Added to Cart</button>
                   {% endif %}
+
                   {% if request.user.is_authenticated %}
-                  <a type="button" class="btn btn-outline-light my-1">Request Quote</a>
-                  <a type="button" id="add-{{ product.slug }}" class="add-item btn btn-outline-warning my-1">Add to Wishlist</a>
+                    <a type="button" class="btn btn-outline-light my-1">Request Quote</a>
+                    {% if not product.slug in wishlist %}
+                      <a type="button" id="add-{{ product.slug }}" class="add-item btn btn-outline-warning my-1">Add to Wishlist</a>
+                    {% else %}
+                      <button type="button" disabled class="btn btn-outline-warning my-1">Added to Wishlist</button>
+                    {% endif %}
+                    
                   {% else %}
-                  <button type="button" disabled class="btn btn-outline-light my-1">Request Quote</button>
-                  <button type="button" id="tool-tip-button"  disabled class="btn btn-outline-warning my-1">Add to Wishlist</button>
+                    <button type="button" disabled class="btn btn-outline-light my-1">Request Quote</button>
+                    <button type="button" id="tool-tip-button"  disabled class="btn btn-outline-warning my-1">Add to Wishlist</button>
                   {% endif %}
                   <a type="button" href="{% url 'products' %}"  class="btn btn-outline-success my-1">Keep Shopping</a>
                 </div>

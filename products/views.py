@@ -10,6 +10,7 @@ from django.db.models.functions import Lower
 from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from products.models import Product, Category
+from wishlist.models import WishList
 from .forms import ProductForm
 from reviews.forms import ReviewForm
 from profiles.models import UserProfile
@@ -108,6 +109,15 @@ class ProductDetailView(View):
         related_products = Product.objects.filter(category=product.category).exclude(slug=slug)[:5]
         print(request.session['recently_viewed'])
 
+        profile = get_object_or_404(UserProfile, user=self.request.user )
+        print(profile)
+
+        wishlist = get_object_or_404(WishList, user_profile=profile)
+        wish_list = []
+        for item in wishlist.wish_list_item.all():
+            wish_list.append(item.product.slug)
+            print(item.product.slug)
+
         template = 'products/product_detail.html'
         context = {
             'product': product,
@@ -116,6 +126,7 @@ class ProductDetailView(View):
             'avg_reviews': avg_reviews,
             'recently_viewed_products':recently_viewed_products,
             'related_products': related_products,
+            'wishlist': wish_list,
         }
         return render(request, template, context)
     
