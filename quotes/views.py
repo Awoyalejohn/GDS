@@ -118,7 +118,7 @@ class QuoteRequestView(LoginRequiredMixin, View):
             request.session['selected_size'] = selected_size
             request.session['quote_request_number'] = uuid_number
             request.session['from_quote_request'] = True
-            messages.success(request, 'Thank you for your request')
+            messages.info(request, 'Just need some more information to complete your order.')
             return HttpResponseRedirect(reverse('quote_checkout'))
 
 
