@@ -116,7 +116,6 @@ class ProductDetailView(View):
         wish_list = []
         for item in wishlist.wish_list_item.all():
             wish_list.append(item.product.slug)
-            print(item.product.slug)
 
         template = 'products/product_detail.html'
         context = {

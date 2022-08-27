@@ -117,7 +117,11 @@
               <p class="d-none d-md-block">{{ item.product.category }}</p>
             </div>
             <div class="card-body d-flex justify-content-end cart-price">
+              {% if not item.product.slug in request.session.cart %}
               <a id="add-{{ item.product.slug }}" class="add-item btn btn-primary btn-sm mx-1"><i class="fa-solid fa-cart-arrow-down"></i></a>
+              {% else %}
+              <button disabled class="btn btn-primary btn-sm mx-1"><i class="fa-solid fa-cart-arrow-down"></i></button>
+              {% endif %}
               <a id="remove-{{ item.product.slug }}" class="remove-item btn btn-danger btn-sm mx-1"><i class="fa-solid fa-x"></i></a>
               <p class="h3">£{{ item.product.price }}</p>
             </div>
