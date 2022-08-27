@@ -46,7 +46,9 @@
           <form method="post" action="{% url 'add_product' %}" class="form" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form|crispy }}
-            <a class="btn btn-outline-light" href="{% url 'products' %}">Cancel</a>
+            <a class="btn btn-outline-light" href="{% url 'products' %}">
+              <i class="fas fa-chevron-left"></i>Products
+            </a>
             <button type="submit" class="btn btn-outline-info">Add Product</button>
           </form>
 

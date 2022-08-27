@@ -2,27 +2,32 @@
 {% load static %}
 
 {% block content %}
-<main>
-  <section class="delete-product-section py-5 special-bg">
+<main class="special-bg">
+  <div class="container">
+  <section class="delete-product-section py-5">
     <!-- Bootstap cards grid-->
     <div class="mb-5">
       <h2 class="section-heading">Delete Product</h2>
     </div>
 
-    <div class="container">
 
     <!-- Bootstrap card-->
-      <div class="card product-card-bg">
-        <form method="post" action="." class="form">
-          {% csrf_token %}
-          <p>Are you sure you want to delete "{{ object }}"?</p>
-          <a class="btn btn-light" href="{% url 'products' %}">Cancel</a>
-          <button type="submit" class="btn btn-primary">Confirm</button>
-        </form>
-      </div><!-- end/ Bootstap card -->
+      <div class="card main-bg text-white text-center">
 
+        <div class="card-body">
+          <form method="post" action="" class="form">
+            {% csrf_token %}
+            <p>Are you sure you want to delete "{{ object }}"?</p>
+            <a class="btn btn-outline-light" href="{% url 'products' %}">
+              <i class="fas fa-chevron-left"></i>Cancel
+            </a>
+            <button type="submit" class="btn btn-outline-info">Confirm</button>
+          </form>
+        </div><!-- end/ Bootstap card -->
+        </div>
+
+    </section>
     </div>
-  </section>
 
 </main>
 {% endblock %}
