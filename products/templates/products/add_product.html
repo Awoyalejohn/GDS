@@ -40,9 +40,12 @@
             </li>
           </ul>
         </div>
+        
+        <div class="card-header text-info">
+          <p>Add a product</p>
+        </div>
 
         <div class="card-body text-white">
-          <p>Add a product</p>
           <form method="post" action="{% url 'add_product' %}" class="form" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form|crispy }}
