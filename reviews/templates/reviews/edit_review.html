@@ -16,8 +16,11 @@
           <form method="post" action="" class="form">
             {% csrf_token %}
             {{ form|crispy }}
-            <a class="btn btn-light" href="#">Cancel</a>
-            <button type="submit" class="btn btn-primary">Update Review</button>
+            <a href="{{request.META.HTTP_REFERER}}" class="btn btn-outline-light mx-1">
+              <i class="fas fa-chevron-left"></i>
+              Cancel
+            </a>
+            <button type="submit" class="btn btn-outline-info">Update Review</button>
           </form>
 
 
