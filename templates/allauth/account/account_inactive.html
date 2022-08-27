@@ -8,20 +8,22 @@
 
 <main class="special-bg">
 
-  <section class="account-inactive-section py-5">
-    <div class="text-center my-3">
-      <h1>{% trans "Account Inactive" %}</h1>
-    </div>
+  <div class="container">
+    <section class="account-inactive-section py-5">
+      <div class="text-center my-3">
+        <h1>{% trans "Account Inactive" %}</h1>
+      </div>
 
-    <div class="container">
       <!-- Bootstrap card-->
-      <div class="card main-bg px-3">
-        <p>{% trans "This account is inactive." %}</p>
+      <div class="card main-bg text-white">
+        <div class="card-body">
+          <p>{% trans "This account is inactive." %}</p>
+        </div>
 
       </div><!-- end/ Bootstap card -->
 
-    </div>
-  </section>
+    </section>
+  </div>
 
 </main>
 {% endblock %}

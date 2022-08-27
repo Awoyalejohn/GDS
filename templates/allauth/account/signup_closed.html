@@ -8,20 +8,22 @@
 
 <main class="special-bg">
 
+  <div class="container">  
   <section class="signup-closed-section py-5">
     <div class="text-center my-3">
       <h1>{% trans "Sign Up Closed" %}</h1>
     </div>
 
-    <div class="container">  
       <!-- Bootstrap card-->
-      <div class="card main-bg px-3">
-        <p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+      <div class="card main-bg text-white">
+        <div class="card-body">
+          <p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+        </div>
        
       </div><!-- end/ Bootstap card -->
 
+    </section>
     </div>
-  </section>
 
 </main>
 {% endblock %}
