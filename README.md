@@ -3,12 +3,12 @@ Graphics Design Space is an ecommerce website where users can purchase and downl
 
 The live link can be found here - https://graphics-design-space.herokuapp.com/
 
+![GDS mockup](https://raw.githubusercontent.com/Awoyalejohn/GDS/media/website-mock-up.png)
+
 ## User Experience
 ### User Stories
 
 Link to user stories Kanban - [https://github.com/Awoyalejohn/GDS/projects/1](https://github.com/Awoyalejohn/GDS/projects/1)
-![GDS mockup](https://raw.githubusercontent.com/Awoyalejohn/GDS/media/website-mock-up.png)
-
 ### Epic 1 - **Viewing and Navigation**
 
 - As a Site User I can view a list of products so that I can select some to purchase.
