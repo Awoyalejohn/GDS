@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /wishlist/
+Disallow: /reviews/
+Disallow: /quotes/
+Disallow: /profile/
+Sitemap: https://graphics-design-space.herokuapp.com/sitemap.xml
