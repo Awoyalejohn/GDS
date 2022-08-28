@@ -6,6 +6,24 @@ The live link can be found here - https://graphics-design-space.herokuapp.com/
 ![GDS mockup](https://github.com/Awoyalejohn/GDS/blob/main/media/website-mock-up.png)
 
 ## User Experience
+## Strategy
+
+The website is a business to customer (B2C) website that sells digital products (digital copies of their art). Depending on the customer's choice of graphic design, they can be downloaded to use for things like profile images, inspiration, use with their own business, or just print off and hang somewhere. 
+
+The target audience are:
+
+- Graphic designers
+- Web developers
+- Aged 21 and over working professionals
+
+Considering all that, I believe the customers will require a website that is able to:
+
+- Navigate easily
+- Sort and search capability
+- Send emails
+- Request quotes
+- Allow users to make an account and view their orders
+- Allow users to  rate or review products
 ### User Stories
 
 Link to user stories Kanban - [https://github.com/Awoyalejohn/GDS/projects/1](https://github.com/Awoyalejohn/GDS/projects/1)
