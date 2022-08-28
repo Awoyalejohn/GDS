@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/accounts/login/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/cart/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/?sort=price&amp;direction=asc</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/?sort=rating&amp;direction=desc</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/?sort=category&amp;direction=asc</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/?category=icons</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/?category=logos</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/?category=posters</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/?category=stickers</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/?category=wallpapers</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/?category=banners</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/?category=icons,logos,posters,stickers,wallpapers,banners</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/accounts/login/?next=/quotes/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/testimonials/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/daiquiry/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/achievement/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/coffee/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/basketball/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/rocket/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/bagpack/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/blackboard/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/calculator/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/crocodile/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/id-card/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/sun/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/table-tennis/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/tea-time/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/trash-can/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/umbrella/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/world-wide-web/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/radiation/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/bomb/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/mirror/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/microphone/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/bakery/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/microtech/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/patisserie/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/techno-lab/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/technology/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/universal-tech/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/bistro/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/abstract-orange-geometric/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/abstract-dark-geometric/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/abstract-blue-geometric/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/abstract-blue-geometric-2/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/abstract-blue-geometric-3/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/abstract-purple-geometric/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/abstract-purple-geometric-2/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/abstract-purple-geometric-3/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/abstract-red-geometric/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/abstract-red-geometric-2/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/coffee-shop/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/fast-food/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/hexagone/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/bulb/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/blue-geometric-3d/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/digital-triangular/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/geometric-3d-design/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/geometric-liquid/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/pink-geometric-3d/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/pink-symbol-poster/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/purple-digital-geometric/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/red-poster/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/yellow-poster/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/green-poster/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/black-on-symbol/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/interface/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/music/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/red-wallpaper/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/blue-triangles/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/dull-triangles/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/dusk-triangles/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/multicolour-triangles/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/products/rgb-triangles/</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/accounts/signup/?next=%2Fquotes%2F</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://graphics-design-space.herokuapp.com/accounts/login/?next=%2Fquotes%2F</loc>
+  <lastmod>2022-08-28T12:27:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
