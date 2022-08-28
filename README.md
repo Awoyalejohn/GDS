@@ -112,3 +112,18 @@ Link to user stories Kanban - [https://github.com/Awoyalejohn/GDS/projects/1](ht
 
 - As a Site User I can add items to wish list so that I can make a list of items I may purchase someday.
 - As a Site User I can view items in my Wishlist so that I can add those items to my shopping cart from my Wishlist.
+
+## Design
+### Colour Scheme
+
+The primary colours used for the website are dark blues, black, cyan, and white. I made sure to pick the ones that contrast well with each other using Adobe colour.
+
+![Colour sceme](https://github.com/Awoyalejohn/GDS/blob/main/media/colour-scheme.png)
+
+### Typography
+
+The website uses Helvetica Neue as the main font-family and it is supplied by Bootstrap default.
+
+### Wireframes
+
+Links to the wire frames for each page:
