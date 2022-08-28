@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="home-bg">
+  <!--Bootstrap dark mode hero-->
+  <section class="error-section">
+    <div class="text-secondary px-4 py-5 text-center">
+      <div class="py-5">
+        <div class="col-lg-6 mx-auto">
+          <h1 class="display-4 fw-bold text-white">You are not authorised to access this page!</h1>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a type="button" href="{% url 'products' %}" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Return to Shop</a>
+            <a type="button" href="{% url 'quote_request' %}" class="btn btn-outline-light btn-lg px-4">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</main>
+{% endblock %}

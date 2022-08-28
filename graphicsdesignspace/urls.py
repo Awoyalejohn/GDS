@@ -33,3 +33,4 @@ urlpatterns = [
     path('wishlist/', include('wishlist.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 handler404 = 'graphicsdesignspace.views.handler404'
+handler403 = 'graphicsdesignspace.views.handler403'
