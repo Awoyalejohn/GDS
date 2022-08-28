@@ -147,25 +147,18 @@
   <!--footer-->
   <footer class="w-100 pt-4 flex-shrink-0">
     <div class="container py-4">
-      <div class="row gy-3 gx-4 text-white">
-        <div class="col-lg-4 col-md-6">
-          <h5 class="text-white">Social</h5>
+      <div class="row gy-3 gx-4">
+        <div class="col-lg-4 col-md-6 text-white">
+          <h5>Social</h5>
           <p class="small">Check out our facebook page, so you can be up to date with our latest offers!</p>
           <a class="link-light" href="https://www.facebook.com/Graphics-Design-Space-106109438898899" rel="noopener" target="_blank"><i
               class="fab fa-facebook-square"></i> Follow us on Facebook!</a>
         </div>
-        <div class="col-lg-2 col-md-6">
-          <h5 class="text-white mb-3">Quick links</h5>
-          <ul class="list-unstyled">
-            <li><a class="link-light" href="{% url 'home' %}">Home</a></li>
-            <li><a class="link-light" href="{% url 'products' %}?sort=price&direction=asc">By Price</a></li>
-            <li><a class="link-light" href="{% url 'products' %}?sort=rating&direction=desc">By Rating</a></li>
-            <li><a class="link-light" href="{% url 'products' %}?sort=category&direction=asc">By Category</a></li>
-          </ul>
-        </div>
+
         <div class="col-lg-2 col-md-6">
           <h5 class="text-white mb-3">Quick links</h5>
           <ul class="list-unstyled text-muted">
+            <li><a class="link-light" href="{% url 'home' %}">Home</a></li>
             <li><a class="link-light" href="{% url 'products' %}?category=icons,logos,posters,stickers,wallpapers,banners">All Graphic
                 Designs</a></li>
             <li><a class="link-light" href="{% url 'quote_request' %}">Request a Quote</a></li>
@@ -178,21 +171,22 @@
           </ul>
         </div>
   
-        <!-- Begin Mailchimp Signup Form -->
+        <!-- Mailchimp Signup Form -->
   
-        <div id="mc_embed_signup" class="col-lg-4 col-md-6 text-white m-0">
+        <div id="mc_embed_signup" class="col">
           <form
             action="https://herokuapp.us12.list-manage.com/subscribe/post?u=205ba5d986c25b7c5a12b108f&amp;id=c16b13cddf&amp;f_id=00b2b4e0f0"
             method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
             target="_blank" novalidate>
             <div id="mc_embed_signup_scroll">
-              <h2 class="mt-0">Newsletter</h2>
-              <p class="m-0">Get exclusive offers and discount codes by subscribing to our monthly newsletter!</p>
+              <h2>Subscribe</h2>
+              <p class="small">Get exclusive offers and discount codes by subscribing to our monthly newsletter!</p>
               <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
               <div class="mc-field-group">
                 <label for="mce-EMAIL">Email Address <span class="asterisk">*</span>
                 </label>
                 <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+                <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
               </div>
               <div id="mce-responses" class="clear foot">
                 <div class="response" id="mce-error-response" style="display:none"></div>
@@ -203,8 +197,10 @@
                   name="b_205ba5d986c25b7c5a12b108f_c16b13cddf" tabindex="-1" value=""></div>
               <div class="optionalParent">
                 <div class="clear foot">
-                  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
-                    class="button bg-primary">
+                  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                  <p class="brandingLogo"><a href="http://eepurl.com/h9LpMf"
+                      title="Mailchimp - email marketing made easy and fun"><img
+                        src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
                 </div>
               </div>
             </div>
