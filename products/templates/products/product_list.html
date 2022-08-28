@@ -78,7 +78,7 @@
             <!-- Card tags -->
             <ul class="list-group list-group-flush">
               <li class="list-group-item product-card-bg text-white py-0">
-                <a href="{% url 'products' %}?category={{ product.category.slug }}"><small>{{ product.category }}</small></a>
+                <a  class="link-light" href="{% url 'products' %}?category={{ product.category.slug }}"><small>{{ product.category }}</small></a>
               </li>
               {% if product.rating %}
               <li class="list-group-item product-card-bg text-white py-0"><small>Rating: {{ product.rating }}/5<i class="fa-solid fa-star text-warning"></i></small></li>
