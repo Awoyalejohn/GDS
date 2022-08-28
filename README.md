@@ -7,6 +7,7 @@ The live link can be found here - https://graphics-design-space.herokuapp.com/
 ### User Stories
 
 Link to user stories Kanban - [https://github.com/Awoyalejohn/GDS/projects/1](https://github.com/Awoyalejohn/GDS/projects/1)
+![GDS mockup](https://raw.githubusercontent.com/Awoyalejohn/GDS/media/website-mock-up.png)
 
 ### Epic 1 - **Viewing and Navigation**
 
