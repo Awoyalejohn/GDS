@@ -494,3 +494,18 @@ I also added alt attribute to all my images to help with SEO.
 The rel nooper attribute was also used for links that went outside my website, like the Facebook page.
 
 The website also has a tobots.txt file and a privacy policy.
+
+## Marketing
+Facebook page
+
+Added a Facebook page for the website for customers to keep to up data with the latest deals and discounts. 
+
+[Facebook page](https://www.facebook.com/Graphics-Design-Space-106109438898899)
+
+![Facebook page](https://github.com/Awoyalejohn/GDS/blob/main/media/facebook-page.png)
+
+Newsletter
+
+A newsletter subscription has been added to the footer section of the site for users to subscribe to so that they can get newsletter emails about the site news, exclusive offers and discount codes. The form is from mail chimp.
+
+![Newsletter](https://github.com/Awoyalejohn/GDS/blob/main/media/mail-chimp-form.png)
