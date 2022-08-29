@@ -54,7 +54,7 @@ form.addEventListener('submit', (event) => {
   document.querySelector('#submit-button').disabled = true;
 
   // Checks the checkbox if its checked
-  let saveInfo = document.querySelector('#id-save-info')
+  let saveInfo = document.querySelector('#id-save-info');
   if (typeof (saveInfo) != 'undefined' && saveInfo != null) {
     saveInfo = saveInfo.checked;
   } else {
@@ -68,7 +68,7 @@ form.addEventListener('submit', (event) => {
   const url = '/checkout/cache_checkout_data/';
 
   //headers
-  headerInfo = {
+  const headerInfo = {
     'Content-Type': 'application/json',
     'X-CSRFToken': csrftoken,
   };
@@ -137,7 +137,7 @@ form.addEventListener('submit', (event) => {
             form.submit();
           }
         }
-      })
+      });
     })
     .catch(function (error) {
       // Reloads the page

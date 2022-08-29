@@ -1,9 +1,9 @@
 //  Code to calculate quote request form checkout total when the type and size are selected in the select box
 let typeArray = [0];
 let sizeArray = [0];
-let subtotal = 0
+let subtotal = 0;
 let subtotalElement =  document.querySelector('#subtotal');
-let discountPercent = 10
+let discountPercent = 10;
 let discountElement = document.querySelector('#discount');
 let totalElement = document.querySelector('#total');
 
@@ -13,6 +13,7 @@ const selectType = document.querySelector('#id_type');
   selectType.addEventListener('change', (event) => {
     let selectedValue = event.target.value;
     let typeCost = null;
+    let discount = null;
 
     // selects the price based on the current value
     if (selectedValue == 'IC' || selectedValue == 'ST') {
@@ -26,7 +27,7 @@ const selectType = document.querySelector('#id_type');
     }
 
     typeArray[0] = typeCost;
-    subtotal = (typeArray[0] + sizeArray[0]).toFixed(2)
+    subtotal = (typeArray[0] + sizeArray[0]).toFixed(2);
     if (subtotal > 40) {
       discount = (subtotal * discountPercent / 100).toFixed(2);
     } else {
@@ -47,6 +48,7 @@ const selectSize = document.querySelector('#id_size');
   selectSize.addEventListener('change', (event) => {
     let selectedValue = event.target.value;
     let sizeCost = null;
+    let discount = null;
 
     // selects the price based on the current value
     if (selectedValue == 'S') {
@@ -60,7 +62,7 @@ const selectSize = document.querySelector('#id_size');
     }
 
     sizeArray[0] = sizeCost;
-    subtotal = (typeArray[0] + sizeArray[0]).toFixed(2)
+    subtotal = (typeArray[0] + sizeArray[0]).toFixed(2);
     if (subtotal > 40) {
       discount = (subtotal * discountPercent / 100).toFixed(2);
     } else {

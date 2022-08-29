@@ -3,7 +3,7 @@
  * https://stackoverflow.com/questions/44070437/how-to-get-a-file-or-blob-from-an-url-in-javascript
  */
 const downloadItems = document.querySelectorAll('.download-item');
-for (let downloadItem of downloadItems ) {
+for (const downloadItem of downloadItems ) {
     let url = downloadItem.getAttribute('href');
 
     fetch(url)
