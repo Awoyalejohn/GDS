@@ -16,9 +16,9 @@
             will better suit your requirements.
           </h3>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a type="button" href="{% url 'products' %}" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Shop Now</a>
+            <a href="{% url 'products' %}" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Shop Now</a>
             {% if request.user.is_authenticated %}
-            <a type="button" href="{% url 'quote_request' %}" class="btn btn-outline-light btn-lg px-4">Request a Quote</a>
+            <a href="{% url 'quote_request' %}" class="btn btn-outline-light btn-lg px-4">Request a Quote</a>
             {% else %}
             <button type="button" class="btn btn-outline-light btn-lg px-4"
             data-bs-container="body"
@@ -42,21 +42,21 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4 features-headings">
-          <img class="feature-icon rounded-circle"width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626339/media/pad-icon_ugaocb.jpg" alt="Icons Icon">
+          <img class="feature-icon rounded-circle" width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626339/media/pad-icon_ugaocb.jpg" alt="Icons Icon">
           <h3 class="">Icons</h3>
           <p>Custom <strong>icons</strong> that stand out</p>
           <p><a class="btn btn-outline-info" href="{% url 'products' %}?category=icons">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
 
         <div class="col-lg-4 features-headings">
-          <img class="feature-icon rounded-circle"width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626338/media/generic-logo_nrskp0.jpg" alt="Logos Icon">
-          <h3 class="">Logos</h2>
+          <img class="feature-icon rounded-circle" width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626338/media/generic-logo_nrskp0.jpg" alt="Logos Icon">
+          <h3 class="">Logos</h3>
           <p>Pesonalised <strong>logos</strong> to fit your needs</p>
           <p><a class="btn btn-outline-info" href="{% url 'products' %}?category=logos">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
 
         <div class="col-lg-4 features-headings">
-          <img class="feature-icon rounded-circle"width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626338/media/generic-poster_yc2umo.jpg" alt="Posters Icon">
+          <img class="feature-icon rounded-circle" width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626338/media/generic-poster_yc2umo.jpg" alt="Posters Icon">
           <h3 class="">Posters</h3>
           <p>Unique <strong>posters</strong> for all occasions</p>
           <p><a class="btn btn-outline-info" href="{% url 'products' %}?category=posters">View details &raquo;</a></p>
@@ -65,21 +65,21 @@
       </div><!-- /.row -->
       <div class="row">
         <div class="col-lg-4 features-headings">
-          <img class="feature-icon rounded-circle"width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626339/media/sticker-design_ckrxxo.png" alt="Stickers Icon">
+          <img class="feature-icon rounded-circle" width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626339/media/sticker-design_ckrxxo.png" alt="Stickers Icon">
           <h3 class="">Stickers</h3>
           <p>Beautifuly customised <strong>stickers</strong></p>
           <p><a class="btn btn-outline-info" href="{% url 'products' %}?category=stickers">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
 
         <div class="col-lg-4 features-headings">
-          <img class="feature-icon rounded-circle"width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626341/media/generic-wallpaper_r6oyd2.jpg" alt="Wallpapers Icon">
-          <h3 class="">Wallpapers</h2>
+          <img class="feature-icon rounded-circle" width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626341/media/generic-wallpaper_r6oyd2.jpg" alt="Wallpapers Icon">
+          <h3 class="">Wallpapers</h3>
           <p>Stunning high resoluton <strong>Wallpapers</strong></p>
           <p><a class="btn btn-outline-info" href="{% url 'products' %}?category=wallpapers">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
 
         <div class="col-lg-4 features-headings">
-          <img class="feature-icon rounded-circle"width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626338/media/generic-banner_ekk24t.jpg" alt="Banners Icon">
+          <img class="feature-icon rounded-circle" width="140" height="140" src="https://res.cloudinary.com/dsd3trwmi/image/upload/v1661626338/media/generic-banner_ekk24t.jpg" alt="Banners Icon">
           <h3 class="">Banners</h3>
           <p>Delightful high quality <strong>banners</strong></p>
           <p><a class="btn btn-outline-info" href="{% url 'products' %}?category=banners">View details &raquo;</a></p>
@@ -94,7 +94,7 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
+<script>
   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 </script>

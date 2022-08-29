@@ -61,13 +61,13 @@
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
         <ul class="d-flex justify-content-end my-0">
           <li class="list-inline-item dropdown" style="margin-right: 5%">
-            <a class="text-white nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="text-white nav-link" href="#" id="user-options-base" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="text-center">
                 <div><i class="fas fa-user fa-lg"></i></div>
                 <p class="my-0">My Account</p>
               </div>
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+            <div class="dropdown-menu border-0" aria-labelledby="user-options-base">
               {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}
               <a href="{% url 'add_product' %}" class="dropdown-item">Admin</a>
@@ -83,7 +83,7 @@
           <li class="list-inline-item" style="margin-right: 5%">
             <a class="text-white nav-link" href="{% url 'display_cart' %}">
               <div class="text-center">
-                <div><i class="fa-solid fa-cart-shopping"></i></i></div>
+                <div><i class="fa-solid fa-cart-shopping"></i></div>
                 <p class="my-0">
                   {% if total %}
                   £{{ total|floatformat:2 }}
@@ -230,7 +230,7 @@
 
 {% block postloadjs %}
 <!-- toasts scripts -->
-<script type="text/javascript">
+<script>
   //Initialize toasts via JavaScript from bootstrap:
   let toastElList = [].slice.call(document.querySelectorAll('.toast'))
   let toastList = toastElList.map(function (toastEl) {
@@ -239,9 +239,9 @@
   });
   toastList.forEach(toast => toast.show()); // Shows toast
 </script>
-<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
 <!-- Mailchimp scripts -->
-<script type='text/javascript'>
+<script>
 (function ($) { 
   window.fnames = new Array(); 
   window.ftypes = new Array(); 
