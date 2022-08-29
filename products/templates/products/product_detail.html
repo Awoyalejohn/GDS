@@ -41,6 +41,7 @@
               </li>
               <li class="list-group-item product-card-bg text-white py-0">
                 {% if product.rating %}
+              </li>
                 <li class="list-group-item product-card-bg text-white py-0">
                   <small>
                     Rating: {{ product.rating }}/5<i class="fa-solid fa-star text-warning"></i>
@@ -49,7 +50,7 @@
                 {% else %}
                 <li class="list-group-item product-card-bg text-white py-0"><small>No rating</small></li>
                 {% endif %}
-              </li>
+           
               <li class="list-group-item product-card-bg text-white ">{{ product.description }}</li>
               <li class="list-group-item product-card-bg text-white h3">£{{ product.price }}</li>
             </ul>
