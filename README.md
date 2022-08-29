@@ -266,3 +266,14 @@ Diagram of the Postgres database that is used for the website. Unfortunately, du
 - The Wishlist item model is for adding products to a user’s Wishlist.
 - The wish_list attribute connects the Wishlist Item model to the Wishlist model by foreign key relationship.
 - The product attribute connects the Wishlist Item model to the Product model by foreign key relationship.
+
+## Agile
+The Epics and User stories were created using the issues feature on GitHub. The Epics are treated as milestones and the User stories were each labeled using the MoSCoW method. These were then added to a Basic Kanban using the GitHub projects feature. Each user story was placed initially in the **To do** column, then added to the **In progress** column when it was being implemented to the project. The user stories were updated as the project progressed and users stories were added to the done column when completed.
+
+Most of the user stories have been completed except for the following:
+- Social media signup (Could-Have)
+- Watermark images (Could-Have)
+
+They have since been placed in the **Backlog** column, as they could not be completed in this iteration of the project due to time constraints, but may eventually get completed in the next iteration of the project.
+
+![Basic kanban](https://github.com/Awoyalejohn/GDS/blob/main/media/basic-kanban.png)
