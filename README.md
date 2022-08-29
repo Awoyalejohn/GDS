@@ -440,3 +440,57 @@ They have since been placed in the **Backlog** column, as they could not be comp
     - Animated graphics could be added for users that are interested in animated graphics designs.
 - Quote request page
     - More options to select from and users could be allowed to pick more specific sizes. They could input the height and width rather than just selecting small, medium and large options.
+
+## SEO
+
+For SEO I did google searches with the words graphics design and got these keyword results:
+
+- Brand identity
+- Logo Design
+- Packaging design
+- Web and mobile design
+- Layout and print design
+- Custom Logos
+- Design
+- Graphics
+- Industrial design
+- Compute graphics
+
+On word stream I got these keywords:
+
+- Graphic design
+- Graphics
+- Graphic artist
+- Motion graphics
+- Graphic design courses
+- Graphics design
+- Digital designer
+- Create designers
+- Graphic design logo
+- Graphic design art
+- Poster designers
+- Motion designer
+- Graphic computer
+- Graphic design website
+- Freelance graphic designer
+- Vector illustration
+
+I added these keywords words to my website:
+
+- Graphics design
+- Graphic design website
+- Custom Logos
+- Design
+- Graphics
+- Logo Design
+- Poster designers
+- Freelance graphic designer
+- Vector illustration
+- Computer graphics
+- Graphic design logo
+
+I also added alt attribute to all my images to help with SEO.
+
+The rel nooper attribute was also used for links that went outside my website, like the Facebook page.
+
+The website also has a tobots.txt file and a privacy policy.
