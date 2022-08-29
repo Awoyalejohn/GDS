@@ -496,7 +496,7 @@ The rel nooper attribute was also used for links that went outside my website, l
 The website also has a tobots.txt file and a privacy policy.
 
 ## Marketing
-Facebook page
+### Facebook page
 
 Added a Facebook page for the website for customers to keep to up data with the latest deals and discounts. 
 
@@ -504,7 +504,7 @@ Added a Facebook page for the website for customers to keep to up data with the 
 
 ![Facebook page](https://github.com/Awoyalejohn/GDS/blob/main/media/facebook-page.png)
 
-Newsletter
+### Newsletter
 
 A newsletter subscription has been added to the footer section of the site for users to subscribe to so that they can get newsletter emails about the site news, exclusive offers and discount codes. The form is from mail chimp.
 
