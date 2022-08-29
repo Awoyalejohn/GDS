@@ -277,3 +277,166 @@ Most of the user stories have been completed except for the following:
 They have since been placed in the **Backlog** column, as they could not be completed in this iteration of the project due to time constraints, but may eventually get completed in the next iteration of the project.
 
 ![Basic kanban](https://github.com/Awoyalejohn/GDS/blob/main/media/basic-kanban.png)
+
+## Features
+### Existing Features
+
+- The Header
+    - Featured on all the pages and is fully responsive.
+    - Dark blue background colour that contrasts with the text and icons.
+    - White colour for text and icons that contrasts with the background.
+    - Navigation bar with dropdown menus and links to important pages. The All Products dropdown menu has links to the product page that will sort the products by:
+        - Price - Low to high
+        - Rating - High to low
+        - Category - Alphabetically
+        - All Products - Displays all the products
+        
+        The Graphics Designs dropdown menu has links to the product page that will sort the products by their categories:
+        
+        - Icons
+        - Logos
+        - Posters
+        - Stickers
+        - Wallpapers
+        - Banners.
+        - All Graphics Designs.
+    - The request a quote link, sends users to the request a quote page. Testimonials link sends users to the testimonials page.
+    - Search bar allows users to search for a product by its name, category, or description.
+    - White Logo that links the users to the home page on click.
+    - Account Icon when clicked on displays a drop-down menu with links to specific pages depending on whether the user is logged or their role when logged in. If the user is not logged, it the shows the Register and login links. If the user is logged in ,it shows the My Profile and Logout links. If the user is logged and their role is admin, it shows the  Admin, My Profile, and Logout links.
+    - Cart Icon link sends users to the cart page and shows the total of all the items in the cart.
+    - Discount information banner for users to know how they can receive discounts
+- The Footer
+    - Featured on all pages and is fully responsive
+    - It has a link to the website’s Facebook page
+    - It has quick links to:
+        - Home
+        - All Graphic Designs,
+        - Request a Quote
+        - Testimonials
+        - Sign in or Sign out - depending if user is logged in or not.
+        - Privacy Policy
+    - Newsletter subscription form
+    - Copyright information
+- Home page
+    - Animated dark background with animated shapes that move.
+    - Hero with a welcome message that tell users what the site is all about
+    - Cyan Shop now button that sends users to the all products page
+    - White Request a Quote button that sends users to the Request a quote page only if the have an account otherwise they need to login first.
+    - Features section that shows a different image of the categories of graphic designs that the website has to offer  each with a cyan view details button that takes the user to the products page, sorted by the category of the view details button that was clicked on. Also has some text with positive things to say about the particular category its with that are also SEO keywords.
+- Products Page
+    - Black Products heading that indicates to the users that they are on the products page.
+    - Cyan background that contrasts well with the products.
+    - Sort select option to sort items out on the products page by
+        - Price - Low to high
+        - Price - High to low
+        - Rating - Low to high
+        - Rating - High to low
+        - Name - Ascending Alphabetically
+        - Name - Descending Alphabetically
+        - Category - Ascending Alphabetically
+        - Category - Descending Alphabetically
+    - Amount of products on the page displays on top left
+    - Products have a dark blue card background the contrasts well with the main products page background.
+    - Product cards are displayed in a flexbox grid layout using bootstrap. Each product is evenly spaced out to make it clear for the user which product they are selecting.
+    - Product cards have an image the displays the product so the user can see the product before they click for more details.
+    - Below the image is the product name so users are aware of its name. The image also acts as a link to the product’s detail page.
+    - Below the name is the category that also acts as a links to the product page sorted by that category, so users can get quick access to products like the one they have clicked.
+    - Below the name the is the rating that shows its rating calculated from the average user rating, so users know how other users have rated the product.
+    - Below the rating is the price in big clear font size, so it is clear how much the product will cost them.
+    - Admin has access to extra features on the product cards that displays buttons that lets them to edit or delete the product from the site.
+    - A back to top button shows on the bottom right after a user scrolls down a little to give them quick access back to the top of the page.
+- Product detail page
+    - Displays the specific product card in a larger card than in on the products page.
+    - The product card now gets addition of the :
+        - Product description
+        - Add to cart button - to add items to the cart page
+        - Request quote button -  to request a quote if the user has an account
+        - Add to Wishlist button - to add an item to the Wishlist if user has an account
+        - Keep shopping button - to return toe the product page
+    - below the products card section is the customer reviews section which displays all the reviews for that products detail page. Users have the option to write a review and add a rating to it if they have an account, this can encourage users to want to sign up for and account.
+    - Below the reviews section is the recently viewed section which shows a list of the five most recent pages viewed to the user.
+    - Below the recently view section shows the related product section which shows a list of five products with the same category as the one in the product detail page.
+- Cart page
+    - Black Cart heading that indicates to the users that they are on the cart page.
+    - A large dark blue card that lists all the products added to the card with the products image, name, category and price.
+    - There is also a product info and price header so the user knows what information they are viewing.
+    - Each product also has an x button to remove the item from the cart.
+    - Below the products is a totals box the shows information on the subtotal of all the items currently in the cart. It also shows the discount amount if the subtotal is above the discount threshold specified in settings.py. Lastly the total shows the subtotal minus the discount amount to show users what they will actually have to pay for the products.
+    - Below the white totals box a prompt will show for user how much they will have to pay to get the discount if they are below the threshold.
+    - After that is the keep shopping button that sends users back to the product page and secure checkout button that sends the user to the checkout page to buy the product.
+- Checkout page
+    - Black checkout heading that indicates to the users that they are on the checkout page.
+    - Two dark blue cards shown on the checkout page with the first having a form that users will fill in with their billing details and the second show their order summary using information from the cart page.
+    - After the country field is the option to save their card details if they have an account so the user doesn’t have to type out all that information again.
+    - The billing form card also has field for users to input their card payment details supplied by Stripe.
+    - Below the card field is the adjust cart button for the user to go back and adjust their cart and the complete order button lets users checkout with information they put in.
+- Quote request page
+    - Black Quote Request heading that indicates to the users that they are on the Quote Request page.
+    - A large dark blue card has the quest request form inside with fields for the user to fill in or select for the graphic design they are requesting.
+    - The quote request totals box automatically updates based to the option selected by the user for the type and size options.
+    - The secure checkout button at the bottom sends the user to the quote checkout page.
+- Quote checkout page
+    - Black Quote Checkout heading that indicates to the users that they are on the Quote checkout page.
+    - The form on this page is also inside a dark blue card.
+    - The quote order summary at the top of the page shows the user the information that they inputted for the order.
+    - Form has field for the user to type in their name and email address
+    - Below that is the payment field for them to type their card details into.
+    - After the payment field are the go back button for restarting the quote request and the complete order button to checkout and pay.
+- Testimonials page
+    - Black testimonials heading that indicates to the users that they are on the testimonials page.
+    - Testimonials show the profile picture , name and message left by the user who made the testimonial.
+    - Only user testimonials that have been approved by the site admin are displayed.
+    - The testimonials are laid out in flexbox grid with bootstrap so each one  stands apart from the rest.
+    - Testimonials are inside dark blue cards to go with the theme of the site.
+    - Users that create testimonials have the option to edit and delete their testimonials.
+- Profile page
+    - This page can only be accessed by users with accounts.
+    - Separate navigation bar from the main navbar at the top of the profile page.
+    - Links to six other pages that are part of the profile page
+    - The default profile page lets users update different fields from their user profile such as their:
+        - Profile image
+        - Username
+        - Email address
+        - Phone number
+        - First name
+        - Last name
+    - The rest of the profile pages are:
+        - Billing details - displays billing details used for the checkout page when saved or added.
+        - Orders - displays a list of past orders on the site.
+        - Wishlist -  displays list of products that the user has added to their Wishlist.
+        - Requests - displays a list of past quote request orders on the site. They can also download completed requests on this page.
+        - Reviews - displays a list of reviews that the user has made
+        - Testimonials - displays list of testimonials that the user has made
+    - The pages are all placed inside dark blue cards to match the rest of the site
+    - They each have a black profile to show they are part of the profile page.
+- Admin page
+    - This page can only be accessed by the site admin
+    - It has a separate navigation bar from the main navbar at the top of the admin page.
+    - Links to two other pages that are part of the admin page.
+    - The default admin page lets the admin add products to the website with options that include:
+        - category
+        - name
+        - description
+        - price
+        - image
+    - The rest of the admin pages are:
+        - Customer requests - shows a list of user quote request for the admin to fulfill. By clicking on to the status button (pending…) the admin gets taking to form that they just upload the completed design to and then tick the status checkbox then submit. This will also be shown to the user on their own quote request page.
+        - Approve Testimonials - shows a list of user testimonials for the admin to approve on to the website. Admin the tick the checkbox for the one they want to approve then click update approval to approve it .
+- 404 page
+- 403 page
+
+### Future Features
+
+- Admin pages
+    - Users orders page for the admin pages not just the quote orders page. This page would let the admin keep track of all the orders on the website.
+- FAQ page
+    - Users could have a page to navigate to see questions that previous users have asked and the answer those questions.
+- Product detail
+    - Users profile pictures could display on review made by a customer on the product page. Allows users more reasons to use the profile picture upload feature on the upload page.
+- Product page
+    - Quote request orders that are fulfilled could automatically be added to the product list page for other users to buy so they do not have to request for it again.
+    - More product categories and types of graphics designs.
+    - Animated graphics could be added for users that are interested in animated graphics designs.
+- Quote request page
+    - More options to select from and users could be allowed to pick more specific sizes. They could input the height and width rather than just selecting small, medium and large options.
