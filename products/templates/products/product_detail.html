@@ -72,7 +72,7 @@
                   {% endif %}
 
                   {% if request.user.is_authenticated %}
-                    <a type="button" class="btn btn-outline-light my-1">Request Quote</a>
+                    <a type="button" href="{% url 'quote_request' %}" class="btn btn-outline-light my-1">Request Quote</a>
                     {% if not product.slug in wishlist %}
                       <a type="button" id="add-{{ product.slug }}" class="add-item btn btn-outline-warning my-1">Add to Wishlist</a>
                     {% else %}
