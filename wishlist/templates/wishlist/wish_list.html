@@ -137,7 +137,7 @@
         </div>
         <div class="card-body">
           
-          <a type="button" href="{% url 'products' %}" class="btn btn-outline-light">
+          <a href="{% url 'products' %}" class="btn btn-outline-light">
             <i class="fas fa-chevron-left"></i>Keep shopping
           </a>
         </div>
@@ -152,7 +152,7 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
+<script>
 const removeItems = document.querySelectorAll(".remove-item")
 for (let removeItem of removeItems) {
   removeItem.addEventListener('click', function() {
