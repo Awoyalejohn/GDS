@@ -81,10 +81,10 @@
       
         <!-- Card buttons -->
         <div class="card-body cart-buttons d-flex flex-column align-items-center justify-content-md-end">
-          <a type="button" href="{% url 'products' %}" class="btn btn-outline-light btn-lg my-1 mx-1">
+          <a href="{% url 'products' %}" class="btn btn-outline-light btn-lg my-1 mx-1">
             <i class="fas fa-chevron-left"></i>Keep shopping
           </a>
-          <a type="button" href="{% url 'checkout' %}" class="btn btn-outline-info btn-lg my-1 mx-1">Secure Checkout</a>
+          <a href="{% url 'checkout' %}" class="btn btn-outline-info btn-lg my-1 mx-1">Secure Checkout</a>
         </div>
       
         {% else %}
@@ -93,7 +93,7 @@
           <h5 class="card-title text-info">Your cart is empty</h5>
         </div>
         <div class="card-body">
-          <a type="button" href="{% url 'products' %}" class="btn btn-outline-light">
+          <a href="{% url 'products' %}" class="btn btn-outline-light">
             <i class="fas fa-chevron-left"></i>Keep shopping
           </a>
         </div>
@@ -111,7 +111,7 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
+<script>
 const removeItems = document.querySelectorAll(".remove-item")
 for (let removeItem of removeItems) {
   removeItem.addEventListener('click', function() {
