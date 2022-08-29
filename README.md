@@ -509,3 +509,46 @@ Added a Facebook page for the website for customers to keep to up data with the 
 A newsletter subscription has been added to the footer section of the site for users to subscribe to so that they can get newsletter emails about the site news, exclusive offers and discount codes. The form is from mail chimp.
 
 ![Newsletter](https://github.com/Awoyalejohn/GDS/blob/main/media/mail-chimp-form.png)
+
+## Technologies Used
+
+### Frameworks
+
+- [Django 4](https://www.djangoproject.com/)
+- [Bootstrap 5](https://getbootstrap.com/)
+
+### Languages used
+
+- [HTML 5](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Python](https://www.python.org/)
+
+### Workspace
+
+- [Visual Studio Code](https://code.visualstudio.com/)
+
+### Version control
+
+- [Git](https://git-scm.com/)
+- [GitHub](https://github.com/)
+
+### Wire Frame
+
+- [Figma](https://www.figma.com/)
+- [DBDiagram](https://dbdiagram.io/home)
+
+### Testing Responsiveness
+
+- [Google Chrome Dev tools](https://developer.chrome.com/docs/devtools/)
+- [Responsiveness viewer extension](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb?hl=en)
+
+### Hosting
+
+- [Heroku](https://id.heroku.com/)
+- [Gunicorn](https://gunicorn.org/)
+- [Cloudinary](https://cloudinary.com/)
+
+### Database
+
+- [PostgresSQL](https://www.postgresql.org/)
