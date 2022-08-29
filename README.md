@@ -6,7 +6,7 @@ The live link can be found here - https://graphics-design-space.herokuapp.com/
 ![GDS mockup](https://github.com/Awoyalejohn/GDS/blob/main/media/website-mock-up.png)
 
 ## User Experience
-## Strategy
+### Strategy
 
 The website is a business to customer (B2C) website that sells digital products (digital copies of their art). Depending on the customer's choice of graphic design, they can be downloaded to use for things like profile images, inspiration, use with their own business, or just print off and hang somewhere. 
 
@@ -26,7 +26,7 @@ Considering all that, I believe the customers will require a website that is abl
 - Allow users to  rate or review products
 ### User Stories
 
-Link to user stories Kanban - [https://github.com/Awoyalejohn/GDS/projects/1](https://github.com/Awoyalejohn/GDS/projects/1)
+Link to [User Stories](https://github.com/Awoyalejohn/GDS/issues)
 ### Epic 1 - **Viewing and Navigation**
 
 - As a Site User I can view a list of products so that I can select some to purchase.
