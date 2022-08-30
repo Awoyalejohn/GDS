@@ -126,7 +126,222 @@ The website uses Helvetica Neue as the main font-family and it is supplied by Bo
 
 ### Wireframes
 
-Links to the wire frames for each page:
+<details>
+<summary>Header</summary>
+
+![Header](https://github.com/Awoyalejohn/GDS/blob/main/media/header.png)
+
+</details>
+
+<details>
+<summary>Footer</summary>
+
+![Footer](https://github.com/Awoyalejohn/GDS/blob/main/media/footer.png)
+
+</details>
+
+<details>
+<summary>Home</summary>
+
+![Home](https://github.com/Awoyalejohn/GDS/blob/main/media/home.png)
+
+</details>
+
+<details>
+<summary>Products</summary>
+
+![Products](https://github.com/Awoyalejohn/GDS/blob/main/media/products.png)
+
+</details>
+
+<details>
+<summary>Product Detail</summary>
+
+![Product Detail](https://github.com/Awoyalejohn/GDS/blob/main/media/product-detail.png)
+
+</details>
+
+<details>
+<summary>Add Product</summary>
+
+![Add Product](https://github.com/Awoyalejohn/GDS/blob/main/media/add-product.png)
+
+</details>
+
+<details>
+<summary>Edit Product</summary>
+
+![Edit Product](https://github.com/Awoyalejohn/GDS/blob/main/media/edit-product.png)
+
+</details>
+
+<details>
+<summary>Delete Product</summary>
+
+![Delete Product](https://github.com/Awoyalejohn/GDS/blob/main/media/delete-product.png)
+
+</details>
+
+<details>
+<summary>Cart</summary>
+
+![Cart](https://github.com/Awoyalejohn/GDS/blob/main/media/cart.png)
+
+</details>
+
+<details>
+<summary>Checkout</summary>
+
+![Checkout](https://github.com/Awoyalejohn/GDS/blob/main/media/checkout.png)
+
+</details>
+
+<details>
+<summary>Checkout Success</summary>
+
+![Checkout Success](https://github.com/Awoyalejohn/GDS/blob/main/media/checkout-success.png)
+
+</details>
+
+<details>
+<summary>Quote Request</summary>
+
+![Quote Request](https://github.com/Awoyalejohn/GDS/blob/main/media/quote-request.png)
+
+</details>
+
+<details>
+<summary>Quote Checkout</summary>
+
+![Quote Checkout](https://github.com/Awoyalejohn/GDS/blob/main/media/quote-checkout.png)
+
+</details>
+
+<details>
+<summary>Quote Success</summary>
+
+![Quote Success](https://github.com/Awoyalejohn/GDS/blob/main/media/quote-success.png)
+
+</details>
+
+<details>
+<summary>Quote List</summary>
+
+![Quote List](https://github.com/Awoyalejohn/GDS/blob/main/media/quote-list.png)
+
+</details>
+
+<details>
+<summary>Quote Detail</summary>
+
+![Quote Detail](https://github.com/Awoyalejohn/GDS/blob/main/media/quote-detail.png)
+
+</details>
+
+<details>
+<summary>Reviews</summary>
+
+![Reviews](https://github.com/Awoyalejohn/GDS/blob/main/media/reviews.png)
+
+</details>
+
+<details>
+<summary>Edit Review</summary>
+
+![Edit Review](https://github.com/Awoyalejohn/GDS/blob/main/media/edit-review.png)
+
+</details>
+
+<details>
+<summary>Delete Review</summary>
+
+![Delete Review](https://github.com/Awoyalejohn/GDS/blob/main/media/delete-review.png)
+
+</details>
+
+<details>
+<summary>Testimonials</summary>
+
+![Testimonials](https://github.com/Awoyalejohn/GDS/blob/main/media/testimonials.png)
+
+</details>
+
+<details>
+<summary>Edit Testimonials</summary>
+
+![Edit Testimonials](https://github.com/Awoyalejohn/GDS/blob/main/media/edit-testimonial.png)
+
+</details>
+
+<details>
+<summary>Delete Testimonial</summary>
+
+![Delete Testimonial](https://github.com/Awoyalejohn/GDS/blob/main/media/delete-testimonial.png)
+
+</details>
+
+<details>
+<summary>Wishlist</summary>
+
+![Wishlist](https://github.com/Awoyalejohn/GDS/blob/main/media/wishlist.png)
+
+</details>
+
+<details>
+<summary>Profile</summary>
+
+![Profile](https://github.com/Awoyalejohn/GDS/blob/main/media/profile.png)
+
+</details>
+
+<details>
+<summary>Edit Profile</summary>
+
+![Edit Profile](https://github.com/Awoyalejohn/GDS/blob/main/media/edit-profile.png)
+
+</details>
+
+<details>
+<summary>Order History</summary>
+
+![Order History](https://github.com/Awoyalejohn/GDS/blob/main/media/order-history.png)
+
+</details>
+
+<details>
+<summary>Order History Detail</summary>
+
+![Order History Detail](https://github.com/Awoyalejohn/GDS/blob/main/media/order-history-detail.png)
+
+</details>
+
+<details>
+<summary>Quote History</summary>
+
+![Quote History](https://github.com/Awoyalejohn/GDS/blob/main/media/quote-history.png)
+
+</details>
+
+<details>
+<summary>Quote History Detail</summary>
+
+![Quote History Detail](https://github.com/Awoyalejohn/GDS/blob/main/media/quote-history-detail.png)
+
+</details>
+
+<details>
+<summary>Quote Display</summary>
+
+![Quote Display](https://github.com/Awoyalejohn/GDS/blob/main/media/quote-display.png)
+
+</details>
+
+<details>
+<summary>Profile Testimonials</summary>
+
+![Profile Testimonials](https://github.com/Awoyalejohn/GDS/blob/main/media/profile-testimonials.png)
+
+</details>
 
 ## Data Model
 ### Entity Relationship Diagram (ERD)
