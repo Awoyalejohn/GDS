@@ -521,6 +521,9 @@ They have since been placed in the **Backlog** column, as they could not be comp
     - Account Icon when clicked on displays a drop-down menu with links to specific pages depending on whether the user is logged or their role when logged in. If the user is not logged, it the shows the Register and login links. If the user is logged in ,it shows the My Profile and Logout links. If the user is logged and their role is admin, it shows the  Admin, My Profile, and Logout links.
     - Cart Icon link sends users to the cart page and shows the total of all the items in the cart.
     - Discount information banner for users to know how they can receive discounts
+
+![Header](https://github.com/Awoyalejohn/GDS/blob/main/media/features-header.png)
+
 - The Footer
     - Featured on all pages and is fully responsive
     - It has a link to the website’s Facebook page
@@ -533,12 +536,18 @@ They have since been placed in the **Backlog** column, as they could not be comp
         - Privacy Policy
     - Newsletter subscription form
     - Copyright information
+
+![Footer](https://github.com/Awoyalejohn/GDS/blob/main/media/features-footer.png)
+
 - Home page
     - Animated dark background with animated shapes that move.
     - Hero with a welcome message that tell users what the site is all about
     - Cyan Shop now button that sends users to the all products page
     - White Request a Quote button that sends users to the Request a quote page only if the have an account otherwise they need to login first.
     - Features section that shows a different image of the categories of graphic designs that the website has to offer  each with a cyan view details button that takes the user to the products page, sorted by the category of the view details button that was clicked on. Also has some text with positive things to say about the particular category its with that are also SEO keywords.
+
+![Home](https://github.com/Awoyalejohn/GDS/blob/main/media/features-home.png)
+
 - Products Page
     - Black Products heading that indicates to the users that they are on the products page.
     - Cyan background that contrasts well with the products.
@@ -561,6 +570,10 @@ They have since been placed in the **Backlog** column, as they could not be comp
     - Below the rating is the price in big clear font size, so it is clear how much the product will cost them.
     - Admin has access to extra features on the product cards that displays buttons that lets them to edit or delete the product from the site.
     - A back to top button shows on the bottom right after a user scrolls down a little to give them quick access back to the top of the page.
+
+![Products](https://github.com/Awoyalejohn/GDS/blob/main/media/features-products.png)
+
+
 - Product detail page
     - Displays the specific product card in a larger card than in on the products page.
     - The product card now gets addition of the :
@@ -572,6 +585,9 @@ They have since been placed in the **Backlog** column, as they could not be comp
     - below the products card section is the customer reviews section which displays all the reviews for that products detail page. Users have the option to write a review and add a rating to it if they have an account, this can encourage users to want to sign up for and account.
     - Below the reviews section is the recently viewed section which shows a list of the five most recent pages viewed to the user.
     - Below the recently view section shows the related product section which shows a list of five products with the same category as the one in the product detail page.
+
+![Product Detail](https://github.com/Awoyalejohn/GDS/blob/main/media/features-product-detail.png)
+
 - Cart page
     - Black Cart heading that indicates to the users that they are on the cart page.
     - A large dark blue card that lists all the products added to the card with the products image, name, category and price.
@@ -580,17 +596,26 @@ They have since been placed in the **Backlog** column, as they could not be comp
     - Below the products is a totals box the shows information on the subtotal of all the items currently in the cart. It also shows the discount amount if the subtotal is above the discount threshold specified in settings.py. Lastly the total shows the subtotal minus the discount amount to show users what they will actually have to pay for the products.
     - Below the white totals box a prompt will show for user how much they will have to pay to get the discount if they are below the threshold.
     - After that is the keep shopping button that sends users back to the product page and secure checkout button that sends the user to the checkout page to buy the product.
+
+![Cart](https://github.com/Awoyalejohn/GDS/blob/main/media/features-cart.png)
+
 - Checkout page
     - Black checkout heading that indicates to the users that they are on the checkout page.
     - Two dark blue cards shown on the checkout page with the first having a form that users will fill in with their billing details and the second show their order summary using information from the cart page.
     - After the country field is the option to save their card details if they have an account so the user doesn’t have to type out all that information again.
     - The billing form card also has field for users to input their card payment details supplied by Stripe.
     - Below the card field is the adjust cart button for the user to go back and adjust their cart and the complete order button lets users checkout with information they put in.
+
+![Checkout](https://github.com/Awoyalejohn/GDS/blob/main/media/features-checkout.png)
+
 - Quote request page
     - Black Quote Request heading that indicates to the users that they are on the Quote Request page.
     - A large dark blue card has the quest request form inside with fields for the user to fill in or select for the graphic design they are requesting.
     - The quote request totals box automatically updates based to the option selected by the user for the type and size options.
     - The secure checkout button at the bottom sends the user to the quote checkout page.
+
+![Quote Request](https://github.com/Awoyalejohn/GDS/blob/main/media/features-quote-request.png)
+
 - Quote checkout page
     - Black Quote Checkout heading that indicates to the users that they are on the Quote checkout page.
     - The form on this page is also inside a dark blue card.
@@ -598,6 +623,9 @@ They have since been placed in the **Backlog** column, as they could not be comp
     - Form has field for the user to type in their name and email address
     - Below that is the payment field for them to type their card details into.
     - After the payment field are the go back button for restarting the quote request and the complete order button to checkout and pay.
+
+![Quote Checkout](https://github.com/Awoyalejohn/GDS/blob/main/media/features-quote-checkout.png)
+
 - Testimonials page
     - Black testimonials heading that indicates to the users that they are on the testimonials page.
     - Testimonials show the profile picture , name and message left by the user who made the testimonial.
@@ -605,6 +633,9 @@ They have since been placed in the **Backlog** column, as they could not be comp
     - The testimonials are laid out in flexbox grid with bootstrap so each one  stands apart from the rest.
     - Testimonials are inside dark blue cards to go with the theme of the site.
     - Users that create testimonials have the option to edit and delete their testimonials.
+    
+![Testimonials](https://github.com/Awoyalejohn/GDS/blob/main/media/features-testimonials.png)
+
 - Profile page
     - This page can only be accessed by users with accounts.
     - Separate navigation bar from the main navbar at the top of the profile page.
@@ -625,6 +656,9 @@ They have since been placed in the **Backlog** column, as they could not be comp
         - Testimonials - displays list of testimonials that the user has made
     - The pages are all placed inside dark blue cards to match the rest of the site
     - They each have a black profile to show they are part of the profile page.
+
+![Profile](https://github.com/Awoyalejohn/GDS/blob/main/media/features-profile.png)
+
 - Admin page
     - This page can only be accessed by the site admin
     - It has a separate navigation bar from the main navbar at the top of the admin page.
@@ -637,9 +671,18 @@ They have since been placed in the **Backlog** column, as they could not be comp
         - image
     - The rest of the admin pages are:
         - Customer requests - shows a list of user quote request for the admin to fulfill. By clicking on to the status button (pending…) the admin gets taking to form that they just upload the completed design to and then tick the status checkbox then submit. This will also be shown to the user on their own quote request page.
-        - Approve Testimonials - shows a list of user testimonials for the admin to approve on to the website. Admin the tick the checkbox for the one they want to approve then click update approval to approve it .
+        - Approve Testimonials - shows a list of user testimonials for the admin to approve on to the website. Admin the tick the checkbox for the one they want to approve then click update approval to approve it.
+
+![Admin](https://github.com/Awoyalejohn/GDS/blob/main/media/features-admin.png)
+
 - 404 page
+
+![404](https://github.com/Awoyalejohn/GDS/blob/main/media/features-404.png)
+
 - 403 page
+
+![403](https://github.com/Awoyalejohn/GDS/blob/main/media/features-403.png)
+
 
 ### Future Features
 
