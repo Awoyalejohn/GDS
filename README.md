@@ -672,3 +672,27 @@ A newsletter subscription has been added to the footer section of the site for u
 | Add product form     | Fill in form and submit | Adds a new product to the website                          | √    |
 | Customer requests    | View customer requests  | Display the customer request ot be completed by the admin  | √    |
 | Approve testimonials | Approve testimonials    | Displays the approved testimonials on the testimoials page | √    |
+
+## Bugs
+
+### Solved Bugs
+
+1. Error message when using the runserver command during development deploy: `Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS`.
+    - Adding the host header shown in the warning to the ALLOWED_HOSTS variable in the settings.py file.
+2. Horizontal overflow on footer which was being caused by the size of the bootstrap grid gaps.
+    - Reducing the size of the grid gaps from (gy-4 gx-5) to (gy-3 gx-4).
+3. Product list page images overflowing out of card body.
+    - Adding a max width of a 100% to the images.
+4. Products would show when I tried to sort the products by category because product categories were named with capital letters.
+    - Using the slug of the category to sort with instead since they always lowercase
+5. Could not delete items form cart initially, beacue forgot to add csrf token.
+    - Added csrf token.
+6. Quote request images would not save to the website of database, because forgot to add the enctype="multipart/form-data” attribute to the form
+    - Added enctype="multipart/form-data” attribute to the form.
+7. Could not add items to the cart after adding the Wishlist functionality. The same name was used to add items form the wishlist to the cart "add_to_cart".
+    - Change the name for the wish list version to “add_to_cart_from_wishlist”.
+
+### Unsolved Bugs
+
+1. On the recently viewed products section of the product list, when you go to the same page as the most recent product added to the recently view section it will only show 4 items instead of 5.
+2. Custom clearable file input doesn’t display the template used to make the from look better.
