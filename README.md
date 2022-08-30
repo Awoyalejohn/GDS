@@ -1064,3 +1064,92 @@ A newsletter subscription has been added to the footer section of the site for u
     git push origin main
     git push heroku main
     ```
+## Credits
+
+### Content
+
+Website is built upon code institute [boutique ado project.](https://codeinstitute.net/)
+
+Home page hero section is from [bootstrap hero example](https://getbootstrap.com/docs/5.2/examples/heroes/)
+
+Features section on homepage is from [bootstrap carousel example](https://getbootstrap.com/docs/5.2/examples/carousel/#)
+
+Footer section on homepage is from [Bootstrapious](https://bootstrapious.com/p/bootstrap-footer-bottom) 
+
+Code for search functionality came from the Boutique Ado tutorial from [Code institute](https://codeinstitute.net/)
+
+Back to top button is form [material design bootstrap](https://mdbootstrap.com/)
+
+Code used to post data with [JavaScript](https://docs.djangoproject.com/en/4.0/ref/csrf/#setting-the-token-on-the-ajax-request)
+
+Code used to Django template variable into [strings](https://stackoverflow.com/questions/27771000/django-template-convert-to-string)
+
+Code used to add context to [Django template view](https://docs.djangoproject.com/en/4.0/ref/class-based-views/base/#templateview)
+
+Code used to add validation for [create view form](https://stackoverflow.com/questions/63747659/django-createview-send-a-custom-error-message-if-model-form-is-not-valid)
+
+Code used to auto [update slug field](https://stackoverflow.com/questions/58621941/auto-update-slug-field-in-updateview)
+
+Code used to prevent none [superusers from logging in](https://stackoverflow.com/a/59615180/19191956)
+
+Code used to convert images to blobs, so that they can be automatically downloaded on the [website](https://stackoverflow.com/questions/44070437/how-to-get-a-file-or-blob-from-an-url-in-javascript)
+
+Code used to round to 2 decimal places in [JavaScript](https://stackoverflow.com/questions/11832914/how-to-round-to-at-most-2-decimal-places-if-necessary)
+
+Code use to convert floats to strings in [JavaScript](https://www.codegrepper.com/code-examples/javascript/javascript+convert+float+to+string)
+
+Code used to set user field in form to [currently logged in user](https://stackoverflow.com/questions/18246326/how-do-i-set-user-field-in-form-to-the-currently-logged-in-user)
+
+Code used to store [UUID in a session](https://stackoverflow.com/questions/67855861/store-uuid-in-session-using-middleware)
+
+Code used to add a count to objects in a [Django for loop](https://stackoverflow.com/questions/11481499/django-iterate-number-in-for-loop-of-a-template)
+
+Code used to add initial data in a [form field](https://stackoverflow.com/questions/53736309/how-to-put-initial-data-on-form-in-createview)
+
+Code used to calculate [average product ratings](https://stackoverflow.com/questions/2689664/get-average-from-set-of-objects-in-django)
+
+Code used to display [recent products with sessions](https://www.youtube.com/watch?v=N-R5mT-nIDk&t=989s)
+
+Code used to display [related products on product page](https://www.youtube.com/watch?v=fqIBA2Vpws0&t=178s)
+
+Code used to update user [profile information form page](https://dev.to/earthcomfy/django-update-user-profile-33ho)
+
+Code used to layout testimonial cards on [testimonial page](https://bbbootstrap.com/snippets/bootstrap-5-user-testimonial-star-ratings-51527336)
+
+Code used to pass current user in [create view automatically](https://stackoverflow.com/questions/63550890/how-to-pass-logged-users-id-to-createview)
+
+Code used to approve [testimonials with checkboxes](https://www.youtube.com/watch?v=FzV_Py68Y_I)
+
+Code used to get the host url with [JavaScript](https://stackoverflow.com/questions/6042007/how-to-get-the-host-url-using-javascript-from-the-current-page)
+
+Helped for making the [Wishlist app](https://www.queworx.com/django/django-get_or_create/)
+
+Helped to update [ratings](https://stackoverflow.com/questions/3681627/how-to-update-fields-in-a-model-without-creating-a-new-record-in-django)
+
+Code used to help validate status fields for [quote fulfilment forms](https://stackoverflow.com/questions/29981690/django-form-validation-on-class-based-view)
+
+Code used to [restrict access to views](https://stackoverflow.com/questions/58217055/how-can-i-restrict-access-to-a-view-to-only-super-users-in-django)
+
+Code used to [prefill form data](https://stackoverflow.com/questions/936376/prepopulate-django-non-model-form)
+
+Code used to check items in [session template](https://stackoverflow.com/questions/2551933/django-accessing-session-variables-from-within-a-template)
+
+### Media
+
+The majority of the graphics designs used come from [FlatIcon](https://www.flaticon.com/)
+
+The poster designs are from [Dribble](https://dribbble.com/) 
+
+The wallpaper designs are from [Pixabay](https://pixabay.com/) 
+
+Banner designs are from [vecteezy](https://www.vecteezy.com/) 
+
+Logo design adobe express [logo maker](https://www.adobe.com/express/create/logo)
+
+Icon used for [logo](https://thenounproject.com/icon/digital-drawing-71519/)
+
+Favicon created with [favicon.io](https://favicon.io/)
+
+Homepage background design is from [CSS BG Jar](https://bgjar.com/)
+
+Blank profile image is from [Pixabay](https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/)
