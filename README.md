@@ -552,3 +552,123 @@ A newsletter subscription has been added to the footer section of the site for u
 ### Database
 
 - [PostgresSQL](https://www.postgresql.org/)
+
+## Testing
+
+### Validator testing
+- HTML
+    - No errors were returned when passing through the official [W3C Validator](https://validator.w3.org/nu/).
+- CSS
+    - No errors were found when passing through the official [(Jigsaw) validator.](https://jigsaw.w3.org/css-validator/#validate_by_upload)
+- JavaScript
+    - No errors were present when passing through the [JavaScript validator](https://beautifytools.com/javascript-validator.php).
+- Python
+    - No errors were shown when passing through the [python validator](http://pep8online.com/)
+
+### Manual Testing
+
+#### Header/Navbar
+| Test         | Action                                   | Expected Result                                                                               | Pass |
+|--------------|------------------------------------------|-----------------------------------------------------------------------------------------------|------|
+| Logo         | Click “Graphics Design Space”            | Sends user to the home page                                                                   | √    |
+| Search       | Click "Search  box"                      | User can type text into it.                                                                   | √    |
+| Search       | Search for a product                     | Displays products related to the search                                                       | √    |
+| Account Icon | Click while logged out                   | Displays drop register and login links                                                        | √    |
+| Account Icon | Click while logged in                    | Dispays profile and logout links                                                              | √    |
+| Account Icon | Click while user is admin logged in      | Dispays admin, profile and logout links                                                       | √    |
+| Register     | Click "register"                         | Sends user to the sign up page                                                                | √    |
+| Login        | Click “Login”                            | Sends user to the sign in page                                                                | √    |
+| Profile      | Click “Profile”                          | Sends user to the profile page                                                                | √    |
+| Logout       | Click “Logout”                           | Sends user to the sign out page                                                               | √    |
+| Navbar       | Click "All Products "                    | Displays By Price, By Rating, By category, and All products links                             | √    |
+| Navbar       | Click "Graphics Designs"                 | Displays Icons, Logos, Posters, Stickers, Wallpapers, Banners, and All Graphics Designs links | √    |
+| Navbar       | Click "Request a Quote" while logged in  | Sends user to Quote requests page                                                             | √    |
+| Navbar       | Click "Request a Quote" while logged out | Sends user to Sign in page                                                                    | √    |
+| Navbar       | Click "Testimonials"                     | Sends user to Testimonials page                                                               | √    |
+#### Footer
+| Test          | Action                                    | Expected Result                                  | Pass |
+|---------------|-------------------------------------------|--------------------------------------------------|------|
+| Facebook link | Click Facebook link                       | Sends user to Facebook page on a new tab         | √    |
+| Quick links   | Click "Home"                              | Sends user to Home page                          | √    |
+| Quick links   | Click "All Graphic Designs"               | Sends user to products page                      | √    |
+| Quick links   | Click "Request a  Quote" while logged in  | Sends user to Quote requests page                | √    |
+| Quick links   | Click "Request a  Quote" while logged out | Sends user to Sign in page                       | √    |
+| Quick links   | Click "Testimonials"                      | Sends user to Testimonials page                  | √    |
+| Quick links   | Click "Sign out" while logged in          | Sends user to sign out page                      | √    |
+| Quick links   | Click "Sign in" while logged out          | Sends user to Sign in page                       | √    |
+| Quick links   | Click "Privacy Policy"                    | Sends user to a privacy policy page on a new tab | √    |
+| Newsletter    | Fill in email and click "Subscribe"       | Thanks user for subscribing                      | √    |
+#### Home
+| Test                           | Action                                   | Expected Result                                    | Pass |
+|--------------------------------|------------------------------------------|----------------------------------------------------|------|
+| Shop now button                | Click "Shop now"                         | Sends user to products page                        | √    |
+| Request a quote button         | Click "Request a Quote" while logged in  | Sends user to Quote requests page                  | √    |
+| Request a quote button         | Click "Request a Quote" while logged out | Users gets prompted to sign up for an account      | √    |
+| Icons view details button      | Click "view details"                     | Sends user to products page filtered by Icons      | √    |
+| Logos view details button      | Click "view details"                     | Sends user to products page filtered by Logos      | √    |
+| Posters view details button    | Click "view details"                     | Sends user to products page filtered by Posters    | √    |
+| Stickers view details button   | Click "view details"                     | Sends user to products page filtered by Stickers   | √    |
+| Wallpapers view details button | Click "view details"                     | Sends user to products page filtered by Wallpapers | √    |
+| Banners view details button    | Click "view details"                     | Sends user to products page filtered by Banners    | √    |
+#### Products
+| Test               | Action                       | Expected Result                                      | Pass |
+|--------------------|------------------------------|------------------------------------------------------|------|
+| Sort by select box | Click "Price (Low to high)"  | Sorts products by lowest price to highest            | √    |
+| Sort by select box | Click "Price (High to low)"  | Sorts products by highest price to lowest            | √    |
+| Sort by select box | Click "Rating (Low to high)" | Sorts products by lowest rated to highest            | √    |
+| Sort by select box | Click "Rating (High to low)" | Sorts products by highest rated to lowest            | √    |
+| Sort by select box | Click "Name (A-Z)"           | Sorts products by name ascending alphabetically      | √    |
+| Sort by select box | Click "Name(Z-A)"            | Sorts products by name descending alphabetically     | √    |
+| Sort by select box | Click "Category (A-Z)"       | Sorts products by category ascending alphabetically  | √    |
+| Sort by select box | Click "Category (Z-A)"       | Sorts products by category descending alphabetically | √    |
+| Product            | Click "Product image"        | Sends user to that product's detail page             | √    |
+| Product            | Click "Product category"     | Filters products by the category that was clicked on | √    |
+| Back to top button | Click "Back to top button"   | Sends uset to the top of the page                    | √    |
+#### Product detail
+| Test                   | Action                                   | Expected Result                                      | Pass |
+|------------------------|------------------------------------------|------------------------------------------------------|------|
+| Product                | Click "Product category"                 | Filters products by the category that was clicked on | √    |
+| Add to Cart button     | Click "Add to cart"                      | Adds the product to the Cart page                    | √    |
+| Request a quote button | Click "Request a Quote" while logged in  | Sends user to Quote requests page                    | √    |
+| Request a quote button | Click "Request a Quote" while logged out | Button becomes unclickable                           | √    |
+| Add to wishlist button | Click "Add to wishlist" while logged in  | Adds the product to their wishlist                   | √    |
+| Add to wishlist button | Click "Add to wishlist" while logged out | Button becomes unclickable                           | √    |
+| Keep Shopping button   | Click "Keep Shopping"                    | Sends user back to the products page                 | √    |
+| Write a review button  | Click "Write a review" while logged in   | Gives the user access to the review form             | √    |
+| Write a review button  | Click "Write a review" while logged out  | Prompts the user to make an account                  | √    |
+| Review form            | Submit a review                          | Adds the review to the product detail page           | √    |
+| Recently viewed        | Click "Product image"                    | Sends user to that product's detail page             | √    |
+| Related products       | Click "Product image"                    | Sends user to that product's detail page             | √    |
+#### Cart
+| Test                   | Action                  | Expected Result                  | Pass |
+|------------------------|-------------------------|----------------------------------|------|
+| Product in cart        | Click "red x button"    | removes product from cart        | √    |
+| Keep Shopping button   | Click "Keep shopping"   | Sends user back to products page | √    |
+| Secure checkout button | Click "Secure Checkout" | Sends user to checkout form page | √    |
+#### Checkout
+| Test          | Action                   | Expected Result                                              | Pass |
+|---------------|--------------------------|--------------------------------------------------------------|------|
+| Checkout form | Fill in form and submit  | Form gets submitted and the order gets added to the database | √    |
+| Checkout form | Fill in form incorrectly | Validation errors go o                                       | √    |
+| Adjust Cart   | Click "Adjuct cart"      | Sends user back to the cart page                             | √    |
+#### Profile
+| Test              | Action                  | Expected Result                                  | Pass |
+|-------------------|-------------------------|--------------------------------------------------|------|
+| Profile info page | Fill in form and submit | Lets loggedn in user updte their profile details | √    |
+| Billing details   | Fill in form and submit | Lets loggedn in user updte their billing details | √    |
+| Orders            | View orders             | Display the logged in user's order history       | √    |
+| Wishlist          | View wishlist           | Display the logged in user's wishlist            | √    |
+| Reviews           | View review             | Display the logged in user's product reviews     | √    |
+| Testimonials      | View testimonial        | Display the logged in user's testimonials        | √    |
+#### Quote Request/Quote Checkout
+| Test           | Action                        | Expected Result                                                    | Pass |
+|----------------|-------------------------------|--------------------------------------------------------------------|------|
+| Quote request  | Fill in form and submit       | Sends the user to the second part of te fom                        | √    |
+| Quote request  | Click on select box options   | Updates the subtoatal, discount, and total                         | √    |
+| Quote checkout | Fill in form and submit       | Form gets submitted and the quote order gets added to the database | √    |
+#### Admin
+| Test                 | Action                  | Expected Result                                            | Pass |
+|----------------------|-------------------------|------------------------------------------------------------|------|
+| Add product form     | Fill in form and submit | Adds a new product to the website                          | √    |
+| Customer requests    | View customer requests  | Display the customer request ot be completed by the admin  | √    |
+| Approve testimonials | Approve testimonials    | Displays the approved testimonials on the testimoials page | √    |
