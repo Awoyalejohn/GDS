@@ -6,28 +6,30 @@ from .models import QuoteRequest, QuoteOrder, QuoteFufillment
 class QuoteRequestForm(forms.ModelForm):
     class Meta:
         model = QuoteRequest
-        exclude = ('user', 'quote_request_number')
+        exclude = ("user", "quote_request_number")
 
         labels = {
-            'type': 'What type of design do you need?',
-            'size': 'What size?',
+            "type": "What type of design do you need?",
+            "size": "What size?",
         }
 
     def __init__(self, *args, **kwargs):
         super(QuoteRequestForm, self).__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs['placeholder'] = 'Give the design a name'
-        self.fields['description'].widget.attrs['placeholder'] = 'Write a description here'
-    
-
+        self.fields["name"].widget.attrs["placeholder"] = (
+            "Give the design a name"
+        )
+        self.fields["description"].widget.attrs[
+            "placeholder"
+        ] = "Write a description here"
 
 
 class QuoteOrderForm(forms.ModelForm):
     class Meta:
         model = QuoteOrder
-        fields = ('name', 'email')
+        fields = ("name", "email")
 
 
 class QuoteFufillmentForm(forms.ModelForm):
     class Meta:
         model = QuoteFufillment
-        exclude = ('quote_order',)
+        exclude = ("quote_order",)
