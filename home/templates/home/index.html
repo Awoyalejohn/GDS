@@ -9,12 +9,12 @@
       <div class="py-5">
         <h1 class="display-4 fw-bold text-white">Welcome to Graphics Design Space</h1>
         <div class="col-lg-6 mx-auto">
-          <h3 class="fs-5 mb-4 text-white">
-            Welcome to Graphics design space, a website where you can purchase graphic designs that you can download.
+          <p class="fs-5 mb-4 text-white">
+            Welcome to <strong>Graphics design space</strong>, a website where you can purchase graphic designs that you can download.
             We offer a wide variety of graphic designs, including posters, icons, logos, stickers, wallpapers, and banners. You have the option of
             making a quick purchase of any of our previous designs or you can request a quote for a more specialised product that
             will better suit your requirements.
-          </h3>
+        </p>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a href="{% url 'products' %}" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Shop Now</a>
             {% if request.user.is_authenticated %}
