@@ -16,9 +16,10 @@ from reviews.forms import ReviewForm
 from profiles.models import UserProfile
 from django.db.models import Avg
 
-# Create your views here.
+
 class ProductListView(View):
-    """ A view to list all products """
+    """A view to list all products"""
+
     def get(self, request):
         products = Product.objects.all()
         query = None
@@ -26,90 +27,99 @@ class ProductListView(View):
         sort = None
         direction = None
 
-        if 'sort' in request.GET:
-            sortkey = request.GET['sort']
+        if "sort" in request.GET:
+            sortkey = request.GET["sort"]
             sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name'))
-            if sortkey == 'category':
-                sortkey = 'category__name'
-            
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
+            if sortkey == "name":
+                sortkey = "lower_name"
+                products = products.annotate(lower_name=Lower("name"))
+            if sortkey == "category":
+                sortkey = "category__name"
+
+            if "direction" in request.GET:
+                direction = request.GET["direction"]
+                if direction == "desc":
+                    sortkey = f"-{sortkey}"
             products = products.order_by(sortkey)
 
-        if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
+        if "category" in request.GET:
+            categories = request.GET["category"].split(",")
             products = products.filter(category__slug__in=categories)
             categories = Category.objects.filter(slug__in=categories)
 
-        if 'q' in request.GET:
-            query = request.GET['q']
+        if "q" in request.GET:
+            query = request.GET["q"]
             if not query:
                 messages.error(request, "You didn't enter any search criteria")
-                return redirect(reverse('products'))
-            
+                return redirect(reverse("products"))
+
             queries = (
                 Q(name__icontains=query) |
                 Q(description__icontains=query) |
                 Q(category__name__icontains=query)
             )
             products = products.filter(queries)
-        
-        current_sorting = f'{sort}_{direction}'
+
+        current_sorting = f"{sort}_{direction}"
 
         context = {
-            'product_list': products,
-            'search_term': query,
-            'current_categories': categories,
-            'current_sorting': current_sorting
-            }
-        return render(request, 'products/product_list.html', context)
+            "product_list": products,
+            "search_term": query,
+            "current_categories": categories,
+            "current_sorting": current_sorting,
+        }
+        return render(request, "products/product_list.html", context)
 
 
 class ProductDetailView(View):
-    """ 
+    """
     A view to display and individual item's product page
     And to create and display customer product reviews
     Also displays recently viewed products and related products
     """
+
     def get(self, request, slug):
         product = get_object_or_404(Product, slug=slug)
         reviews = product.product_review.all()
-        avg_reviews = product.product_review.all().aggregate(Avg('rating'))
+        avg_reviews = product.product_review.all().aggregate(Avg("rating"))
         form = ReviewForm()
 
-        # Display recently viewed products code from sessions tutorial on youtube
+        # Display recently viewed products
+        # code from sessions tutorial on youtube
         # https://www.youtube.com/watch?v=N-R5mT-nIDk&t=989s
         recently_viewed_products = None
 
-        if 'recently_viewed' in request.session:
-            if slug in request.session['recently_viewed']:
-                request.session['recently_viewed'].remove(slug)
-            
-            products = Product.objects.filter(slug__in=request.session['recently_viewed'])
+        if "recently_viewed" in request.session:
+            if slug in request.session["recently_viewed"]:
+                request.session["recently_viewed"].remove(slug)
+
+            products = Product.objects.filter(
+                slug__in=request.session["recently_viewed"]
+            )
             recently_viewed_products = sorted(
-                products, key=lambda x: request.session['recently_viewed'].index(x.slug)
+                products,
+                key=lambda x: request.session["recently_viewed"].index(x.slug)
             )
 
-            request.session['recently_viewed'].insert(0, slug)
-            if len(request.session['recently_viewed']) > 5:
-                request.session['recently_viewed'].pop()
+            request.session["recently_viewed"].insert(0, slug)
+            if len(request.session["recently_viewed"]) > 5:
+                request.session["recently_viewed"].pop()
         else:
-            request.session['recently_viewed'] = [slug]
-        
+            request.session["recently_viewed"] = [slug]
+
         request.session.modified = True
 
-        # Display related products code from related products tutorial on youtube
+        # Display related products code
+        # from related products tutorial on youtube
         # https://www.youtube.com/watch?v=fqIBA2Vpws0&t=178s
-        related_products = Product.objects.filter(category=product.category).exclude(slug=slug)[:5]
-
+        related_products = Product.objects.filter(
+            category=product.category
+            ).exclude(
+            slug=slug
+        )[:5]
 
         if request.user.is_authenticated:
-            profile = get_object_or_404(UserProfile, user=self.request.user )
+            profile = get_object_or_404(UserProfile, user=self.request.user)
 
             wishlist = get_object_or_404(WishList, user_profile=profile)
             wish_list = []
@@ -118,18 +128,18 @@ class ProductDetailView(View):
         else:
             wish_list = None
 
-        template = 'products/product_detail.html'
+        template = "products/product_detail.html"
         context = {
-            'product': product,
-            'reviews': reviews,
-            'form': form,
-            'avg_reviews': avg_reviews,
-            'recently_viewed_products':recently_viewed_products,
-            'related_products': related_products,
-            'wishlist': wish_list,
+            "product": product,
+            "reviews": reviews,
+            "form": form,
+            "avg_reviews": avg_reviews,
+            "recently_viewed_products": recently_viewed_products,
+            "related_products": related_products,
+            "wishlist": wish_list,
         }
         return render(request, template, context)
-    
+
     def post(self, request, slug):
         product = get_object_or_404(Product, slug=slug)
         reviews = product.product_review.all()
@@ -138,34 +148,40 @@ class ProductDetailView(View):
         form.instance.user = UserProfile.objects.get(user=self.request.user)
         if form.is_valid():
             form.save()
-            avg_reviews = reviews.aggregate(Avg('rating')) 
-            product.rating = avg_reviews['rating__avg']
+            avg_reviews = reviews.aggregate(Avg("rating"))
+            product.rating = avg_reviews["rating__avg"]
             product.save()
-            messages.success(request, 'Review was successful')
+            messages.success(request, "Review was successful")
             return HttpResponseRedirect(self.request.path_info)
 
 
-
 class SuperUserCheck(UserPassesTestMixin, View):
-    """ 
-    A CBV mixin to prevent access from users that are not superusers
-    From https://stackoverflow.com/questions/67351312/django-check-if-superuser-in-class-based-view
+    """
+    A CBV mixin to prevent access from
+    users that are not superusers From
+    https://stackoverflow.com/questions/67351312/
+    django-check-if-superuser-in-class-based-view
 
     """
+
     def test_func(self):
         return self.request.user.is_superuser
 
 
 class AddProductView(SuperUserCheck, CreateView):
-    """ Add a product to the store """
+    """Add a product to the store"""
+
     model = Product
     form_class = ProductForm
-    template_name = 'products/add_product.html'
-    success_message = 'Successfully added product!'
-    error_message = 'Failed to add product. Please ensure the form is valid.'
+    template_name = "products/add_product.html"
+    success_message = "Successfully added product!"
+    error_message = "Failed to add product. Please ensure the form is valid."
 
     def get_success_url(self):
-        return reverse_lazy('product_detail', kwargs={'slug': self.object.slug})
+        return reverse_lazy(
+            "product_detail",
+            kwargs={"slug": self.object.slug}
+        )
 
     def form_valid(self, form):
         messages.success(self.request, self.success_message)
@@ -177,15 +193,19 @@ class AddProductView(SuperUserCheck, CreateView):
 
 
 class EditProductView(SuperUserCheck, UpdateView):
-    """ Edits a product in the store """
+    """Edits a product in the store"""
+
     model = Product
     form_class = ProductForm
-    template_name = 'products/edit_product.html'
-    success_message = 'Successfully Updated product!'
-    error_message = 'Failed to update product. Please ensure the form is valid.'
+    template_name = "products/edit_product.html"
+    success_message = "Successfully Updated product!"
+    error_message = "Failed to update product.\
+        Please ensure the form is valid."
 
     def get_success_url(self):
-        return reverse_lazy('product_detail', kwargs={'slug': self.object.slug})
+        return reverse_lazy(
+            "product_detail", kwargs={"slug": self.object.slug}
+            )
 
     def form_valid(self, form):
         messages.success(self.request, self.success_message)
@@ -199,15 +219,15 @@ class EditProductView(SuperUserCheck, UpdateView):
         context = super(EditProductView, self).get_context_data(**kwargs)
         product = get_object_or_404(Product, slug=self.object.slug)
 
-        messages.info(self.request, f'You are editing {product.name}')
-        context['product'] = product
+        messages.info(self.request, f"You are editing {product.name}")
+        context["product"] = product
         return context
 
 
 class DeleteProductView(SuperUserCheck, SuccessMessageMixin, DeleteView):
-    """ Deletes a product in the store """
-    model = Product
-    template_name = 'products/delete_product.html'
-    success_url = reverse_lazy('products')
-    success_message = 'Successfully deleted product!'
+    """Deletes a product in the store"""
 
+    model = Product
+    template_name = "products/delete_product.html"
+    success_url = reverse_lazy("products")
+    success_message = "Successfully deleted product!"

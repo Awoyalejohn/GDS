@@ -1,8 +1,7 @@
 from django.views.generic import TemplateView
 
-# Create your views here.
 
 class IndexView(TemplateView):
-    """ A view to return the index page """
-    
+    """A view to return the index page"""
+
     template_name = "home/index.html"

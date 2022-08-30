@@ -5,8 +5,8 @@ from .models import Testimonial
 class TestimonialForm(forms.ModelForm):
     class Meta:
         model = Testimonial
-        fields = ('body',)
+        fields = ("body",)
 
         labels = {
-        'body': 'Your Testimonial',
-    }
+            "body": "Your Testimonial",
+        }
