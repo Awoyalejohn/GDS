@@ -130,16 +130,15 @@ WSGI_APPLICATION = 'graphicsdesignspace.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-if 'DATABASE_URL' in os.environ:
-    DATABASES = {
-        'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
-    }
-else:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+DATABASES = {
+  'default': {
+    'ENGINE': os.getenv('ENGINE'),
+    'NAME': os.getenv('NAME'),
+    'USER': os.getenv('USER'),
+    'PASSWORD': os.getenv('PASSWORD'),
+    'HOST': os.getenv('HOST'),
+    'PORT': os.getenv('PORT'),
+  }
 }
 
 
